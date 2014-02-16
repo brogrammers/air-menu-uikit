@@ -1,0 +1,1 @@
+angular.module('air-menu-ui.controllers', []);

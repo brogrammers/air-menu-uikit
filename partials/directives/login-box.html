@@ -1,0 +1,23 @@
+<form role="form" class="login-box" ng-submit="onSubmit()">
+	<div ng-if="failure" class="alert alert-danger">
+		Oh no! You username/password combination seems to fail!
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-user"></i></span>
+			<input type="text" class="form-control" id="username" placeholder="Username" ng-model="username">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+			<input type="password" class="form-control" id="password" placeholder="Password" ng-model="password">
+		</div>
+	</div>
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" /> Remember Me
+		</label>
+	</div>
+	<button type="submit" class="btn btn-primary btn-block {{pending || !username || !password ? 'disabled' : ''}}" {{pending ? 'disabled' : ''}}>SIGN IN</button>
+</form>

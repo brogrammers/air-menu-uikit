@@ -1,0 +1,26 @@
+
+.btn {
+  .transition(200ms linear all);
+  border: 1px solid transparent;
+  &:hover,
+  &:focus {
+    border: 1px solid transparent;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    .transition(200ms linear all);
+  }
+}
+
+.btn-default {
+  border: 1px solid @brand-primary;
+  .button-variant(@brand-primary, #fff, @btn-default-border);
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    color: @brand-primary;
+  }
+}

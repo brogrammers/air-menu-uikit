@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app="air-menu">
+	<head>
+		<meta charset="utf-8">
+		<title>AirMenu</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/air-menu-ui-0.0.1.css"/>
+		<script src="lib/jquery-2.0.2.js"></script>
+		<script src="lib/bootstrap-3.1.0.js"></script>
+		<script src="lib/angular/angular.js"></script>
+		<script src="lib/angular/angular-animate.js"></script>
+		<script src="lib/angular/angular-cookies.js"></script>
+		<script src="lib/angular/angular-loader.js"></script>
+		<script src="lib/angular/angular-resource.js"></script>
+		<script src="lib/angular/angular-route.js"></script>
+		<script src="lib/angular/angular-sanitize.js"></script>
+		<script src="lib/angular/angular-touch.js"></script>
+		<script src="lib/breakpoint-0.0.1.js"></script>
+		<script src="lib/air-menu-ui-0.0.1.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/services.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/filters.js"></script>
+		<script src="js/directives.js"></script>
+	</head>
+	<body ng-controller="MainCtrl">
+		<navbar session="session"></navbar>
+		<ng-view></ng-view>
+	</body>
+</html>

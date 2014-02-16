@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="#" class="navbar-brand">AirMenu</a>
+		</div>
+
+		<div ng-if="session.isSet()" class="collapse navbar-collapse" id="menu">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">{{session.user.name}} <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Profile</a></li>
+						<li><a href="#/documentation">API Documentation</a></li>
+						<li class="divider"></li>
+						<li><a href="#" ng-click="logout()">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,37 @@
+
+.login-box {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 40px 20px;
+  border: 1px solid @gray-lighter;
+  border-radius: @border-radius-base;
+}
+
+.form-control {
+  .transition(300ms linear all);
+  border-radius: @border-radius-base;
+  border: 1px solid transparent;
+  background: @gray-lighter;
+  .box-shadow(0px 0px 0px);
+
+  &:focus {
+    .transition(300ms linear all);
+    border-color: transparent;
+    background: #f3f3f3;
+    .box-shadow(0px 0px 0px);
+  }
+}
+
+.form-inline {
+  .form-control,
+  .radio,
+  .checkbox {
+    margin-right: 6px;
+
+    @media (max-width: @screen-sm) {
+      margin-bottom: 3px;
+    }
+  }
+}
