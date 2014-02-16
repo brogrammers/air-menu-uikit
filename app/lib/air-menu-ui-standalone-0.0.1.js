@@ -36486,7 +36486,8 @@ angular.module('air-menu-ui', [
 angular.module('air-menu-ui.controllers', []);
 angular.module('air-menu-ui.directives', [
 	'air-menu-ui.directives.login-box',
-	'air-menu-ui.directives.navbar'
+	'air-menu-ui.directives.navbar',
+	'air-menu-ui.directives.resource'
 ]);
 angular.module('air-menu-ui.directives.login-box', [])
 
@@ -36525,6 +36526,20 @@ angular.module('air-menu-ui.directives.navbar', [])
 				$scope.logout = function() {
 					$scope.session.destroy();
 				}
+			}]
+		}
+	});
+angular.module('air-menu-ui.directives.resource', [])
+
+	.directive('resource', function() {
+		return {
+			scope: {
+				resource: '='
+			},
+			restrict: 'E',
+			templateUrl: '/air-menu/resource.html',
+			controller: [ '$scope', function($scope) {
+
 			}]
 		}
 	});
@@ -36573,7 +36588,8 @@ angular.module('air-menu-ui.services.connector', [])
 	}]);
 angular.module('air-menu-ui.services.models', [
 	'air-menu-ui.services.models.me',
-	'air-menu-ui.services.models.access-tokens'
+	'air-menu-ui.services.models.access-tokens',
+	'air-menu-ui.services.models.docs'
 ]);
 angular.module('air-menu-ui.services.models.access-tokens', [])
 
@@ -36581,7 +36597,17 @@ angular.module('air-menu-ui.services.models.access-tokens', [])
 		var baseUrl = '/api/oauth2/access_tokens';
 		return {
 			create: function(params, successHandler, errorHandler) {
-				connector.post(baseUrl, params, successHandler, errorHandler);
+				connector.post(baseUrl, params,  successHandler, errorHandler);
+			}
+		}
+	}]);
+angular.module('air-menu-ui.services.models.docs', [])
+
+	.factory('Docs', [ 'connector', function(connector) {
+		var baseUrl = '/docs.json';
+		return {
+			get: function(successHandler, errorHandler) {
+				connector.get(baseUrl, null, successHandler, errorHandler, true);
 			}
 		}
 	}]);
@@ -36703,7 +36729,7 @@ angular.module('air-menu-ui.services.store', [])
 		};
 		return Store;
 	});
-angular.module('air-menu-ui.templates', ['/air-menu/login-box.html', '/air-menu/navbar.html']);
+angular.module('air-menu-ui.templates', ['/air-menu/login-box.html', '/air-menu/navbar.html', '/air-menu/resource.html']);
 
 angular.module("/air-menu/login-box.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/login-box.html",
@@ -36752,7 +36778,7 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{session.user.name}} <b class=\"caret\"></b></a>\n" +
     "					<ul class=\"dropdown-menu\">\n" +
     "						<li><a href=\"#\">Profile</a></li>\n" +
-    "						<li><a href=\"#/developer\">Developerr</a></li>\n" +
+    "						<li><a href=\"#/documentation\">API Documentation</a></li>\n" +
     "						<li class=\"divider\"></li>\n" +
     "						<li><a href=\"#\" ng-click=\"logout()\">Logout</a></li>\n" +
     "					</ul>\n" +
@@ -36761,4 +36787,20 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "		</div>\n" +
     "	</div>\n" +
     "</nav>");
+}]);
+
+angular.module("/air-menu/resource.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("/air-menu/resource.html",
+    "<div class=\"container\">\n" +
+    "	<h1>{{resource.name}}</h1>\n" +
+    "	<p class=\"lead\">{{resource.short_description}}</p>\n" +
+    "	<div class=\"resource\" ng-repeat=\"method in resource.methods\">\n" +
+    "		<div ng-repeat=\"api in method.apis\">\n" +
+    "			<div class=\"method {{api.http_method}}\">{{api.http_method}}</div>\n" +
+    "			<div class=\"path\">{{api.api_url}}</div>\n" +
+    "		</div>\n" +
+    "		<p ng-bind-html=\"method.full_description\"></p>\n" +
+    "		<strong>Formats:</strong> <span class=\"label label-default\" ng-repeat=\"format in method.formats\"> {{format}}</span>\n" +
+    "	</div>\n" +
+    "</div>");
 }]);
