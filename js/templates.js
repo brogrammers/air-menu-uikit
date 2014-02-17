@@ -44,7 +44,7 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "		<div ng-if=\"session.isSet()\" class=\"collapse navbar-collapse\" id=\"menu\">\n" +
     "			<ul class=\"nav navbar-nav navbar-right\">\n" +
     "				<li class=\"dropdown\">\n" +
-    "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">{{session.user.name}} <b class=\"caret\"></b></a>\n" +
+    "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{session.user.name}} <b class=\"caret\"></b></a>\n" +
     "					<ul class=\"dropdown-menu\">\n" +
     "						<li><a href=\"#\">Profile</a></li>\n" +
     "						<li><a href=\"#/documentation\">API Documentation</a></li>\n" +
