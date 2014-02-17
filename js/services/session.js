@@ -65,14 +65,18 @@ angular.module('air-menu-ui.services.session', [])
 			},
 			baseParams: function(params) {
 				var baseParams = {
-					client_id: '468e35cd0cef4a31a3818bcadeb36dc6ed5e919ee64fce88c5296d6b48bfb529',
-					client_secret: '13e8a3df7bd4e14ed41d64d2cce7b42d722611ae3f89130e700959a047758f3b',
+					client_id: this.uid,
+					client_secret: this.secret,
 					scope: 'basic user'
 				};
 				angular.forEach(params, function(value, key) {
 					baseParams[key] = value;
 				});
 				return baseParams;
+			},
+			setClient: function(uid, secret) {
+				this.uid = uid;
+				this.secret = secret;
 			}
 		};
 		return Session;

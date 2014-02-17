@@ -32,7 +32,7 @@ module.exports = function(grunt) {
         src: [
           'js/**/*.js'
         ],
-        dest: 'app/lib/<%= pkg.name %>-<%= pkg.version %>.js'
+        dest: 'app/assets/lib/<%= pkg.name %>-<%= pkg.version %>.js'
       },
       bootstrap: {
         src: [
@@ -49,24 +49,24 @@ module.exports = function(grunt) {
           'app/lib/bootstrap/tab.js',
           'app/lib/bootstrap/transition.js'
         ],
-        dest: 'app/lib/bootstrap-3.1.0.js'
+        dest: 'app/assets/lib/bootstrap-3.1.0.js'
       },
       air_menu_standalone: {
         src: [
-          'app/lib/jquery-2.0.2.js',
-          'app/lib/bootstrap-3.1.0.js',
-          'app/lib/angular/angular.js',
-		  'app/lib/angular/angular-animate.js',
-		  'app/lib/angular/angular-cookies.js',
-		  'app/lib/angular/angular-loader.js',
-		  'app/lib/angular/angular-resource.js',
-		  'app/lib/angular/angular-route.js',
-		  'app/lib/angular/angular-sanitize.js',
-		  'app/lib/angular/angular-touch.js',
-          'app/lib/breakpoint-0.0.1.js',
+          'app/assets/lib/jquery-2.0.2.js',
+          'app/assets/lib/bootstrap-3.1.0.js',
+          'app/assets/lib/angular/angular.js',
+		  'app/assets/lib/angular/angular-animate.js',
+		  'app/assets/lib/angular/angular-cookies.js',
+		  'app/assets/lib/angular/angular-loader.js',
+		  'app/assets/lib/angular/angular-resource.js',
+		  'app/assets/lib/angular/angular-route.js',
+		  'app/assets/lib/angular/angular-sanitize.js',
+		  'app/assets/lib/angular/angular-touch.js',
+          'app/assets/lib/breakpoint-0.0.1.js',
           '<%= concat.air_menu.dest %>'
         ],
-        dest: 'app/lib/<%= pkg.name %>-standalone-<%= pkg.version %>.js'
+        dest: 'app/assets/lib/<%= pkg.name %>-standalone-<%= pkg.version %>.js'
       }
     },
 
@@ -76,15 +76,15 @@ module.exports = function(grunt) {
       },
       air_menu: {
         src: ['<%= concat.air_menu.dest %>'],
-        dest: 'app/lib/<%= pkg.name %>-<%= pkg.version %>.min.js'
+        dest: 'app/assets/lib/<%= pkg.name %>-<%= pkg.version %>.min.js'
       },
       bootstrap: {
         src: ['<%= concat.bootstrap.dest %>'],
-        dest: 'app/lib/bootstrap-3.1.0.min.js'
+        dest: 'app/assets/lib/bootstrap-3.1.0.min.js'
       },
       air_menu_standalone: {
         src: ['<%= concat.air_menu_standalone.dest %>'],
-        dest: 'app/lib/<%= pkg.name %>-standalone-<%= pkg.version %>.min.js'
+        dest: 'app/assets/lib/<%= pkg.name %>-standalone-<%= pkg.version %>.min.js'
       }
     },
 
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
 		  paths: ['less']
 	    },
 		files: {
-			"app/css/<%= pkg.name %>-<%= pkg.version %>.css": ["less/application.less", "app/css/font-awesome.css"]
+			"app/assets/css/<%= pkg.name %>-<%= pkg.version %>.css": ["less/application.less", "app/assets/css/font-awesome.css"]
 		}
 	  },
       air_menu_min: {
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
 		  paths: ['less']
 	    },
 	    files: {
-		  "app/css/<%= pkg.name %>-<%= pkg.version %>.min.css": ["less/application.less", "app/css/font-awesome.css"]
+		  "app/assets/css/<%= pkg.name %>-<%= pkg.version %>.min.css": ["less/application.less", "app/assets/css/font-awesome.css"]
 	    }
 	  }
     },
