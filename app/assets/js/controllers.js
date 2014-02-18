@@ -34,4 +34,11 @@ angular.module('air-menu.controllers', [])
 		};
 
 		$scope.fetch();
-	}]);
+	}])
+
+    .controller('ApplicationsCtrl', [ '$scope', 'Applications', function($scope, Applications) {
+        $scope.applications = [];
+        Applications.get(function(applications) {
+            $scope.applications = applications;
+        })
+    }]);

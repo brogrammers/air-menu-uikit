@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <hr />
+            <h3>
+                <span ng-if="application.trusted" class="label label-success">Trusted</span> {{application.name}} <small>{{application.redirect_uri}}</small>
+            </h3>
+            <p><strong>Client ID: </strong>{{application.client_id}}</p>
+            <p><strong>Client SECRET: </strong>{{application.client_secret}}</p>
+        </div>
+    </div>
+</div>

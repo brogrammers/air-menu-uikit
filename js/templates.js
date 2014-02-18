@@ -1,4 +1,21 @@
-angular.module('air-menu-ui.templates', ['/air-menu/login-box.html', '/air-menu/navbar.html', '/air-menu/resource.html']);
+angular.module('air-menu-ui.templates', ['/air-menu/application.html', '/air-menu/login-box.html', '/air-menu/navbar.html', '/air-menu/resource.html']);
+
+angular.module("/air-menu/application.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("/air-menu/application.html",
+    "<div class=\"container\">\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-lg-12\">\n" +
+    "            <hr />\n" +
+    "            <h3>\n" +
+    "                <span ng-if=\"application.trusted\" class=\"label label-success\">Trusted</span> {{application.name}} <small>{{application.redirect_uri}}</small>\n" +
+    "            </h3>\n" +
+    "            <p><strong>Client ID: </strong>{{application.client_id}}</p>\n" +
+    "            <p><strong>Client SECRET: </strong>{{application.client_secret}}</p>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>\n" +
+    "");
+}]);
 
 angular.module("/air-menu/login-box.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/login-box.html",
@@ -49,6 +66,7 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "					<ul class=\"dropdown-menu\">\n" +
     "						<li><a href=\"#\">Profile</a></li>\n" +
     "						<li ng-if=\"user.isDeveloper()\"><a href=\"#/documentation\">API Documentation</a></li>\n" +
+    "                        <li ng-if=\"user.isDeveloper()\"><a href=\"#/applications\">Developer Apps</a></li>\n" +
     "						<li class=\"divider\"></li>\n" +
     "						<li><a href=\"/logout\">Logout</a></li>\n" +
     "					</ul>\n" +

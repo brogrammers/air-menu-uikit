@@ -1,6 +1,7 @@
 angular.module('air-menu-ui.services.connector', [
         'air-menu-ui.services.connector.me',
-        'air-menu-ui.services.connector.docs'
+        'air-menu-ui.services.connector.docs',
+        'air-menu-ui.services.connector.applications'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
