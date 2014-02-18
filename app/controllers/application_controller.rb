@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def client
+    puts AirMenu::Settings.client_id
+    puts AirMenu::Settings.client_secret
     @client ||= OAuth2::Client.new(AirMenu::Settings.client_id, AirMenu::Settings.client_secret, :site => AirMenu::Settings.backend_url, :token_url => '/api/oauth2/access_tokens')
   end
 end
