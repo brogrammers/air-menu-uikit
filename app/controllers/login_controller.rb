@@ -14,4 +14,9 @@ class LoginController < ApplicationController
     render :json => { :error => 'wrong_credentials' }, :status => :unauthorized
   end
 
+  def index
+    reset_session
+    redirect_to '/'
+  end
+
 end

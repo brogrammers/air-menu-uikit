@@ -36672,6 +36672,8 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "			<a href=\"#\" class=\"navbar-brand\">AirMenu</a>\n" +
     "		</div>\n" +
     "\n" +
+    "        <a ng-if=\"!user\" href=\"#/login\" class=\"btn btn-default navbar-right navbar-btn\">Login</a>\n" +
+    "\n" +
     "		<div ng-if=\"user\" class=\"collapse navbar-collapse\" id=\"menu\">\n" +
     "			<ul class=\"nav navbar-nav navbar-right\">\n" +
     "				<li class=\"dropdown\">\n" +
@@ -36680,7 +36682,7 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "						<li><a href=\"#\">Profile</a></li>\n" +
     "						<li><a href=\"#/documentation\">API Documentation</a></li>\n" +
     "						<li class=\"divider\"></li>\n" +
-    "						<li><a href=\"#\">Logout</a></li>\n" +
+    "						<li><a href=\"/logout\">Logout</a></li>\n" +
     "					</ul>\n" +
     "				</li>\n" +
     "			</ul>\n" +

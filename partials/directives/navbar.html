@@ -10,6 +10,8 @@
 			<a href="#" class="navbar-brand">AirMenu</a>
 		</div>
 
+        <a ng-if="!user" href="#/login" class="btn btn-default navbar-right navbar-btn">Login</a>
+
 		<div ng-if="user" class="collapse navbar-collapse" id="menu">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -18,7 +20,7 @@
 						<li><a href="#">Profile</a></li>
 						<li><a href="#/documentation">API Documentation</a></li>
 						<li class="divider"></li>
-						<li><a href="#">Logout</a></li>
+						<li><a href="/logout">Logout</a></li>
 					</ul>
 				</li>
 			</ul>

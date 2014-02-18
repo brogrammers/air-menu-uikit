@@ -15,7 +15,7 @@ angular.module('air-menu.controllers', [])
 	}])
 
 	.controller('LoginCtrl', [ '$scope', '$rootScope', '$location', '$http', function($scope, $rootScope, $location, $http) {
-        if (!$scope.user) $location.path('/');
+        if ($scope.user) $location.path('/');
 		$scope.handler = function(username, password, done) {
             $http({
                 method: 'POST',
