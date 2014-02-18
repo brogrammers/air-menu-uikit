@@ -10,6 +10,8 @@ class LoginController < ApplicationController
     session[:access_token] = access_token.to_hash[:access_token]
     puts session
     render :json => { :message => 'ok' }
+  rescue OAuth2::Error
+    render :json => { :error => 'wrong_credentials' }, :status => :unauthorized
   end
 
 end
