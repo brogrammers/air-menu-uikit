@@ -1,3 +1,5 @@
+require Rails.root + 'lib/air_menu'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
