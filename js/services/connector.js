@@ -1,19 +1,13 @@
 angular.module('air-menu-ui.services.connector', [])
 
-	.factory('connector', [ '$rootScope', '$http', 'store', function($rootScope, $http, store) {
+	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
 		var Connector = {
-			fetch: function(method, path, params, data, successHandler, errorHandler, authorized) {
-				if (authorized && !store.valid('access_token')) return;
-				var token = store.valid('access_token') ? store.get('access_token').token : '';
+			fetch: function(method, path, params, data, successHandler, errorHandler) {
 				$http({
 					method: method,
 					url: path,
 					params: params || {},
-					data: data || {},
-					headers: {
-						'Accept': 'application/json',
-						'Authorization': 'Bearer ' + token
-					}
+					data: data || {}
 				})
 				.success(function(data, status, headers, config) {
 					if (successHandler) successHandler(data, status);
@@ -23,11 +17,11 @@ angular.module('air-menu-ui.services.connector', [])
 					if (errorHandler) errorHandler(data, status);
 				})
 			},
-			get: function(path, params, successHandler, errorHandler, authorized) {
-				this.fetch('GET', path, params, null, successHandler, errorHandler, authorized);
+			get: function(path, params, successHandler, errorHandler) {
+				this.fetch('GET', path, params, null, successHandler, errorHandler);
 			},
-			post: function(path, data, successHandler, errorHandler, authorized) {
-				this.fetch('POST', path, data, null, successHandler, errorHandler, authorized);
+			post: function(path, data, successHandler, errorHandler) {
+				this.fetch('POST', path, data, null, successHandler, errorHandler);
 			}
 		};
 		return Connector;

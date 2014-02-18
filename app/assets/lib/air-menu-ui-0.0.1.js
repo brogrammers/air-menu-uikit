@@ -39,11 +39,11 @@ angular.module('air-menu-ui.directives.login-box', [])
 				$scope.onSubmit = function() {
 					$scope.pending = true;
 					if ($scope.handler) {
-						$scope.handler($scope.username, $scope.password, $scope.callback);
+						$scope.handler($scope.username, $scope.password, $scope.done);
 					}
 				};
 
-				$scope.callback = function(successful) {
+				$scope.done = function(successful) {
 					$scope.pending = false;
 					$scope.failure = !successful;
 				};
@@ -54,15 +54,12 @@ angular.module('air-menu-ui.directives.navbar', [])
 
 	.directive('navbar', function() {
 		return {
-			scope: {
-				session: '='
-			},
 			restrict: 'E',
 			templateUrl: '/air-menu/navbar.html',
 			controller: [ '$scope', function($scope) {
-				$scope.logout = function() {
-					$scope.session.destroy();
-				}
+                $scope.$on('air-menu-ui.event.navbar.user', function(event, user) {
+                    $scope.user = user;
+                });
 			}]
 		}
 	});
@@ -84,27 +81,20 @@ angular.module('air-menu-ui.filters', []);
 
 angular.module('air-menu-ui.services', [
 	'air-menu-ui.services.connector',
-	'air-menu-ui.services.session',
 	'air-menu-ui.services.store',
 	'air-menu-ui.services.models'
 ]);
 
 angular.module('air-menu-ui.services.connector', [])
 
-	.factory('connector', [ '$rootScope', '$http', 'store', function($rootScope, $http, store) {
+	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
 		var Connector = {
-			fetch: function(method, path, params, data, successHandler, errorHandler, authorized) {
-				if (authorized && !store.valid('access_token')) return;
-				var token = store.valid('access_token') ? store.get('access_token').token : '';
+			fetch: function(method, path, params, data, successHandler, errorHandler) {
 				$http({
 					method: method,
 					url: path,
 					params: params || {},
-					data: data || {},
-					headers: {
-						'Accept': 'application/json',
-						'Authorization': 'Bearer ' + token
-					}
+					data: data || {}
 				})
 				.success(function(data, status, headers, config) {
 					if (successHandler) successHandler(data, status);
@@ -114,30 +104,19 @@ angular.module('air-menu-ui.services.connector', [])
 					if (errorHandler) errorHandler(data, status);
 				})
 			},
-			get: function(path, params, successHandler, errorHandler, authorized) {
-				this.fetch('GET', path, params, null, successHandler, errorHandler, authorized);
+			get: function(path, params, successHandler, errorHandler) {
+				this.fetch('GET', path, params, null, successHandler, errorHandler);
 			},
-			post: function(path, data, successHandler, errorHandler, authorized) {
-				this.fetch('POST', path, data, null, successHandler, errorHandler, authorized);
+			post: function(path, data, successHandler, errorHandler) {
+				this.fetch('POST', path, data, null, successHandler, errorHandler);
 			}
 		};
 		return Connector;
 	}]);
 angular.module('air-menu-ui.services.models', [
 	'air-menu-ui.services.models.me',
-	'air-menu-ui.services.models.access-tokens',
 	'air-menu-ui.services.models.docs'
 ]);
-angular.module('air-menu-ui.services.models.access-tokens', [])
-
-	.factory('AccessTokens', [ 'connector', function(connector) {
-		var baseUrl = '/api/oauth2/access_tokens';
-		return {
-			create: function(params, successHandler, errorHandler) {
-				connector.post(baseUrl, params,  successHandler, errorHandler);
-			}
-		}
-	}]);
 angular.module('air-menu-ui.services.models.docs', [])
 
 	.factory('Docs', [ 'connector', function(connector) {
@@ -157,89 +136,6 @@ angular.module('air-menu-ui.services.models.me', [])
 				connector.get(baseUrl, null, successHandler, errorHandler, true);
 			}
 		}
-	}]);
-angular.module('air-menu-ui.services.session', [])
-
-	.factory('session', [ '$rootScope', 'AccessTokens', 'store', 'Me', function($rootScope, AccessTokens, store, Me) {
-		var Session = {
-			set: function(properties) {
-				angular.extend(this, properties);
-			},
-			isSet: function() {
-				return !!this.access_token && !!this.access_token.token;
-			},
-			restore: function() {
-				if (store.has('access_token') && store.valid('access_token')) {
-					this.set({access_token: store.get('access_token')});
-					this.getCurrentUser();
-				}
-			},
-			create: function(username, password, callback) {
-				var params = this.credentialsParams({username: username, password: password});
-				this.getAccessToken(params, callback);
-			},
-			refresh: function() {
-				if (this.isSet()) {
-					var params = this.refreshParams(this.access_token.refresh_token);
-					this.getAccessToken(params);
-				}
-			},
-			destroy: function() {
-				this.access_token = undefined;
-				this.user = undefined;
-				store.empty('access_token');
-				$rootScope.$broadcast('air-menu-ui.event.userLoggedOut');
-			},
-			getAccessToken: function(params, callback) {
-				var self = this;
-				AccessTokens.create(params, function(data, status) {
-					self.set({access_token: data['access_token']});
-					store.set('access_token', data['access_token']);
-					self.getCurrentUser(callback);
-				}, function(data, status) {
-					if (callback) callback(false);
-				});
-			},
-			getCurrentUser: function(callback) {
-				var self = this;
-				Me.get(function(data) {
-					self.set({user: data['me']});
-					$rootScope.$broadcast('air-menu-ui.event.userLoggedIn');
-					if (callback) callback(true);
-				}, function(data, status) {
-					if (callback) callback(false);
-				})
-			},
-			credentialsParams: function(credentials) {
-				return this.baseParams({
-					grant_type: 'password',
-					username: credentials.username,
-					password: credentials.password
-				});
-			},
-			refreshParams: function(refresh_token) {
-				return this.baseParams({
-					grant_type: 'refresh_token',
-					refresh_token: refresh_token
-				});
-			},
-			baseParams: function(params) {
-				var baseParams = {
-					client_id: this.uid,
-					client_secret: this.secret,
-					scope: 'basic user'
-				};
-				angular.forEach(params, function(value, key) {
-					baseParams[key] = value;
-				});
-				return baseParams;
-			},
-			setClient: function(uid, secret) {
-				this.uid = uid;
-				this.secret = secret;
-			}
-		};
-		return Session;
 	}]);
 angular.module('air-menu-ui.services.store', [])
 
@@ -313,15 +209,15 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "			<a href=\"#\" class=\"navbar-brand\">AirMenu</a>\n" +
     "		</div>\n" +
     "\n" +
-    "		<div ng-if=\"session.isSet()\" class=\"collapse navbar-collapse\" id=\"menu\">\n" +
+    "		<div ng-if=\"user\" class=\"collapse navbar-collapse\" id=\"menu\">\n" +
     "			<ul class=\"nav navbar-nav navbar-right\">\n" +
     "				<li class=\"dropdown\">\n" +
-    "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{session.user.name}} <b class=\"caret\"></b></a>\n" +
+    "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{user.name}} <b class=\"caret\"></b></a>\n" +
     "					<ul class=\"dropdown-menu\">\n" +
     "						<li><a href=\"#\">Profile</a></li>\n" +
     "						<li><a href=\"#/documentation\">API Documentation</a></li>\n" +
     "						<li class=\"divider\"></li>\n" +
-    "						<li><a href=\"#\" ng-click=\"logout()\">Logout</a></li>\n" +
+    "						<li><a href=\"#\">Logout</a></li>\n" +
     "					</ul>\n" +
     "				</li>\n" +
     "			</ul>\n" +

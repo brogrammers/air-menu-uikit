@@ -36,18 +36,18 @@ module.exports = function(grunt) {
       },
       bootstrap: {
         src: [
-          'app/lib/bootstrap/affix.js',
-          'app/lib/bootstrap/alert.js',
-          'app/lib/bootstrap/button.js',
-          'app/lib/bootstrap/carousel.js',
-          'app/lib/bootstrap/collapse.js',
-          'app/lib/bootstrap/dropdown.js',
-          'app/lib/bootstrap/modal.js',
-          'app/lib/bootstrap/tooltip.js',
-          'app/lib/bootstrap/popover.js',
-          'app/lib/bootstrap/scrollspy.js',
-          'app/lib/bootstrap/tab.js',
-          'app/lib/bootstrap/transition.js'
+          'app/assets/lib/bootstrap/affix.js',
+          'app/assets/lib/bootstrap/alert.js',
+          'app/assets/lib/bootstrap/button.js',
+          'app/assets/lib/bootstrap/carousel.js',
+          'app/assets/lib/bootstrap/collapse.js',
+          'app/assets/lib/bootstrap/dropdown.js',
+          'app/assets/lib/bootstrap/modal.js',
+          'app/assets/lib/bootstrap/tooltip.js',
+          'app/assets/lib/bootstrap/popover.js',
+          'app/assets/lib/bootstrap/scrollspy.js',
+          'app/assets/lib/bootstrap/tab.js',
+          'app/assets/lib/bootstrap/transition.js'
         ],
         dest: 'app/assets/lib/bootstrap-3.1.0.js'
       },

@@ -1,30 +1,39 @@
 'use strict';
 
 angular.module('air-menu.controllers', [])
-	.controller('MainCtrl', [ '$scope', 'session', function($scope, session) {
-		$scope.$on('air-menu-ui.event.userLoggedIn', function() {
-			$scope.session = session;
-		});
+	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', function($scope, $rootScope, $location, Me) {
+        Me.get(function(data) {
+            $rootScope.user = data['me'];
+            $rootScope.$broadcast('air-menu-ui.event.navbar.user', $rootScope.user);
+        }, function(data) {
+            $location.path('/login');
+        });
 	}])
 
 	.controller('HomeCtrl', [ '$scope', 'Me', function($scope, Me) {
-		$scope.fetch = function() {
-			Me.get(function(data) {
-				$scope.user = data['me'];
-			});
-		};
 
-		$scope.$on('air-menu-ui.event.userLoggedIn', function() {
-			$scope.fetch();
-		});
 	}])
 
-	.controller('LoginCtrl', [ '$scope', '$location', 'session', function($scope, $location, session) {
-		$scope.handler = function(username, password, callback) {
-			session.create(username, password, function(successful) {
-				if (callback) callback(successful);
-				if (successful) $location.path('/');
-			});
+	.controller('LoginCtrl', [ '$scope', '$rootScope', '$location', '$http', function($scope, $rootScope, $location, $http) {
+        if (!$scope.user) $location.path('/');
+		$scope.handler = function(username, password, done) {
+            $http({
+                method: 'POST',
+                url: '/login',
+                params: {username: username, password: password},
+                data: {username: username, password: password},
+                headers: {
+                    'X-CSRF-Token': window.CSRF_TOKEN
+                }
+            })
+                .success(function(data, status) {
+                    done(true);
+                    location.replace('/');
+
+                })
+                .error(function(data, status) {
+                    done(false);
+                });
 		}
 	}])
 

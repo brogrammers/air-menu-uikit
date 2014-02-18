@@ -3866,3 +3866,2196 @@ Processing by LoginController#create as JSON
   Parameters: {"username"=>"tsov", "password"=>"[FILTERED]"}
 WARNING: Can't verify CSRF token authenticity
 Completed 200 OK in 379.1ms (Views: 0.2ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-02-18 00:36:15 +0000
+Processing by LoginController#create as JSON
+  Parameters: {"username"=>"tsov", "password"=>"[FILTERED]"}
+WARNING: Can't verify CSRF token authenticity
+Completed 400 Bad Request in 0.6ms (Views: 0.2ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-02-18 00:36:49 +0000
+Processing by LoginController#create as JSON
+  Parameters: {"username"=>"tsov", "password"=>"[FILTERED]"}
+WARNING: Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 82.0ms
+
+OAuth2::Error (invalid_resource_owner: The provided resource owner credentials are not valid, or resource owner cannot be found
+{"error":"invalid_resource_owner","error_description":"The provided resource owner credentials are not valid, or resource owner cannot be found"}):
+  app/controllers/login_controller.rb:9:in `create'
+
+
+  Rendered /Users/max/.rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/max/.rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.5ms)
+  Rendered /Users/max/.rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-02-18 00:38:55 +0000
+Processing by LoginController#create as JSON
+  Parameters: {"username"=>"tsov", "password"=>"[FILTERED]"}
+WARNING: Can't verify CSRF token authenticity
+Completed 401 Unauthorized in 77.6ms (Views: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:50:30 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (1.5ms)
+Completed 200 OK in 20.9ms (Views: 20.7ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:50:30 +0000
+Served asset /air-menu-ui-0.0.1.css - 200 OK (14ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:50:30 +0000
+Compiled app.js  (0ms)  (pid 76029)
+Served asset /app.js - 200 OK (14ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:50:30 +0000
+Served asset /services.js - 200 OK (2ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:50:30 +0000
+Served asset /filters.js - 200 OK (1ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:50:30 +0000
+Served asset /controllers.js - 200 OK (1ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:50:30 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (9ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 00:50:30 +0000
+Served asset /directives.js - 200 OK (2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:52:10 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.3ms (Views: 1.2ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:52:10 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:52:10 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:52:10 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:52:10 +0000
+Compiled app.js  (0ms)  (pid 76029)
+Served asset /app.js - 200 OK (6ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:52:10 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 00:52:10 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:52:10 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 00:52:11 +0000
+Served asset /pages/login.html - 200 OK (1ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff?v=4.0.3" for 127.0.0.1 at 2014-02-18 00:52:11 +0000
+Served asset /fontawesome-webfont.woff - 200 OK (1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:52:22 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:52:22 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:52:22 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:52:22 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:52:22 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:52:22 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:52:22 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 00:52:22 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 00:52:22 +0000
+Served asset /pages/login.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:54:04 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.3ms (Views: 1.2ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:54:04 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:54:04 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:54:04 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:54:04 +0000
+Compiled app.js  (0ms)  (pid 76029)
+Served asset /app.js - 200 OK (4ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:54:04 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 00:54:04 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:54:04 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 00:54:04 +0000
+Served asset /pages/login.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:54:16 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:54:16 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:54:16 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:54:16 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:54:16 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:54:16 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 00:54:16 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:54:16 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 00:54:16 +0000
+Served asset /pages/login.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:54:20 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:54:20 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:54:20 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:54:20 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:54:20 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:54:20 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:54:20 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 00:54:20 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 00:54:20 +0000
+Served asset /pages/home.html - 200 OK (2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:55:10 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.2ms (Views: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:55:25 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:55:29 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:55:39 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:55:49 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.2ms)
+Completed 200 OK in 1.4ms (Views: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:56:11 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:56:24 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.3ms (Views: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:56:40 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (1.3ms)
+Completed 200 OK in 6.3ms (Views: 6.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:56:51 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.4ms (Views: 1.3ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:56:51 +0000
+Served asset /air-menu-ui-0.0.1.css - 200 OK (16ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:56:52 +0000
+Served asset /filters.js - 200 OK (2ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:56:52 +0000
+Served asset /services.js - 200 OK (1ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:56:52 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (17ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:56:52 +0000
+Compiled app.js  (0ms)  (pid 76155)
+Served asset /app.js - 200 OK (3ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:56:52 +0000
+Served asset /controllers.js - 200 OK (1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:56:53 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.3ms (Views: 1.2ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:56:53 +0000
+Served asset /air-menu-ui-0.0.1.css - 200 OK (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:56:53 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (4ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:56:53 +0000
+Served asset /services.js - 200 OK (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:56:53 +0000
+Served asset /app.js - 200 OK (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:56:53 +0000
+Served asset /filters.js - 200 OK (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:56:53 +0000
+Served asset /controllers.js - 200 OK (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 00:56:53 +0000
+Served asset /directives.js - 200 OK (1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 00:56:53 +0000
+Served asset /pages/home.html - 200 OK (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:56:54 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:56:54 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:56:54 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:56:54 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:56:54 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:56:54 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:56:54 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 00:56:54 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 00:56:54 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:59:00 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.1ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:59:00 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:59:00 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:59:00 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:59:00 +0000
+Compiled app.js  (0ms)  (pid 76155)
+Served asset /app.js - 200 OK (4ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:59:00 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:59:00 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 00:59:00 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 00:59:00 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 00:59:05 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 00:59:05 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 00:59:05 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 00:59:05 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 00:59:05 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 00:59:05 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 00:59:05 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 00:59:05 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 00:59:05 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:02:37 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.9ms (Views: 1.8ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:02:37 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:02:37 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:02:37 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (11ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:02:37 +0000
+Compiled app.js  (0ms)  (pid 76155)
+Served asset /app.js - 200 OK (4ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:02:37 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:02:37 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:02:37 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:02:37 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:02:57 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.4ms (Views: 1.3ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:02:57 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:02:57 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:02:57 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:02:57 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:02:57 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:02:57 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:02:57 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:02:57 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:03:33 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:03:33 +0000
+Served asset /air-menu-ui-0.0.1.css - 200 OK (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:03:33 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (3ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:03:33 +0000
+Served asset /app.js - 200 OK (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:03:33 +0000
+Served asset /services.js - 200 OK (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:03:33 +0000
+Served asset /controllers.js - 200 OK (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:03:33 +0000
+Served asset /filters.js - 200 OK (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:03:33 +0000
+Served asset /directives.js - 200 OK (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:03:33 +0000
+Served asset /pages/home.html - 200 OK (0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2014-02-18 01:03:33 +0000
+Processing by ApiProxyController#proxy as 
+  Parameters: {"a"=>"favicon"}
+Filter chain halted as :check_session rendered or redirected
+Completed 401 Unauthorized in 0.4ms (Views: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:03:41 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:03:41 +0000
+Served asset /air-menu-ui-0.0.1.css - 200 OK (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:03:41 +0000
+Served asset /filters.js - 200 OK (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:03:41 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (2ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:03:41 +0000
+Served asset /controllers.js - 200 OK (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:03:41 +0000
+Served asset /app.js - 200 OK (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:03:41 +0000
+Served asset /services.js - 200 OK (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:03:41 +0000
+Served asset /directives.js - 200 OK (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:03:41 +0000
+Served asset /pages/home.html - 200 OK (0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2014-02-18 01:03:41 +0000
+Processing by ApiProxyController#proxy as 
+  Parameters: {"a"=>"favicon"}
+Filter chain halted as :check_session rendered or redirected
+Completed 401 Unauthorized in 0.2ms (Views: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:14:52 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.4ms)
+Completed 200 OK in 1.6ms (Views: 1.5ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:14:53 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:14:53 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:14:53 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:14:53 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:14:53 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:14:53 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (4ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:14:53 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:14:53 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:16:43 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:16:43 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:16:43 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:16:43 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:16:43 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (3ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:16:43 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:16:43 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:16:43 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:16:44 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:20:30 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:20:30 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:20:30 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:20:30 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:20:30 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:20:30 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:20:30 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:20:30 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:20:31 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:20:51 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 10.4ms (Views: 10.3ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:20:51 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:20:51 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:20:51 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:20:51 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:20:51 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:20:51 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:20:51 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:20:51 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:20:53 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:20:53 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:20:53 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:20:53 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:20:53 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:20:53 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:20:53 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:20:53 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:20:53 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:23:56 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:23:56 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:23:56 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:23:56 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (12ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:23:56 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:23:56 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:23:56 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:23:56 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:23:56 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Filter chain halted as :check_session rendered or redirected
+Completed 401 Unauthorized in 0.2ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:23:56 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:25:48 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:25:48 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:25:48 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:25:48 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:25:48 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:25:48 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:25:48 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (14ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:25:48 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:25:49 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:26:08 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:26:08 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:26:08 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:26:08 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:26:08 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (4ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:26:08 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:26:08 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:26:08 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:26:09 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:26:38 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:26:38 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:26:38 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:26:38 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:26:38 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:26:38 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:26:38 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:26:38 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (15ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:26:38 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:31:02 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.1ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:31:02 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:31:02 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:31:02 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:31:02 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:31:02 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:31:02 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:31:02 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:31:02 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:34:15 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.2ms)
+Completed 200 OK in 1.6ms (Views: 1.5ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:34:15 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:34:15 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:34:15 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:34:15 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:34:15 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:34:15 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:34:15 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:34:16 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:35:08 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.1ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:35:08 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:35:08 +0000
+Compiled air-menu-ui-standalone-0.0.1.js  (12ms)  (pid 76155)
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (89ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:35:08 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:35:08 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:35:08 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:35:08 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:35:08 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:35:08 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:35:09 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Filter chain halted as :check_session rendered or redirected
+Completed 401 Unauthorized in 0.3ms (Views: 0.2ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff?v=4.0.3" for 127.0.0.1 at 2014-02-18 01:35:09 +0000
+Served asset /fontawesome-webfont.woff - 200 OK (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:44:51 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:44:51 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:44:51 +0000
+Compiled air-menu-ui-standalone-0.0.1.js  (11ms)  (pid 76155)
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (67ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:44:51 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:44:51 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (3ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:44:51 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:44:51 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:44:51 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:44:51 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Filter chain halted as :check_session rendered or redirected
+Completed 401 Unauthorized in 0.2ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:44:51 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 01:44:55 +0000
+Served asset /pages/login.html - 200 OK (0ms)
+
+
+Started POST "/login?password=[FILTERED]&username=tsov" for 127.0.0.1 at 2014-02-18 01:45:20 +0000
+Processing by LoginController#create as HTML
+  Parameters: {"username"=>"tsov", "password"=>"[FILTERED]", "login"=>{"username"=>"tsov", "password"=>"[FILTERED]"}}
+WARNING: Can't verify CSRF token authenticity
+Completed 400 Bad Request in 0.5ms (Views: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:46:43 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.2ms (Views: 1.1ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:46:43 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:46:43 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:46:43 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:46:43 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:46:43 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:46:43 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:46:43 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (4ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:46:43 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Filter chain halted as :check_session rendered or redirected
+Completed 401 Unauthorized in 0.2ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 01:46:43 +0000
+Served asset /pages/login.html - 304 Not Modified (0ms)
+
+
+Started POST "/login?password=[FILTERED]&username=tsov" for 127.0.0.1 at 2014-02-18 01:46:56 +0000
+Processing by LoginController#create as HTML
+  Parameters: {"username"=>"tsov", "password"=>"[FILTERED]", "login"=>{"username"=>"tsov", "password"=>"[FILTERED]"}}
+Completed 200 OK in 167.6ms (Views: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:47:30 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.7ms (Views: 1.6ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:47:30 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:47:30 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:47:30 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:47:30 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:47:30 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (5ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:47:30 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:47:30 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:47:31 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 62.6ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 01:47:31 +0000
+Served asset /pages/login.html - 304 Not Modified (0ms)
+
+
+Started POST "/login?password=[FILTERED]&username=tsov" for 127.0.0.1 at 2014-02-18 01:47:44 +0000
+Processing by LoginController#create as HTML
+  Parameters: {"username"=>"tsov", "password"=>"[FILTERED]", "login"=>{"username"=>"tsov", "password"=>"[FILTERED]"}}
+Completed 200 OK in 150.9ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:47:45 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/documentation.html" for 127.0.0.1 at 2014-02-18 01:48:41 +0000
+Served asset /pages/documentation.html - 200 OK (5ms)
+
+
+Started GET "/docs.json" for 127.0.0.1 at 2014-02-18 01:48:41 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"a"=>"docs"}
+Completed 200 OK in 240.9ms (Views: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:49:21 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.2ms (Views: 1.1ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:49:21 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:49:21 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:49:21 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:49:21 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:49:21 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:49:21 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:49:21 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:49:21 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 36.3ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:49:21 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:50:35 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.4ms)
+Completed 200 OK in 1.5ms (Views: 1.4ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:50:35 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:50:35 +0000
+Compiled air-menu-ui-standalone-0.0.1.js  (29ms)  (pid 76155)
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (63ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:50:35 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:50:35 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:50:35 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:50:35 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:50:35 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:50:36 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 14.0ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:50:36 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:52:36 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.2ms)
+Completed 200 OK in 1.6ms (Views: 1.6ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:52:36 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:52:36 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:52:36 +0000
+Compiled app.js  (1ms)  (pid 76155)
+Served asset /app.js - 200 OK (13ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:52:36 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:52:36 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (5ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:52:36 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:52:36 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:52:40 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:52:40 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:52:40 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:52:40 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:52:40 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:52:40 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:52:40 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:52:40 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:52:57 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:52:57 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:52:57 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:52:57 +0000
+Compiled app.js  (0ms)  (pid 76155)
+Served asset /app.js - 200 OK (8ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:52:57 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:52:57 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:52:57 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:52:57 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:52:57 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 12.7ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:52:57 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Filter chain halted as :check_session rendered or redirected
+Completed 401 Unauthorized in 0.2ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 01:53:23 +0000
+Served asset /pages/login.html - 304 Not Modified (0ms)
+
+
+Started POST "/login?password=[FILTERED]&username=tsov" for 127.0.0.1 at 2014-02-18 01:53:31 +0000
+Processing by LoginController#create as HTML
+  Parameters: {"username"=>"tsov", "password"=>"[FILTERED]", "login"=>{"username"=>"tsov", "password"=>"[FILTERED]"}}
+Completed 200 OK in 157.1ms (Views: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:56:10 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.2ms)
+Completed 200 OK in 2.1ms (Views: 1.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:56:10 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:56:10 +0000
+Compiled air-menu-ui-standalone-0.0.1.js  (14ms)  (pid 76155)
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (68ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:56:10 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:56:10 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:56:10 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:56:10 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:56:10 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:56:10 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 14.8ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 01:56:10 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 01:56:26 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.1ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 01:56:26 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 01:56:26 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 01:56:26 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 01:56:26 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 01:56:26 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 01:56:26 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 01:56:26 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 01:56:26 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 13.2ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 01:56:26 +0000
+Served asset /pages/login.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:00:15 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:00:22 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:00:24 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 0.9ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:00:24 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:00:24 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (8ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:00:24 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:00:24 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:00:24 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:00:24 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:00:24 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 13.1ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff?v=4.0.3" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /fontawesome-webfont.woff - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.2ms (Views: 1.1ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 36.0ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff?v=4.0.3" for 127.0.0.1 at 2014-02-18 02:00:25 +0000
+Served asset /fontawesome-webfont.woff - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:00:32 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.5ms (Views: 1.3ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:00:32 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:00:32 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:00:32 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:00:32 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:00:32 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:00:32 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:00:32 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 02:00:33 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 13.2ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 02:00:33 +0000
+Served asset /pages/login.html - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff?v=4.0.3" for 127.0.0.1 at 2014-02-18 02:00:33 +0000
+Served asset /fontawesome-webfont.woff - 304 Not Modified (0ms)
+
+
+Started POST "/login?password=[FILTERED]&username=jhg" for 127.0.0.1 at 2014-02-18 02:13:22 +0000
+Processing by LoginController#create as HTML
+  Parameters: {"username"=>"jhg", "password"=>"[FILTERED]", "login"=>{"username"=>"jhg", "password"=>"[FILTERED]"}}
+Completed 401 Unauthorized in 8.5ms (Views: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:46:44 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.2ms)
+Completed 200 OK in 1.4ms (Views: 1.3ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:46:44 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:46:44 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:46:44 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:46:44 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:46:44 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:46:44 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:46:44 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (11ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 02:46:44 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 26.2ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-18 02:46:45 +0000
+Served asset /pages/login.html - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff?v=4.0.3" for 127.0.0.1 at 2014-02-18 02:46:45 +0000
+Served asset /fontawesome-webfont.woff - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:46:52 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.6ms (Views: 1.5ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:46:52 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:46:52 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:46:52 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:46:52 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:46:52 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:46:52 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:46:52 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 02:46:52 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:47:05 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.2ms (Views: 1.1ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:47:05 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:47:05 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:47:05 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:47:05 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:47:05 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:47:05 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:47:05 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 02:47:05 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 14.8ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 02:47:05 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:47:11 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.1ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:47:11 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:47:11 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:47:11 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:47:11 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:47:11 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:47:11 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:47:11 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 02:47:11 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 13.3ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 02:47:11 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:48:30 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.0ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:48:30 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:48:30 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:48:30 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:48:30 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:48:30 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:48:30 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (4ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:48:30 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 02:48:30 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 11.9ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 02:48:30 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:54:19 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.6ms (Views: 1.6ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:54:19 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:54:19 +0000
+Served asset /air-menu-ui-standalone-0.0.1.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:54:19 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:54:19 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:54:19 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:54:19 +0000
+Compiled controllers.js  (0ms)  (pid 76155)
+Served asset /controllers.js - 200 OK (4ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:54:19 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 02:54:20 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 13.2ms (Views: 0.2ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 02:54:20 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:55:48 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.1ms (Views: 1.0ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:55:48 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:55:48 +0000
+Compiled air-menu-ui-standalone-0.0.1.js  (12ms)  (pid 76155)
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (69ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:55:48 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:55:48 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:55:48 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:55:48 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:55:48 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 02:55:49 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 11.7ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 02:55:49 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-18 02:58:27 +0000
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb (0.1ms)
+Completed 200 OK in 1.2ms (Views: 1.1ms)
+
+
+Started GET "/assets/air-menu-ui-0.0.1.css" for 127.0.0.1 at 2014-02-18 02:58:28 +0000
+Served asset /air-menu-ui-0.0.1.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/air-menu-ui-standalone-0.0.1.js" for 127.0.0.1 at 2014-02-18 02:58:28 +0000
+Compiled air-menu-ui-standalone-0.0.1.js  (26ms)  (pid 76155)
+Served asset /air-menu-ui-standalone-0.0.1.js - 200 OK (55ms)
+
+
+Started GET "/assets/services.js" for 127.0.0.1 at 2014-02-18 02:58:28 +0000
+Served asset /services.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/app.js" for 127.0.0.1 at 2014-02-18 02:58:28 +0000
+Served asset /app.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/controllers.js" for 127.0.0.1 at 2014-02-18 02:58:28 +0000
+Served asset /controllers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/filters.js" for 127.0.0.1 at 2014-02-18 02:58:28 +0000
+Served asset /filters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directives.js" for 127.0.0.1 at 2014-02-18 02:58:28 +0000
+Served asset /directives.js - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 02:58:28 +0000
+Processing by ApiProxyController#proxy as HTML
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 11.6ms (Views: 0.1ms)
+
+
+Started GET "/assets/pages/home.html" for 127.0.0.1 at 2014-02-18 02:58:28 +0000
+Served asset /pages/home.html - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages/documentation.html" for 127.0.0.1 at 2014-02-18 02:58:31 +0000
+Served asset /pages/documentation.html - 304 Not Modified (0ms)
+
+
+Started GET "/docs.json" for 127.0.0.1 at 2014-02-18 02:58:31 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"a"=>"docs"}
+Completed 200 OK in 256.1ms (Views: 0.1ms)

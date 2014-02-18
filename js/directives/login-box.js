@@ -11,11 +11,11 @@ angular.module('air-menu-ui.directives.login-box', [])
 				$scope.onSubmit = function() {
 					$scope.pending = true;
 					if ($scope.handler) {
-						$scope.handler($scope.username, $scope.password, $scope.callback);
+						$scope.handler($scope.username, $scope.password, $scope.done);
 					}
 				};
 
-				$scope.callback = function(successful) {
+				$scope.done = function(successful) {
 					$scope.pending = false;
 					$scope.failure = !successful;
 				};
