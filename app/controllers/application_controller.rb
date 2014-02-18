@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def handle_unverified_request
     super
-    #raise ActionController::InvalidAuthenticityToken
+    raise ActionController::InvalidAuthenticityToken
   end
 
   def handle_missing_session
