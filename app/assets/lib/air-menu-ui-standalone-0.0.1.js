@@ -36672,10 +36672,9 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "			<a href=\"#\" class=\"navbar-brand\">AirMenu</a>\n" +
     "		</div>\n" +
     "\n" +
-    "        <a ng-if=\"!user\" href=\"#/login\" class=\"btn btn-default navbar-right navbar-btn\">Login</a>\n" +
-    "\n" +
-    "		<div ng-if=\"user\" class=\"collapse navbar-collapse\" id=\"menu\">\n" +
-    "			<ul class=\"nav navbar-nav navbar-right\">\n" +
+    "		<div class=\"collapse navbar-collapse\" id=\"menu\">\n" +
+    "            <a ng-if=\"!user\" href=\"#/login\" class=\"btn btn-default navbar-right navbar-btn\">Login</a>\n" +
+    "			<ul ng-if=\"user\" class=\"nav navbar-nav navbar-right\">\n" +
     "				<li class=\"dropdown\">\n" +
     "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{user.name}} <b class=\"caret\"></b></a>\n" +
     "					<ul class=\"dropdown-menu\">\n" +
