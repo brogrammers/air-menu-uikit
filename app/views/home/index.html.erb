@@ -6,13 +6,8 @@
 		<title>AirMenu</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="/assets/air-menu-ui-0.0.1.css"/>
-		<script src="/assets/air-menu-ui-standalone-0.0.1.js"></script>
-		<script src="/assets/app.js"></script>
-		<script src="/assets/services.js"></script>
-		<script src="/assets/controllers.js"></script>
-		<script src="/assets/filters.js"></script>
-		<script src="/assets/directives.js"></script>
+        <link rel="stylesheet" type="text/css" href="<%= asset_path('application.css') %>"/>
+        <script src="<%= asset_path('application.js') %>"></script>
       <script>
         window.CSRF_TOKEN = '<%= form_authenticity_token %>';
       </script>
