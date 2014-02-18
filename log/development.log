@@ -3785,3 +3785,84 @@ Served asset /directives.js - 304 Not Modified (0ms)
 
 Started GET "/assets/pages/login.html" for 127.0.0.1 at 2014-02-17 03:19:36 +0000
 Served asset /pages/login.html - 304 Not Modified (0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 00:13:21 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 187.9ms (Views: 0.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 00:15:36 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 20.2ms (Views: 0.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 00:16:08 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 15.3ms (Views: 0.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 00:16:50 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 14.8ms (Views: 0.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 00:25:11 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"a"=>"api/v1/me"}
+Completed 200 OK in 23.5ms (Views: 0.1ms)
+
+
+Started POST "/api/v1/me" for 127.0.0.1 at 2014-02-18 00:26:14 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"password"=>"[FILTERED]", "username"=>"tsov", "a"=>"api/v1/me"}
+WARNING: Can't verify CSRF token authenticity
+Completed 400 Bad Request in 0.5ms (Views: 0.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 00:26:22 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"a"=>"api/v1/me"}
+Completed 500 Internal Server Error in 0.2ms
+
+TypeError (can't convert nil into String):
+  app/controllers/api_proxy_controller.rb:28:in `eval'
+  app/controllers/api_proxy_controller.rb:28:in `access_token'
+  app/controllers/api_proxy_controller.rb:23:in `check_session'
+
+
+  Rendered /Users/max/.rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /Users/max/.rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /Users/max/.rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.16/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 00:27:29 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"a"=>"api/v1/me"}
+Filter chain halted as :check_session rendered or redirected
+Completed 401 Unauthorized in 0.5ms (Views: 0.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2014-02-18 00:31:46 +0000
+Processing by ApiProxyController#proxy as JSON
+  Parameters: {"a"=>"api/v1/me"}
+Filter chain halted as :check_session rendered or redirected
+Completed 401 Unauthorized in 0.4ms (Views: 0.2ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-02-18 00:32:06 +0000
+Processing by LoginController#create as JSON
+  Parameters: {"username"=>"tsov", "password"=>"[FILTERED]"}
+WARNING: Can't verify CSRF token authenticity
+Completed 400 Bad Request in 0.6ms (Views: 0.1ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2014-02-18 00:33:17 +0000
+Processing by LoginController#create as JSON
+  Parameters: {"username"=>"tsov", "password"=>"[FILTERED]"}
+WARNING: Can't verify CSRF token authenticity
+Completed 200 OK in 379.1ms (Views: 0.2ms)
