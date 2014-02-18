@@ -17,7 +17,7 @@ module AirMenu
       end
 
       def scopes
-        ['basic', 'user', 'developer', 'owner', 'get_menus', 'add_menus', 'add_active_menus']
+        ['admin', 'basic', 'user', 'developer', 'owner', 'get_menus', 'add_menus', 'add_active_menus']
       end
     end
   end
