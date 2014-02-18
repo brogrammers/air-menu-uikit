@@ -36548,7 +36548,10 @@ angular.module('air-menu-ui.services', [
 	'air-menu-ui.services.models'
 ]);
 
-angular.module('air-menu-ui.services.connector', [])
+angular.module('air-menu-ui.services.connector', [
+        'air-menu-ui.services.connector.me',
+        'air-menu-ui.services.connector.docs'
+    ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
 		var Connector = {
@@ -36557,7 +36560,10 @@ angular.module('air-menu-ui.services.connector', [])
 					method: method,
 					url: path,
 					params: params || {},
-					data: data || {}
+					data: data || {},
+                    headers: {
+                        'X-CSRF-Token': window.CSRF_TOKEN
+                    }
 				})
 				.success(function(data, status, headers, config) {
 					if (successHandler) successHandler(data, status);
@@ -36576,11 +36582,7 @@ angular.module('air-menu-ui.services.connector', [])
 		};
 		return Connector;
 	}]);
-angular.module('air-menu-ui.services.models', [
-	'air-menu-ui.services.models.me',
-	'air-menu-ui.services.models.docs'
-]);
-angular.module('air-menu-ui.services.models.docs', [])
+angular.module('air-menu-ui.services.connector.docs', [])
 
 	.factory('Docs', [ 'connector', function(connector) {
 		var baseUrl = '/docs.json';
@@ -36590,16 +36592,73 @@ angular.module('air-menu-ui.services.models.docs', [])
 			}
 		}
 	}]);
-angular.module('air-menu-ui.services.models.me', [])
+angular.module('air-menu-ui.services.connector.me', [])
 
-	.factory('Me', [ 'connector', function(connector) {
+	.factory('Me', [ 'connector', 'User', function(connector, User) {
 		var baseUrl = '/api/v1/me';
 		return {
 			get: function(successHandler, errorHandler) {
-				connector.get(baseUrl, null, successHandler, errorHandler, true);
+				connector.get(baseUrl, null, function(data) {
+                    var user = new User(data['me']);
+                    successHandler(user);
+                }, errorHandler, true);
 			}
 		}
 	}]);
+
+
+angular.module('air-menu-ui.services.models', [
+	'air-menu-ui.services.models.user',
+    'air-menu-ui.services.models.scope'
+]);
+angular.module('air-menu-ui.services.models.scope', [])
+
+    .factory('Scope', function() {
+        var Scope = function(scopes) {
+            this.scopes = scopes;
+        };
+
+        Scope.prototype.has = function(scopeName) {
+            for (var scope in this.scopes) {
+                if (this.scopes[scope] == scopeName) return true;
+            }
+            return false;
+        };
+
+        Scope.prototype.isAdmin = function() {
+            return this.has('admin');
+        };
+
+        Scope.prototype.isDeveloper = function() {
+            return this.has('developer');
+        };
+
+        Scope.prototype.isOwner = function() {
+            return this.has('owner');
+        };
+        return Scope;
+    });
+angular.module('air-menu-ui.services.models.user', [])
+
+    .factory('User', [ 'Scope', function(Scope) {
+        var User = function(userData) {
+            angular.extend(this, userData);
+            this.scope = new Scope(this.scopes);
+        };
+
+        User.prototype.isDeveloper = function() {
+            return this.scope.isDeveloper();
+        };
+
+        User.prototype.isAdmin = function() {
+            return this.scope.isAdmin();
+        };
+
+        User.prototype.isOwner = function() {
+            return this.scope.isOwner();
+        };
+        return User;
+    }]);
 angular.module('air-menu-ui.services.store', [])
 
 	.factory('store', function() {
@@ -36679,7 +36738,7 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{user.name}} <b class=\"caret\"></b></a>\n" +
     "					<ul class=\"dropdown-menu\">\n" +
     "						<li><a href=\"#\">Profile</a></li>\n" +
-    "						<li><a href=\"#/documentation\">API Documentation</a></li>\n" +
+    "						<li ng-if=\"user.isDeveloper()\"><a href=\"#/documentation\">API Documentation</a></li>\n" +
     "						<li class=\"divider\"></li>\n" +
     "						<li><a href=\"/logout\">Logout</a></li>\n" +
     "					</ul>\n" +

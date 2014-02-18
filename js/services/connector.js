@@ -1,4 +1,7 @@
-angular.module('air-menu-ui.services.connector', [])
+angular.module('air-menu-ui.services.connector', [
+        'air-menu-ui.services.connector.me',
+        'air-menu-ui.services.connector.docs'
+    ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
 		var Connector = {
@@ -7,7 +10,10 @@ angular.module('air-menu-ui.services.connector', [])
 					method: method,
 					url: path,
 					params: params || {},
-					data: data || {}
+					data: data || {},
+                    headers: {
+                        'X-CSRF-Token': window.CSRF_TOKEN
+                    }
 				})
 				.success(function(data, status, headers, config) {
 					if (successHandler) successHandler(data, status);

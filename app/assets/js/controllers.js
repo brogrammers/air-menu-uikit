@@ -2,10 +2,10 @@
 
 angular.module('air-menu.controllers', [])
 	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', function($scope, $rootScope, $location, Me) {
-        Me.get(function(data) {
-            $rootScope.user = data['me'];
+        Me.get(function(user) {
+            $rootScope.user = user;
             $rootScope.$broadcast('air-menu-ui.event.navbar.user', $rootScope.user);
-        }, function(data) {
+        }, function() {
             $location.path('/login');
         });
 	}])
@@ -14,26 +14,15 @@ angular.module('air-menu.controllers', [])
 
 	}])
 
-	.controller('LoginCtrl', [ '$scope', '$rootScope', '$location', '$http', function($scope, $rootScope, $location, $http) {
+	.controller('LoginCtrl', [ '$scope', '$rootScope', '$location', 'login', function($scope, $rootScope, $location, login) {
         if ($scope.user) $location.path('/');
 		$scope.handler = function(username, password, done) {
-            $http({
-                method: 'POST',
-                url: '/login',
-                params: {username: username, password: password},
-                data: {username: username, password: password},
-                headers: {
-                    'X-CSRF-Token': window.CSRF_TOKEN
-                }
+            login(username, password, function() {
+                done(true);
+                location.replace('/');
+            }, function() {
+                done(false);
             })
-                .success(function(data, status) {
-                    done(true);
-                    location.replace('/');
-
-                })
-                .error(function(data, status) {
-                    done(false);
-                });
 		}
 	}])
 

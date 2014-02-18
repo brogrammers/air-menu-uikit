@@ -1,4 +1,4 @@
-angular.module('air-menu-ui.services.models.docs', [])
+angular.module('air-menu-ui.services.connector.docs', [])
 
 	.factory('Docs', [ 'connector', function(connector) {
 		var baseUrl = '/docs.json';
