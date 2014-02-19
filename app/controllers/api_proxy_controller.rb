@@ -8,7 +8,7 @@ class ApiProxyController < ApplicationController
   before_filter :check_session
 
   def proxy
-    response = access_token.send request_method.downcase.to_sym, path, params
+    response = access_token.send request_method.downcase.to_sym, path, :params => params[:api_proxy]
     self.response.headers = response.headers
     render :json => response.body, :status => response.status
   rescue OAuth2::Error => error
