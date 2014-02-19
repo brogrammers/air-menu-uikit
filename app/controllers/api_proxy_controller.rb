@@ -15,6 +15,8 @@ class ApiProxyController < ApplicationController
     response = error.response
     self.response.headers = response.headers
     render :json => response.body, :status => response.status
+  rescue Faraday::ConnectionFailed
+    render :json => {:error => 'service_unavailable'}, :status => 502
   end
 
   protected
