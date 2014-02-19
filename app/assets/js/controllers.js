@@ -41,4 +41,12 @@ angular.module('air-menu.controllers', [])
         Applications.get(function(applications) {
             $scope.applications = applications;
         })
+    }])
+
+    .controller('NewApplicationCtrl', [ '$scope', 'Applications', '$location', function($scope, Applications, $location) {
+        $scope.submit = function() {
+            Applications.create($scope.name, $scope.redirect_uri, function(application) {
+                $location.path('/applications');
+            });
+        };
     }]);

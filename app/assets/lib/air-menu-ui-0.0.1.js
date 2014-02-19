@@ -37,7 +37,7 @@ angular.module('air-menu-ui.directives.application', [])
             restrict: 'E',
             templateUrl: '/air-menu/application.html',
             controller: [ '$scope', function($scope) {
-                
+
             }]
         }
     });
@@ -108,16 +108,17 @@ angular.module('air-menu-ui.services.connector', [
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
 		var Connector = {
-			fetch: function(method, path, params, data, successHandler, errorHandler) {
-				$http({
-					method: method,
-					url: path,
-					params: params || {},
-					data: data || {},
+			fetch: function(method, path, params, successHandler, errorHandler) {
+                var options = {
+                    method: method,
+                    url: path,
                     headers: {
                         'X-CSRF-Token': window.CSRF_TOKEN
                     }
-				})
+                }
+                if (method == 'POST') options.data = params || {};
+                if (method == 'GET') options.params = params || {};
+				$http(options)
 				.success(function(data, status, headers, config) {
 					if (successHandler) successHandler(data, status);
 				})
@@ -127,10 +128,10 @@ angular.module('air-menu-ui.services.connector', [
 				})
 			},
 			get: function(path, params, successHandler, errorHandler) {
-				this.fetch('GET', path, params, null, successHandler, errorHandler);
+				this.fetch('GET', path, params, successHandler, errorHandler);
 			},
-			post: function(path, data, successHandler, errorHandler) {
-				this.fetch('POST', path, data, null, successHandler, errorHandler);
+			post: function(path, params, successHandler, errorHandler) {
+				this.fetch('POST', path, params, successHandler, errorHandler);
 			}
 		};
 		return Connector;
@@ -144,7 +145,13 @@ angular.module('air-menu-ui.services.connector.applications', [])
                 connector.get(baseUrl, null, function(data) {
                     var applications = data['oauth_applications'];
                     successHandler(applications);
-                }, errorHandler, true);
+                }, errorHandler);
+            },
+            create: function(name, redirect_uri, successHandler, errorHandler) {
+                connector.post(baseUrl, {'name': name, 'redirect_uri': redirect_uri}, function(data) {
+                    var application = data['oauth_application'];
+                    successHandler(application)
+                }, errorHandler);
             }
         }
     }]);

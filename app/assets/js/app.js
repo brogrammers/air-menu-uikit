@@ -7,5 +7,6 @@ angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.d
 		$routeProvider.when('/login', {templateUrl: '/assets/pages/login.html', controller: 'LoginCtrl'});
 		$routeProvider.when('/documentation', {templateUrl: '/assets/pages/documentation.html', controller: 'DocumentationCtrl'});
         $routeProvider.when('/applications', {templateUrl: '/assets/pages/applications.html', controller: 'ApplicationsCtrl'});
+        $routeProvider.when('/applications/new', {templateUrl: '/assets/pages/application_new.html', controller: 'NewApplicationCtrl'});
 		$routeProvider.otherwise({redirectTo: '/'});
 	}]);
