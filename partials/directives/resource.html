@@ -1,12 +1,10 @@
 <div class="container">
-	<h1>{{resource.name}}</h1>
+	<h1><i class="fa fa-rss"></i> {{resource.name}}</h1>
 	<p class="lead">{{resource.short_description}}</p>
 	<div class="resource" ng-repeat="method in resource.methods">
 		<div ng-repeat="api in method.apis">
 			<div class="method {{api.http_method}}">{{api.http_method}}</div>
 			<div class="path">{{api.api_url}}</div>
 		</div>
-		<p ng-bind-html="method.full_description"></p>
-		<strong>Formats:</strong> <span class="label label-default" ng-repeat="format in method.formats"> {{format}}</span>
 	</div>
 </div>

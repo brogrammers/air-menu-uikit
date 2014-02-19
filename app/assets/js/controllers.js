@@ -29,9 +29,27 @@ angular.module('air-menu.controllers', [])
 	.controller('DocumentationCtrl', [ '$scope', 'Docs', function($scope, Docs) {
 		$scope.fetch = function() {
 			Docs.get(function(data) {
-				$scope.docs = data['docs'];
-			})
+				$scope.docs = data;
+			});
 		};
+
+        $scope.handler = function(tab) {
+            $scope.currentTab = tab;
+            if ($scope.docs) {
+                angular.forEach($scope.docs, function(doc) {
+                    if (doc.version == tab.title) {
+                        $scope.setBase(doc.content);
+                    }
+                });
+            }
+        };
+
+        $scope.setBase = function(context) {
+            $scope.name = context.name;
+            $scope.info = context.info;
+            $scope.path = context.api_url;
+            $scope.baseUrl = window.API_BASE_URL;
+        };
 
 		$scope.fetch();
 	}])

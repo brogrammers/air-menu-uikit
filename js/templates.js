@@ -1,4 +1,4 @@
-angular.module('air-menu-ui.templates', ['/air-menu/application.html', '/air-menu/login-box.html', '/air-menu/navbar.html', '/air-menu/resource.html']);
+angular.module('air-menu-ui.templates', ['/air-menu/application.html', '/air-menu/login-box.html', '/air-menu/nav.html', '/air-menu/navbar.html', '/air-menu/resource.html', '/air-menu/tab.html']);
 
 angular.module("/air-menu/application.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/application.html",
@@ -7,7 +7,7 @@ angular.module("/air-menu/application.html", []).run(["$templateCache", function
     "        <div class=\"col-lg-12\">\n" +
     "            <hr />\n" +
     "            <h3>\n" +
-    "                <span ng-if=\"application.trusted\" class=\"label label-success\">Trusted</span> {{application.name}} <small>{{application.redirect_uri}}</small>\n" +
+    "                <span ng-if=\"application.trusted\" class=\"label label-success\">Trusted</span> <i ng-if=\"!application.trusted\" class=\"fa fa-unlock\"></i> {{application.name}} <small>{{application.redirect_uri}}</small>\n" +
     "            </h3>\n" +
     "            <p><strong>Client ID: </strong>{{application.client_id}}</p>\n" +
     "            <p><strong>Client SECRET: </strong>{{application.client_secret}}</p>\n" +
@@ -42,6 +42,18 @@ angular.module("/air-menu/login-box.html", []).run(["$templateCache", function($
     "	</div>\n" +
     "	<button type=\"submit\" class=\"btn btn-primary btn-block {{pending || !username || !password ? 'disabled' : ''}}\" {{pending ? 'disabled' : ''}}>SIGN IN</button>\n" +
     "</form>");
+}]);
+
+angular.module("/air-menu/nav.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("/air-menu/nav.html",
+    "<div class=\"tabbable\">\n" +
+    "    <ul class=\"nav nav-tabs\">\n" +
+    "        <li ng-repeat=\"tab in tabs\" ng-class=\"{active:tab.selected}\">\n" +
+    "            <a href=\"\" ng-click=\"select(tab)\">{{tab.title}}</a>\n" +
+    "        </li>\n" +
+    "    </ul>\n" +
+    "    <div class=\"tab-content\" ng-transclude></div>\n" +
+    "</div>");
 }]);
 
 angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($templateCache) {
@@ -80,15 +92,22 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
 angular.module("/air-menu/resource.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/resource.html",
     "<div class=\"container\">\n" +
-    "	<h1>{{resource.name}}</h1>\n" +
+    "	<h1><i class=\"fa fa-rss\"></i> {{resource.name}}</h1>\n" +
     "	<p class=\"lead\">{{resource.short_description}}</p>\n" +
     "	<div class=\"resource\" ng-repeat=\"method in resource.methods\">\n" +
     "		<div ng-repeat=\"api in method.apis\">\n" +
     "			<div class=\"method {{api.http_method}}\">{{api.http_method}}</div>\n" +
     "			<div class=\"path\">{{api.api_url}}</div>\n" +
     "		</div>\n" +
-    "		<p ng-bind-html=\"method.full_description\"></p>\n" +
-    "		<strong>Formats:</strong> <span class=\"label label-default\" ng-repeat=\"format in method.formats\"> {{format}}</span>\n" +
+    "		<!--<p ng-bind-html=\"method.full_description\"></p>-->\n" +
+    "		<!--<strong>Formats:</strong> <span class=\"label label-default\" ng-repeat=\"format in method.formats\"> {{format}}</span>-->\n" +
     "	</div>\n" +
+    "</div>");
+}]);
+
+angular.module("/air-menu/tab.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("/air-menu/tab.html",
+    "<div ng-class=\"{true: 'hidden'}[!selected]\" ng-transclude>\n" +
+    "\n" +
     "</div>");
 }]);
