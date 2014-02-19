@@ -20,6 +20,9 @@
 /log/*.log
 /tmp
 
+# No Logs!!
+*.log
+
 # Ignore Node Modules
 node_modules/
 node_modules/*
