@@ -1,10 +1,54 @@
 <div class="container">
-	<h1><i class="fa fa-rss"></i> {{resource.name}}</h1>
+	<h1><i class="fa fa-rss"></i> <a href="" ng-click="click()">{{resource.name}}</a></h1>
 	<p class="lead">{{resource.short_description}}</p>
 	<div class="resource" ng-repeat="method in resource.methods">
 		<div ng-repeat="api in method.apis">
-			<div class="method {{api.http_method}}">{{api.http_method}}</div>
-			<div class="path">{{api.api_url}}</div>
+            <div ng-click="select(method)">
+                <div class="method {{api.http_method}}" style="cursor: pointer;">{{api.http_method}}</div>
+                <div class="path" style="cursor: pointer;">{{api.api_url}}</div>
+            </div>
+            <div ng-if="method.selected" class="slide-down">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-lg-offset-1">
+                            <div ng-if="method.full_description">
+                                <h3>Description</h3>
+                                <p class="voffset3" ng-bind-html="method.full_description"></p>
+                            </div>
+                            <hr />
+                            <div ng-if="method.formats.length > 0">
+                                <h3>Available Formats:</h3>
+                                <span class="label label-info" ng-repeat="format in method.formats" style="margin-right:3px;">{{format}}</span>
+                            </div>
+                            <hr />
+                            <div ng-if="method.params.length > 0">
+                                <h3>Parameters</h3>
+                                <div class="list-group">
+                                    <div class="list-group-item" ng-class="{true: 'list-group-item-warning'}[!param.required]" ng-repeat="param in method.params">
+                                        <h4 class="list-group-item-heading">{{param.name}}</h4>
+                                        <p class="list-group-item-text" ng-bind-html="param.description"></p>
+                                        <p><strong>Expected: </strong>{{param.expected_type}}</p>
+                                        <p ng-if="!param.required">Optional</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <h3>Examples</h3>
+                            <pre ng-repeat="example in method.examples">{{example}}</pre>
+                            <hr />
+                            <div ng-if="method.errors.length > 0">
+                                <h3>Errors</h3>
+                                <div class="list-group">
+                                    <div class="list-group-item" ng-repeat="error in method.errors">
+                                        <h4 class="list-group-item-heading">{{error.code}}</h4>
+                                        <p class="list-group-item-text">{{error.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 </div>

@@ -92,15 +92,57 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
 angular.module("/air-menu/resource.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/resource.html",
     "<div class=\"container\">\n" +
-    "	<h1><i class=\"fa fa-rss\"></i> {{resource.name}}</h1>\n" +
+    "	<h1><i class=\"fa fa-rss\"></i> <a href=\"\" ng-click=\"click()\">{{resource.name}}</a></h1>\n" +
     "	<p class=\"lead\">{{resource.short_description}}</p>\n" +
     "	<div class=\"resource\" ng-repeat=\"method in resource.methods\">\n" +
     "		<div ng-repeat=\"api in method.apis\">\n" +
-    "			<div class=\"method {{api.http_method}}\">{{api.http_method}}</div>\n" +
-    "			<div class=\"path\">{{api.api_url}}</div>\n" +
+    "            <div ng-click=\"select(method)\">\n" +
+    "                <div class=\"method {{api.http_method}}\" style=\"cursor: pointer;\">{{api.http_method}}</div>\n" +
+    "                <div class=\"path\" style=\"cursor: pointer;\">{{api.api_url}}</div>\n" +
+    "            </div>\n" +
+    "            <div ng-if=\"method.selected\" class=\"slide-down\">\n" +
+    "                <div class=\"container\">\n" +
+    "                    <div class=\"row\">\n" +
+    "                        <div class=\"col-lg-10 col-lg-offset-1\">\n" +
+    "                            <div ng-if=\"method.full_description\">\n" +
+    "                                <h3>Description</h3>\n" +
+    "                                <p class=\"voffset3\" ng-bind-html=\"method.full_description\"></p>\n" +
+    "                            </div>\n" +
+    "                            <hr />\n" +
+    "                            <div ng-if=\"method.formats.length > 0\">\n" +
+    "                                <h3>Available Formats:</h3>\n" +
+    "                                <span class=\"label label-info\" ng-repeat=\"format in method.formats\" style=\"margin-right:3px;\">{{format}}</span>\n" +
+    "                            </div>\n" +
+    "                            <hr />\n" +
+    "                            <div ng-if=\"method.params.length > 0\">\n" +
+    "                                <h3>Parameters</h3>\n" +
+    "                                <div class=\"list-group\">\n" +
+    "                                    <div class=\"list-group-item\" ng-class=\"{true: 'list-group-item-warning'}[!param.required]\" ng-repeat=\"param in method.params\">\n" +
+    "                                        <h4 class=\"list-group-item-heading\">{{param.name}}</h4>\n" +
+    "                                        <p class=\"list-group-item-text\" ng-bind-html=\"param.description\"></p>\n" +
+    "                                        <p><strong>Expected: </strong>{{param.expected_type}}</p>\n" +
+    "                                        <p ng-if=\"!param.required\">Optional</p>\n" +
+    "                                    </div>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                            <hr />\n" +
+    "                            <h3>Examples</h3>\n" +
+    "                            <pre ng-repeat=\"example in method.examples\">{{example}}</pre>\n" +
+    "                            <hr />\n" +
+    "                            <div ng-if=\"method.errors.length > 0\">\n" +
+    "                                <h3>Errors</h3>\n" +
+    "                                <div class=\"list-group\">\n" +
+    "                                    <div class=\"list-group-item\" ng-repeat=\"error in method.errors\">\n" +
+    "                                        <h4 class=\"list-group-item-heading\">{{error.code}}</h4>\n" +
+    "                                        <p class=\"list-group-item-text\">{{error.description}}</p>\n" +
+    "                                    </div>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
     "		</div>\n" +
-    "		<!--<p ng-bind-html=\"method.full_description\"></p>-->\n" +
-    "		<!--<strong>Formats:</strong> <span class=\"label label-default\" ng-repeat=\"format in method.formats\"> {{format}}</span>-->\n" +
     "	</div>\n" +
     "</div>");
 }]);

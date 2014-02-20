@@ -26,7 +26,7 @@ angular.module('air-menu.controllers', [])
 		}
 	}])
 
-	.controller('DocumentationCtrl', [ '$scope', 'Docs', function($scope, Docs) {
+	.controller('DocumentationCtrl', [ '$scope', 'Docs', '$location', function($scope, Docs, $location) {
 		$scope.fetch = function() {
 			Docs.get(function(data) {
 				$scope.docs = data;
@@ -42,6 +42,11 @@ angular.module('air-menu.controllers', [])
                     }
                 });
             }
+        };
+
+        $scope.resourceClick = function(resource) {
+            console.log(resource);
+            $location.path('/documentation/' + resource.version + '/' + resource.name);
         };
 
         $scope.setBase = function(context) {
