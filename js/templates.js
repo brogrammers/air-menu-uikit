@@ -49,7 +49,7 @@ angular.module("/air-menu/nav.html", []).run(["$templateCache", function($templa
     "<div class=\"tabbable\">\n" +
     "    <ul class=\"nav nav-tabs\">\n" +
     "        <li ng-repeat=\"tab in tabs\" ng-class=\"{active:tab.selected}\">\n" +
-    "            <a href=\"\" ng-click=\"select(tab)\">{{tab.title}}</a>\n" +
+    "            <a href=\"\" ng-click=\"select(tab)\">{{tab.otitle}}</a>\n" +
     "        </li>\n" +
     "    </ul>\n" +
     "    <div class=\"tab-content\" ng-transclude></div>\n" +

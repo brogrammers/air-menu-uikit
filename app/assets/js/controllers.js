@@ -37,7 +37,7 @@ angular.module('air-menu.controllers', [])
             $scope.currentTab = tab;
             if ($scope.docs) {
                 angular.forEach($scope.docs, function(doc) {
-                    if (doc.version == tab.title) {
+                    if (doc.version == tab.otitle) {
                         $scope.setBase(doc.content);
                     }
                 });

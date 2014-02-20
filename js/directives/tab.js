@@ -3,7 +3,7 @@ angular.module('air-menu-ui.directives.tab', [])
     .directive('tab', function() {
         return {
             scope: {
-                title: '@'
+                otitle: '@'
             },
             require: '^nav',
             restrict: 'E',
