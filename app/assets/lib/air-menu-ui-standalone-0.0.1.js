@@ -36804,8 +36804,8 @@ angular.module("/air-menu/application.html", []).run(["$templateCache", function
     "            <h3>\n" +
     "                <span ng-if=\"application.trusted\" class=\"label label-success\">Trusted</span> <i ng-if=\"!application.trusted\" class=\"fa fa-unlock\"></i> {{application.name}} <small>{{application.redirect_uri}}</small>\n" +
     "            </h3>\n" +
-    "            <p><strong>Client ID: </strong>{{application.client_id}}</p>\n" +
-    "            <p><strong>Client SECRET: </strong>{{application.client_secret}}</p>\n" +
+    "            <p style=\"word-break: break-all;\"><strong>Client ID: </strong>{{application.client_id}}</p>\n" +
+    "            <p style=\"word-break: break-all;\"><strong>Client SECRET: </strong>{{application.client_secret}}</p>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>\n" +

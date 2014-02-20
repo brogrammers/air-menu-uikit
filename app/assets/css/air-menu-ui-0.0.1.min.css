@@ -6185,6 +6185,11 @@ fieldset[disabled] .btn-default.active {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+@media (max-width: 768px) {
+  .resource {
+    font-size: 12px;
+  }
+}
 .GET {
   background: #3ca53c !important;
   color: white;
