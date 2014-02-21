@@ -1,10 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h1><i class="fa fa-lock"></i> OAuth Applications <a href="#/applications" class="btn btn-default text-right" style="float:right;">Cancel</a> </h1>
-            <p class="lead">Create OAuth Applications to integrate our API into your application. You need to own an application in order to make actions for authenticated users.</p>
+            <a href="" ng-click="go('/applications')"><i class="fa fa-3x fa-arrow-circle-o-left"></i></a>
+            <h1><i class="fa fa-plus"></i> Create Applications</h1>
+            <p class="lead">All you need is a name and a redirect uri for successful authorization of a resource owner. Add you're application with this form.</p>
             <div class="row">
-                <div class="col-lg-6 col-lg-offset-3">
+                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
                     <form class="form-horizontal" role="form" ng-submit="submit()">
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">Name</label>

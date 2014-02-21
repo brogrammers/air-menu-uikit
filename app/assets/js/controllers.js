@@ -1,13 +1,24 @@
 'use strict';
 
 angular.module('air-menu.controllers', [])
-	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', function($scope, $rootScope, $location, Me) {
+	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', 'transitionMap', function($scope, $rootScope, $location, Me, transitionMap) {
+        $scope.transitionAnimation = transitionMap.default;
         Me.get(function(user) {
             $rootScope.user = user;
             $rootScope.$broadcast('air-menu-ui.event.navbar.user', $rootScope.user);
         }, function() {
             $location.path('/login');
         });
+
+        $rootScope.go = function(path) {
+            var currentPath = $location.path();
+            if (transitionMap[currentPath] && transitionMap[currentPath][path]) {
+                $scope.transitionAnimation = transitionMap[currentPath][path];
+            } else {
+                $scope.transitionAnimation = transitionMap.default;
+            }
+            $location.path(path);
+        };
 	}])
 
 	.controller('HomeCtrl', [ '$scope', 'Me', function($scope, Me) {

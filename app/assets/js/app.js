@@ -9,4 +9,17 @@ angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.d
         $routeProvider.when('/applications', {templateUrl: '/assets/pages/applications.html', controller: 'ApplicationsCtrl'});
         $routeProvider.when('/applications/new', {templateUrl: '/assets/pages/application_new.html', controller: 'NewApplicationCtrl'});
 		$routeProvider.otherwise({redirectTo: '/'});
-	}]);
+	}])
+
+    .value('transitionMap', {
+        "/documentation": {
+            "/applications": 'flip'
+        },
+        "/applications": {
+            "/applications/new": 'slide-enter'
+        },
+        "/applications/new": {
+            "/applications": 'slide-leave'
+        },
+        "default": 'fade'
+    });

@@ -6104,6 +6104,58 @@ fieldset[disabled] .btn-default.active {
     line-height: 0;
   }
 }
+.slide-enter.ng-enter,
+.slide-enter.ng-leave {
+  -webkit-transition: 400ms linear all;
+  -moz-transition: 400ms linear all;
+  -ms-transition: 400ms linear all;
+  -o-transition: 400ms linear all;
+  transition: 400ms linear all;
+  position: absolute;
+  display: block;
+}
+.slide-enter.ng-enter {
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+.slide-enter.ng-enter.ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.slide-enter.ng-leave {
+  -webkit-transform: translate3d(-20%, 0, 0);
+  transform: translate3d(-20%, 0, 0);
+}
+.slide-enter.ng-leave.ng-leave-active {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-leave.ng-enter,
+.slide-leave.ng-leave {
+  -webkit-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -moz-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -ms-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -o-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  position: absolute;
+  display: block;
+}
+.slide-leave.ng-enter {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-leave.ng-enter.ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.slide-leave.ng-leave {
+  -webkit-transform: translate3d(20%, 0, 0);
+  transform: translate3d(20%, 0, 0);
+}
+.slide-leave.ng-leave.ng-leave-active {
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
 .flip.ng-enter,
 .flip.ng-leave {
   -webkit-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
@@ -6111,20 +6163,27 @@ fieldset[disabled] .btn-default.active {
   -ms-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
   -o-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
   transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
-  position: relative;
+  position: absolute;
   display: block;
 }
-.flip.ng-leave.ng-leave-active,
 .flip.ng-enter {
-  -webkit-transform: rotateY(180deg) translatez(90px);
-  -moz-transform: rotateY(180deg) translatez(90px);
-  -ms-transform: rotateY(180deg) translatez(90px);
-  -o-transform: rotateY(180deg) translatez(90px);
-  transform: rotateY(180deg) translatez(90px);
+  -webkit-transform: rotateY(-180deg) translatez(90px);
+  -moz-transform: rotateY(-180deg) translatez(90px);
+  -ms-transform: rotateY(-180deg) translatez(90px);
+  -o-transform: rotateY(-180deg) translatez(90px);
+  transform: rotateY(-180deg) translatez(90px);
   opacity: 0;
   height: 0px;
 }
-.flip.ng-enter.ng-enter-active,
+.flip.ng-enter.ng-enter-active {
+  -webkit-transform: rotateY(0deg) translatez(90px);
+  -moz-transform: rotateY(0deg) translatez(90px);
+  -ms-transform: rotateY(0deg) translatez(90px);
+  -o-transform: rotateY(0deg) translatez(90px);
+  transform: rotateY(0deg) translatez(90px);
+  opacity: 1;
+  height: 30px;
+}
 .flip.ng-leave {
   -webkit-transform: rotateY(0deg) translatez(90px);
   -moz-transform: rotateY(0deg) translatez(90px);
@@ -6133,6 +6192,43 @@ fieldset[disabled] .btn-default.active {
   transform: rotateY(0deg) translatez(90px);
   opacity: 1;
   height: 30px;
+}
+.flip.ng-leave.ng-leave-active {
+  -webkit-transform: rotateY(180deg) translatez(90px);
+  -moz-transform: rotateY(180deg) translatez(90px);
+  -ms-transform: rotateY(180deg) translatez(90px);
+  -o-transform: rotateY(180deg) translatez(90px);
+  transform: rotateY(180deg) translatez(90px);
+  opacity: 0;
+  height: 0px;
+}
+.fade.ng-enter {
+  -webkit-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -moz-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -ms-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -o-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  display: block;
+}
+.fade.ng-leave {
+  -webkit-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -moz-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -ms-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -o-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  display: block;
+}
+.fade.ng-enter {
+  opacity: 0;
+}
+.fade.ng-enter-active {
+  opacity: 1;
+}
+.fade.ng-leave {
+  opacity: 1;
+}
+.fade.ng-leave-active {
+  opacity: 0;
 }
 .scale.ng-enter,
 .scale.ng-leave {
