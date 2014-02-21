@@ -14,13 +14,18 @@
                             <div ng-if="method.full_description">
                                 <h3>Description</h3>
                                 <p class="voffset3" ng-bind-html="method.full_description"></p>
+                                <hr />
                             </div>
-                            <hr />
                             <div ng-if="method.formats.length > 0">
                                 <h3>Available Formats:</h3>
                                 <span class="label label-info" ng-repeat="format in method.formats" style="margin-right:3px;">{{format}}</span>
+                                <hr />
                             </div>
-                            <hr />
+                            <div ng-if="method.scope.scopes">
+                                <h3>Required Scopes:</h3>
+                                <span class="label label-primary" ng-repeat="scope in method.scope.scopes" style="margin-right:3px;">{{scope}}</span>
+                                <hr />
+                            </div>
                             <div ng-if="method.params.length > 0">
                                 <h3>Parameters</h3>
                                 <div class="list-group">
@@ -28,11 +33,12 @@
                                         <h4 class="list-group-item-heading">{{param.name}}</h4>
                                         <p class="list-group-item-text" ng-bind-html="param.description"></p>
                                         <p><strong>Expected: </strong>{{param.expected_type}}</p>
+                                        <p ng-if="!method.scope.isEmpty()">Scopes: <span class="label label-primary" ng-repeat="scope in param.scope.scopes" style="margin-right:3px;">{{scope}}</span></p>
                                         <p ng-if="!param.required">Optional</p>
                                     </div>
                                 </div>
+                                <hr />
                             </div>
-                            <hr />
                             <h3>Examples</h3>
                             <pre ng-repeat="example in method.examples">{{example}}</pre>
                             <hr />

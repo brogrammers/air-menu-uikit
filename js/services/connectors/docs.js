@@ -1,6 +1,6 @@
 angular.module('air-menu-ui.services.connector.docs', [])
 
-	.factory('Docs', [ 'connector', function(connector) {
+	.factory('Docs', [ 'connector', 'Doc', function(connector, Doc) {
 		var baseUrl = '/docs/';
         var versions = ['v1', 'oauth2'];
 		return {
@@ -10,7 +10,7 @@ angular.module('air-menu-ui.services.connector.docs', [])
                 var responses = [ ];
                 angular.forEach(versions, function(version) {
                     connector.get(self.versionUrl(version), null, function(data) {
-                        responses.push({version: version, content: data['docs']});
+                        responses.push({version: version, content: new Doc(data['docs'])});
                         self.finished = self.finished + 1;
                         if (self.finished == versions.length) {
                             successHandler(responses);

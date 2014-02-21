@@ -23,5 +23,22 @@ angular.module('air-menu-ui.services.models.scope', [])
         Scope.prototype.isOwner = function() {
             return this.has('owner');
         };
+
+        Scope.prototype.isEmpty = function() {
+            return this.scopes.length == 0;
+        };
+
+        Scope.fromString = function(string) {
+            var regex = /\|\|(.*)\|\|/g;
+            var matches = regex.exec(string);
+            var scopes;
+            if (matches && matches[1]) {
+                scopes = matches[1].split(' ');
+            } else {
+                scopes = [];
+            }
+            return new Scope(scopes);
+        };
+
         return Scope;
     });

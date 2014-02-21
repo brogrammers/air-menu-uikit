@@ -36674,7 +36674,7 @@ angular.module('air-menu-ui.services.connector.applications', [])
     }]);
 angular.module('air-menu-ui.services.connector.docs', [])
 
-	.factory('Docs', [ 'connector', function(connector) {
+	.factory('Docs', [ 'connector', 'Doc', function(connector, Doc) {
 		var baseUrl = '/docs/';
         var versions = ['v1', 'oauth2'];
 		return {
@@ -36684,7 +36684,7 @@ angular.module('air-menu-ui.services.connector.docs', [])
                 var responses = [ ];
                 angular.forEach(versions, function(version) {
                     connector.get(self.versionUrl(version), null, function(data) {
-                        responses.push({version: version, content: data['docs']});
+                        responses.push({version: version, content: new Doc(data['docs'])});
                         self.finished = self.finished + 1;
                         if (self.finished == versions.length) {
                             successHandler(responses);
@@ -36714,8 +36714,30 @@ angular.module('air-menu-ui.services.connector.me', [])
 
 angular.module('air-menu-ui.services.models', [
 	'air-menu-ui.services.models.user',
-    'air-menu-ui.services.models.scope'
+    'air-menu-ui.services.models.scope',
+    'air-menu-ui.services.models.doc'
 ]);
+angular.module('air-menu-ui.services.models.doc', [])
+
+    .factory('Doc', [ 'Scope', function(Scope) {
+        var Doc = function(docData) {
+            angular.extend(this, docData);
+            this.parseScopes();
+        };
+
+        Doc.prototype.parseScopes = function() {
+            angular.forEach(this.resources, function(resource) {
+                angular.forEach(resource.methods, function(method) {
+                    method.scope = Scope.fromString(method.full_description);
+                    angular.forEach(method.params, function(parameter) {
+                        parameter.scope = Scope.fromString(parameter.description);
+                    });
+                });
+            });
+        };
+
+        return Doc;
+    }]);
 angular.module('air-menu-ui.services.models.scope', [])
 
     .factory('Scope', function() {
@@ -36741,6 +36763,23 @@ angular.module('air-menu-ui.services.models.scope', [])
         Scope.prototype.isOwner = function() {
             return this.has('owner');
         };
+
+        Scope.prototype.isEmpty = function() {
+            return this.scopes.length == 0;
+        };
+
+        Scope.fromString = function(string) {
+            var regex = /\|\|(.*)\|\|/g;
+            var matches = regex.exec(string);
+            var scopes;
+            if (matches && matches[1]) {
+                scopes = matches[1].split(' ');
+            } else {
+                scopes = [];
+            }
+            return new Scope(scopes);
+        };
+
         return Scope;
     });
 angular.module('air-menu-ui.services.models.user', [])
@@ -36902,13 +36941,18 @@ angular.module("/air-menu/resource.html", []).run(["$templateCache", function($t
     "                            <div ng-if=\"method.full_description\">\n" +
     "                                <h3>Description</h3>\n" +
     "                                <p class=\"voffset3\" ng-bind-html=\"method.full_description\"></p>\n" +
+    "                                <hr />\n" +
     "                            </div>\n" +
-    "                            <hr />\n" +
     "                            <div ng-if=\"method.formats.length > 0\">\n" +
     "                                <h3>Available Formats:</h3>\n" +
     "                                <span class=\"label label-info\" ng-repeat=\"format in method.formats\" style=\"margin-right:3px;\">{{format}}</span>\n" +
+    "                                <hr />\n" +
     "                            </div>\n" +
-    "                            <hr />\n" +
+    "                            <div ng-if=\"method.scope.scopes\">\n" +
+    "                                <h3>Required Scopes:</h3>\n" +
+    "                                <span class=\"label label-primary\" ng-repeat=\"scope in method.scope.scopes\" style=\"margin-right:3px;\">{{scope}}</span>\n" +
+    "                                <hr />\n" +
+    "                            </div>\n" +
     "                            <div ng-if=\"method.params.length > 0\">\n" +
     "                                <h3>Parameters</h3>\n" +
     "                                <div class=\"list-group\">\n" +
@@ -36916,11 +36960,12 @@ angular.module("/air-menu/resource.html", []).run(["$templateCache", function($t
     "                                        <h4 class=\"list-group-item-heading\">{{param.name}}</h4>\n" +
     "                                        <p class=\"list-group-item-text\" ng-bind-html=\"param.description\"></p>\n" +
     "                                        <p><strong>Expected: </strong>{{param.expected_type}}</p>\n" +
+    "                                        <p ng-if=\"!method.scope.isEmpty()\">Scopes: <span class=\"label label-primary\" ng-repeat=\"scope in param.scope.scopes\" style=\"margin-right:3px;\">{{scope}}</span></p>\n" +
     "                                        <p ng-if=\"!param.required\">Optional</p>\n" +
     "                                    </div>\n" +
     "                                </div>\n" +
+    "                                <hr />\n" +
     "                            </div>\n" +
-    "                            <hr />\n" +
     "                            <h3>Examples</h3>\n" +
     "                            <pre ng-repeat=\"example in method.examples\">{{example}}</pre>\n" +
     "                            <hr />\n" +

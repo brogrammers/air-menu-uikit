@@ -1,4 +1,15 @@
-//= require ../lib/air-menu-ui-standalone-0.0.1.js
+//= require ../lib/jquery-2.0.2.js
+//= require ../lib/bootstrap-3.1.0.js
+//= require ../lib/angular/angular.js
+//= require ../lib/angular/angular-animate.js
+//= require ../lib/angular/angular-cookies.js
+//= require ../lib/angular/angular-loader.js
+//= require ../lib/angular/angular-resource.js
+//= require ../lib/angular/angular-route.js
+//= require ../lib/angular/angular-sanitize.js
+//= require ../lib/angular/angular-touch.js
+//= require ../lib/breakpoint-0.0.1.js
+//= require ../lib/air-menu-ui-0.0.1.js
 //= require ../js/app.js
 //= require ../js/controllers.js
 //= require ../js/directives.js

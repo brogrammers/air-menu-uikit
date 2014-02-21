@@ -107,13 +107,18 @@ angular.module("/air-menu/resource.html", []).run(["$templateCache", function($t
     "                            <div ng-if=\"method.full_description\">\n" +
     "                                <h3>Description</h3>\n" +
     "                                <p class=\"voffset3\" ng-bind-html=\"method.full_description\"></p>\n" +
+    "                                <hr />\n" +
     "                            </div>\n" +
-    "                            <hr />\n" +
     "                            <div ng-if=\"method.formats.length > 0\">\n" +
     "                                <h3>Available Formats:</h3>\n" +
     "                                <span class=\"label label-info\" ng-repeat=\"format in method.formats\" style=\"margin-right:3px;\">{{format}}</span>\n" +
+    "                                <hr />\n" +
     "                            </div>\n" +
-    "                            <hr />\n" +
+    "                            <div ng-if=\"method.scope.scopes\">\n" +
+    "                                <h3>Required Scopes:</h3>\n" +
+    "                                <span class=\"label label-primary\" ng-repeat=\"scope in method.scope.scopes\" style=\"margin-right:3px;\">{{scope}}</span>\n" +
+    "                                <hr />\n" +
+    "                            </div>\n" +
     "                            <div ng-if=\"method.params.length > 0\">\n" +
     "                                <h3>Parameters</h3>\n" +
     "                                <div class=\"list-group\">\n" +
@@ -121,11 +126,12 @@ angular.module("/air-menu/resource.html", []).run(["$templateCache", function($t
     "                                        <h4 class=\"list-group-item-heading\">{{param.name}}</h4>\n" +
     "                                        <p class=\"list-group-item-text\" ng-bind-html=\"param.description\"></p>\n" +
     "                                        <p><strong>Expected: </strong>{{param.expected_type}}</p>\n" +
+    "                                        <p ng-if=\"!method.scope.isEmpty()\">Scopes: <span class=\"label label-primary\" ng-repeat=\"scope in param.scope.scopes\" style=\"margin-right:3px;\">{{scope}}</span></p>\n" +
     "                                        <p ng-if=\"!param.required\">Optional</p>\n" +
     "                                    </div>\n" +
     "                                </div>\n" +
+    "                                <hr />\n" +
     "                            </div>\n" +
-    "                            <hr />\n" +
     "                            <h3>Examples</h3>\n" +
     "                            <pre ng-repeat=\"example in method.examples\">{{example}}</pre>\n" +
     "                            <hr />\n" +
