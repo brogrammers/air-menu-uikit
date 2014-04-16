@@ -21,7 +21,7 @@
                 </div>
                 <h1><i class="fa fa-anchor"> Index Table</i></h1>
                 <ul>
-                    <li ng-repeat="resource in doc.content.resources"><a href="javascript:void(0);" ng-click="scrollTo('#'+resource.doc_url.split('/').join('').replace(/./g, ''))">{{resource.name}}</a></li>
+                    <li ng-repeat="resource in doc.content.resources"><a href="javascript:void(0);" ng-click="scrollTo('#'+resource.name.replace(' > ', '').replace('-', '').replace(' ', ''))">{{resource.name}}</a></li>
                 </ul>
                 <div ng-repeat="resource in doc.content.resources">
                     <resource resource="resource" handler="resourceClick"></resource>

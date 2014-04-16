@@ -1,4 +1,4 @@
-<div class="container" id="{{resource.doc_url.split('/').join('').replace(/./g, '')}}">
+<div class="container" id="{{resource.name.replace(' > ', '').replace('-', '').replace(' ', '')}}">
 	<h1><i class="fa fa-rss"></i> <a href="" ng-click="click()">{{resource.name}}</a></h1>
 	<p class="lead">{{resource.short_description}}</p>
 	<div class="resource" ng-repeat="method in resource.methods">
