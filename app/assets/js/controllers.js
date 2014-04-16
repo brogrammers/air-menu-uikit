@@ -67,6 +67,12 @@ angular.module('air-menu.controllers', [])
             $scope.baseUrl = window.API_BASE_URL;
         };
 
+        $scope.scrollTo = function(selector) {
+            $('html, body').animate({
+                scrollTop: $(selector).offset().top
+            }, 800);
+        };
+
 		$scope.fetch();
 	}])
 

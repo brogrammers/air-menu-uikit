@@ -19,6 +19,10 @@
                         </div>
                     </div>
                 </div>
+                <h1><i class="fa fa-anchor"> Index Table</i></h1>
+                <ul>
+                    <li ng-repeat="resource in doc.content.resources"><a href="javascript:void(0);" ng-click="scrollTo('#'+resource.doc_url.split('/').join(''))">{{resource.name}}</a></li>
+                </ul>
                 <div ng-repeat="resource in doc.content.resources">
                     <resource resource="resource" handler="resourceClick"></resource>
                     <hr />

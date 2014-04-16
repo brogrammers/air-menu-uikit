@@ -36910,9 +36910,9 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "				<li class=\"dropdown\">\n" +
     "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{user.name}} <b class=\"caret\"></b></a>\n" +
     "					<ul class=\"dropdown-menu\">\n" +
-    "						<li><a href=\"#\">Profile</a></li>\n" +
-    "						<li ng-if=\"user.isDeveloper()\"><a href=\"#/documentation\">API Documentation</a></li>\n" +
-    "                        <li ng-if=\"user.isDeveloper()\"><a href=\"#/applications\">Developer Apps</a></li>\n" +
+    "						<li><a href=\"\" ng-click=\"go('/')\">Profile</a></li>\n" +
+    "						<li ng-if=\"user.isDeveloper()\"><a href=\"\" ng-click=\"go('/documentation')\">API Documentation</a></li>\n" +
+    "                        <li ng-if=\"user.isDeveloper()\"><a href=\"\" ng-click=\"go('/applications')\">Developer Apps</a></li>\n" +
     "						<li class=\"divider\"></li>\n" +
     "						<li><a href=\"/logout\">Logout</a></li>\n" +
     "					</ul>\n" +
@@ -36925,7 +36925,7 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
 
 angular.module("/air-menu/resource.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/resource.html",
-    "<div class=\"container\">\n" +
+    "<div class=\"container\" id=\"{{resource.doc_url.split('/').join('')}}\">\n" +
     "	<h1><i class=\"fa fa-rss\"></i> <a href=\"\" ng-click=\"click()\">{{resource.name}}</a></h1>\n" +
     "	<p class=\"lead\">{{resource.short_description}}</p>\n" +
     "	<div class=\"resource\" ng-repeat=\"method in resource.methods\">\n" +

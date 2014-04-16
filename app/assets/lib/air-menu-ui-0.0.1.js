@@ -462,7 +462,7 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
 
 angular.module("/air-menu/resource.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/resource.html",
-    "<div class=\"container\">\n" +
+    "<div class=\"container\" id=\"{{resource.doc_url.split('/').join('')}}\">\n" +
     "	<h1><i class=\"fa fa-rss\"></i> <a href=\"\" ng-click=\"click()\">{{resource.name}}</a></h1>\n" +
     "	<p class=\"lead\">{{resource.short_description}}</p>\n" +
     "	<div class=\"resource\" ng-repeat=\"method in resource.methods\">\n" +
