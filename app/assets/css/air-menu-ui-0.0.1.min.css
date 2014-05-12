@@ -5930,11 +5930,12 @@ th small {
 .login-box {
   width: 100%;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 130px;
   margin-bottom: 10px;
   padding: 40px 20px;
-  border: 1px solid #eeeeee;
   border-radius: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0.9;
 }
 .form-control {
   -webkit-transition: 300ms linear all;
@@ -6028,9 +6029,6 @@ fieldset[disabled] .btn-default.active {
 .btn-default.active {
   color: #2c3e50;
 }
-.navbar {
-  box-shadow: 1px 0px 10px #999999;
-}
 .well-transparent {
   margin-top: -15px;
   background-color: transparent;
@@ -6040,17 +6038,16 @@ fieldset[disabled] .btn-default.active {
 }
 .footer {
   width: 100%;
-  position: relative;
-  left: 0;
+  position: absolute;
   bottom: 0;
-  min-height: 5px;
-  margin-top: 20px;
-  background-color: #2c3e50;
-  color: #ebebeb;
+  min-height: 20px;
+  background-color: #eeeeee;
+  color: #999999;
+  padding: 15px 0px;
 }
-.footer ul {
-  margin: 3px 0px;
-  padding: 5px 0;
+.footer p {
+  padding: 0;
+  margin: 0;
 }
 .slide-down.ng-enter {
   -webkit-animation: slide-down-enter-sequence 400ms linear;

@@ -16,5 +16,17 @@
 	<body ng-controller="MainCtrl">
 		<navbar user="user"></navbar>
 		<ng-view ng-class="transitionAnimation"></ng-view>
+        <div class="footer" ng-if="user">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+                <p>&copy; AirMenu &nbsp;&nbsp;&nbsp; <i class="fa fa-coffee"></i> Designed with love </p>
+              </div>
+              <div class="col-lg-6">
+                <p class="text-right visible-lg visible-md"></p>
+              </div>
+            </div>
+          </div>
+        </div>
 	</body>
 </html>

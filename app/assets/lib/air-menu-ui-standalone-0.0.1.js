@@ -36874,7 +36874,7 @@ angular.module("/air-menu/login-box.html", []).run(["$templateCache", function($
     "			<input type=\"checkbox\" /> Remember Me\n" +
     "		</label>\n" +
     "	</div>\n" +
-    "	<button type=\"submit\" class=\"btn btn-primary btn-block {{pending || !username || !password ? 'disabled' : ''}}\" {{pending ? 'disabled' : ''}}>SIGN IN</button>\n" +
+    "	<button type=\"submit\" class=\"btn btn-success btn-block {{pending || !username || !password ? 'disabled' : ''}}\" {{pending ? 'disabled' : ''}}>SIGN IN</button>\n" +
     "</form>");
 }]);
 
