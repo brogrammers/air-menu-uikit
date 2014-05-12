@@ -5,9 +5,70 @@
             <div class="row">
                 <div class="col-lg-3">
                     <a href="{{user.avatar}}"><img src="{{user.avatar}}" class="img-responsive img-thumbnail"></a>
-                    <h3>About</h3>
+                    <div class="row" style="margin: 10px 0px;">
+                        <div class="col-lg-6">
+                            <h3 style="margin: 0;">About</h3>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <a href="" title="edit"><i class="fa fa-2x fa-edit"></i></a>
+                        </div>
+                    </div>
                     <div class="well">
-                        <p>test</p>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <strong>Name</strong>
+                            </div>
+                            <div class="col-lg-6">
+                                {{user.name}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <strong>Username</strong>
+                            </div>
+                            <div class="col-lg-6" style="word-break: break-all;">
+                                {{user.identity.username}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <strong>Email</strong>
+                            </div>
+                            <div class="col-lg-6" style="word-break: break-all;">
+                                {{user.identity.email}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 10px 0px;">
+                        <div class="col-lg-12">
+                            <h3>Company</h3>
+                        </div>
+                    </div>
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <strong>Name</strong>
+                            </div>
+                            <div class="col-lg-6">
+                                {{user.company.name}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <strong>Username</strong>
+                            </div>
+                            <div class="col-lg-6" style="word-break: break-all;">
+                                {{user.identity.username}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <strong>Email</strong>
+                            </div>
+                            <div class="col-lg-6" style="word-break: break-all;">
+                                {{user.identity.email}}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-9">
