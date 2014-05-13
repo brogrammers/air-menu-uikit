@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('air-menu.controllers', [])
-	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', 'transitionMap', function($scope, $rootScope, $location, Me, transitionMap) {
+
+	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', 'transitionMap', 'UserOrders', function($scope, $rootScope, $location, Me, transitionMap, UserOrders) {
         $scope.transitionAnimation = transitionMap.default;
         Me.get(function(user) {
             $rootScope.user = user;

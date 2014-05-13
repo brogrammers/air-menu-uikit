@@ -157,7 +157,8 @@ angular.module('air-menu-ui.services', [
 angular.module('air-menu-ui.services.connector', [
         'air-menu-ui.services.connector.me',
         'air-menu-ui.services.connector.docs',
-        'air-menu-ui.services.connector.applications'
+        'air-menu-ui.services.connector.applications',
+        'air-menu-ui.services.connector.userOrders'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
@@ -249,10 +250,29 @@ angular.module('air-menu-ui.services.connector.me', [])
 	}]);
 
 
+angular.module('air-menu-ui.services.connector.userOrders', [])
+
+    .factory('UserOrders', [ 'connector', 'Order', function(connector, Order) {
+        var baseUrl = '/api/v1/me/orders';
+        return {
+            get: function(state, successHandler, errorHandler) {
+                connector.get(baseUrl, {state: state}, function(data) {
+                    var orders = [ ];
+                    angular.forEach(data['orders'], function(order) {
+                        orders.push(new Order(data['orders']));
+                    });
+                    successHandler(orders);
+                }, errorHandler, true);
+            }
+        }
+    }]);
+
+
 angular.module('air-menu-ui.services.models', [
 	'air-menu-ui.services.models.user',
     'air-menu-ui.services.models.scope',
-    'air-menu-ui.services.models.doc'
+    'air-menu-ui.services.models.doc',
+    'air-menu-ui.services.models.order'
 ]);
 angular.module('air-menu-ui.services.models.doc', [])
 
@@ -274,6 +294,15 @@ angular.module('air-menu-ui.services.models.doc', [])
         };
 
         return Doc;
+    }]);
+angular.module('air-menu-ui.services.models.order', [])
+
+    .factory('Order', [ 'Scope', function(Scope) {
+        var Order = function(orderData) {
+            angular.extend(this, orderData);
+        };
+
+        return Order;
     }]);
 angular.module('air-menu-ui.services.models.scope', [])
 

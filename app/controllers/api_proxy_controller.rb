@@ -8,7 +8,7 @@ class ApiProxyController < ApplicationController
   before_filter :check_session
 
   def proxy
-    response = access_token.send request_method.downcase.to_sym, path, :params => params[:api_proxy]
+    response = access_token.send request_method.downcase.to_sym, path, :params => params
     self.response.headers = response.headers
     render :json => response.body, :status => response.status
   rescue OAuth2::Error => error
@@ -27,8 +27,6 @@ class ApiProxyController < ApplicationController
 
   def access_token
     @access_token ||= if session[:access_token]
-                        puts session[:access_token]
-                        puts session[:access_token].class
       accepted_access_token = eval(session[:access_token])
       accepted_access_token['access_token'] = accepted_access_token['token']
       access_token_hash = accepted_access_token
