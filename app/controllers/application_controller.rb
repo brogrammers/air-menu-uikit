@@ -3,8 +3,35 @@ require Rails.root + 'lib/air_menu'
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :check_phone_auth
+
   rescue_from ActionController::InvalidAuthenticityToken do
     render :json => { :error => 'missing_csrf' }, :status => :bad_request
+  end
+
+  def check_phone_auth
+    if valid_phone_auth?
+      @access_token = begin
+        OAuth2::AccessToken.from_hash client, access_token_hash
+      end
+      session[:access_token] = @access_token.to_hash.to_s if @access_token
+      puts session
+    end
+  end
+
+  def access_token_hash
+    {
+        :token => params[:token],
+        :access_token => params[:token],
+        :refresh_token => params[:refresh_token],
+        :token_type => params[:token_type],
+        :expires_in_seconds => params[:expires_in_seconds],
+        :scopes => params[:scopes].split(' ')
+    }
+  end
+
+  def valid_phone_auth?
+    params[:client_id] && params[:client_secret] && params[:token] && params[:refresh_token] && params[:token_type] && params[:expires_in_seconds] && params[:scopes]
   end
 
   def handle_unverified_request
@@ -17,6 +44,6 @@ class ApplicationController < ActionController::Base
   end
 
   def client
-    @client ||= OAuth2::Client.new(AirMenu::Settings.client_id, AirMenu::Settings.client_secret, :site => AirMenu::Settings.backend_url, :token_url => '/api/oauth2/access_tokens')
+    @client ||= OAuth2::Client.new((params[:client_id] || AirMenu::Settings.client_id), (params[:client_secret] || AirMenu::Settings.client_secret), :site => AirMenu::Settings.backend_url, :token_url => '/api/oauth2/access_tokens')
   end
 end

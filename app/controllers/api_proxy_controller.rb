@@ -27,6 +27,8 @@ class ApiProxyController < ApplicationController
 
   def access_token
     @access_token ||= if session[:access_token]
+                        puts session[:access_token]
+                        puts session[:access_token].class
       accepted_access_token = eval(session[:access_token])
       accepted_access_token['access_token'] = accepted_access_token['token']
       access_token_hash = accepted_access_token
