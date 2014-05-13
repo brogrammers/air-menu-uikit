@@ -1,8 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <a href="" ng-click="go('/developer/applications')"><i class="fa fa-3x fa-arrow-circle-o-left"></i></a>
-            <h1><i class="fa fa-plus"></i> Create Applications</h1>
+            <div class="row">
+                <div class="col-lg-3">
+                    <button class="btn btn-success btn-block" style="margin-top: 20px" ng-click="go('/developer/applications')"><i class="fa fa-arrow-circle-o-left"></i> Back</button>
+                </div>
+                <div class="col-lg-6 col-lg-offset-3 text-right">
+                    <h1><i class="fa fa-lock"></i> OAuth Applications</h1>
+                </div>
+            </div>
             <p class="lead">All you need is a name and a redirect uri for successful authorization of a resource owner. Add you're application with this form.</p>
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
