@@ -64,6 +64,8 @@ module.exports = function(grunt) {
 		  'app/assets/lib/angular/angular-sanitize.js',
 		  'app/assets/lib/angular/angular-touch.js',
           'app/assets/lib/breakpoint-0.0.1.js',
+          'app/assets/lib/underscore-1.6.0.js',
+          'app/assets/lib/angular-google-maps-1.0.18.js',
           '<%= concat.air_menu.dest %>'
         ],
         dest: 'app/assets/lib/<%= pkg.name %>-standalone-<%= pkg.version %>.js'

@@ -2,13 +2,22 @@
 
 angular.module('air-menu.controllers', [])
 
-	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', 'transitionMap', 'UserOrders', function($scope, $rootScope, $location, Me, transitionMap, UserOrders) {
+	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', 'transitionMap', 'UserOrders', 'Restaurants', function($scope, $rootScope, $location, Me, transitionMap, UserOrders, Restaurants) {
         $scope.transitionAnimation = transitionMap.default;
+        $scope.restaurants = [ ];
+
+
         Me.get(function(user) {
             $rootScope.user = user;
             $rootScope.$broadcast('air-menu-ui.event.navbar.user', $rootScope.user);
         }, function() {
             $location.path('/login');
+        });
+
+        Restaurants.get(53.3478, -6.2397, 5000, function(restaurants) {
+            $scope.restaurants = restaurants;
+        }, function(error) {
+            console.log(error);
         });
 
         $rootScope.go = function(path) {
@@ -20,7 +29,24 @@ angular.module('air-menu.controllers', [])
             }
             $location.path(path);
         };
+
+        $scope.map = {
+            center: {
+                latitude: 53.3478,
+                longitude: -6.2597
+            },
+            zoom: 14
+        };
 	}])
+
+    .controller('RestaurantsCtrl', [ '$scope', 'CompanyRestaurants', function($scope, CompanyRestaurants) {
+        $scope.restaurants = [];
+
+        CompanyRestaurants.get($scope.user.company.id, function(restaurants) {
+            $scope.restaurants = restaurants;
+        })
+
+    }])
 
 	.controller('HomeCtrl', [ '$scope', 'Me', function($scope, Me) {
 

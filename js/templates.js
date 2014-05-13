@@ -73,13 +73,15 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "		<div class=\"collapse navbar-collapse\" id=\"menu\">\n" +
     "            <a ng-if=\"!user\" href=\"#/login\" class=\"btn btn-default navbar-right navbar-btn\">Login</a>\n" +
     "			<ul ng-if=\"user\" class=\"nav navbar-nav navbar-right\">\n" +
+    "                <li>\n" +
+    "                    <a href=\"javascript:void(0);\" ng-click=\"go('/')\"><i class=\"fa fa-home\"></i> Home </a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    <a href=\"javascript:void(0);\" ng-click=\"go('/restaurants')\"><i class=\"fa fa-cogs\"></i> Restaurants</a>\n" +
+    "                </li>\n" +
     "				<li class=\"dropdown\">\n" +
     "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{user.name}} <b class=\"caret\"></b></a>\n" +
     "					<ul class=\"dropdown-menu\">\n" +
-    "						<li><a href=\"\" ng-click=\"go('/')\">Profile</a></li>\n" +
-    "						<li ng-if=\"user.isDeveloper()\"><a href=\"\" ng-click=\"go('/developer/documentation')\">API Documentation</a></li>\n" +
-    "                        <li ng-if=\"user.isDeveloper()\"><a href=\"\" ng-click=\"go('/developer/applications')\">Developer Apps</a></li>\n" +
-    "						<li class=\"divider\"></li>\n" +
     "						<li><a href=\"/logout\">Logout</a></li>\n" +
     "					</ul>\n" +
     "				</li>\n" +

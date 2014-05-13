@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.directives', 'air-menu.controllers', 'air-menu-ui'])
+angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.directives', 'air-menu.controllers', 'air-menu-ui', 'google-maps'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {templateUrl: '/assets/pages/home.html', controller: 'HomeCtrl'});
@@ -9,6 +9,7 @@ angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.d
         $routeProvider.when('/developer/documentation', {templateUrl: '/assets/pages/documentation.html', controller: 'DocumentationCtrl'});
         $routeProvider.when('/developer/applications', {templateUrl: '/assets/pages/applications.html', controller: 'ApplicationsCtrl'});
         $routeProvider.when('/developer/applications/new', {templateUrl: '/assets/pages/application_new.html', controller: 'NewApplicationCtrl'});
+        $routeProvider.when('/restaurants', {templateUrl: '/assets/pages/restaurants.html', controller: 'RestaurantsCtrl'});
         $routeProvider.otherwise({redirectTo: '/'});
     }])
 

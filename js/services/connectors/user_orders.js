@@ -6,8 +6,8 @@ angular.module('air-menu-ui.services.connector.userOrders', [])
             get: function(state, successHandler, errorHandler) {
                 connector.get(baseUrl, {state: state}, function(data) {
                     var orders = [ ];
-                    angular.forEach(data['orders'], function(order) {
-                        orders.push(new Order(data['orders']));
+                    angular.forEach(data['orders'], function(orderData) {
+                        orders.push(new Order(orderData));
                     });
                     successHandler(orders);
                 }, errorHandler, true);

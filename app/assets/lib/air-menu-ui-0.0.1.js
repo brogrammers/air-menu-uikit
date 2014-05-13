@@ -158,7 +158,9 @@ angular.module('air-menu-ui.services.connector', [
         'air-menu-ui.services.connector.me',
         'air-menu-ui.services.connector.docs',
         'air-menu-ui.services.connector.applications',
-        'air-menu-ui.services.connector.userOrders'
+        'air-menu-ui.services.connector.userOrders',
+        'air-menu-ui.services.connector.companyRestaurants',
+        'air-menu-ui.services.connector.restaurants'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
@@ -210,6 +212,22 @@ angular.module('air-menu-ui.services.connector.applications', [])
             }
         }
     }]);
+angular.module('air-menu-ui.services.connector.companyRestaurants', [])
+
+    .factory('CompanyRestaurants', [ 'connector', 'Restaurant', function(connector, Restaurant) {
+        var baseUrl = '/api/v1/companies/';
+        return {
+            get: function(company_id, successHandler, errorHandler) {
+                connector.get(baseUrl + company_id + '/restaurants', null, function(data) {
+                    var restaurants = [ ];
+                    angular.forEach(data['restaurants'], function(restaurantData) {
+                        restaurants.push(new Restaurant(restaurantData));
+                    });
+                    successHandler(restaurants);
+                }, errorHandler, true);
+            }
+        }
+    }]);
 angular.module('air-menu-ui.services.connector.docs', [])
 
 	.factory('Docs', [ 'connector', 'Doc', function(connector, Doc) {
@@ -250,6 +268,22 @@ angular.module('air-menu-ui.services.connector.me', [])
 	}]);
 
 
+angular.module('air-menu-ui.services.connector.restaurants', [])
+
+    .factory('Restaurants', [ 'connector', 'Restaurant', function(connector, Restaurant) {
+        var baseUrl = '/api/v1/restaurants';
+        return {
+            get: function(latitude, longitude, offset, successHandler, errorHandler) {
+                connector.get(baseUrl, {latitude:latitude, longitude:longitude, offset:offset}, function(data) {
+                    var restaurants = [ ];
+                    angular.forEach(data['restaurants'], function(restaurantData) {
+                        restaurants.push(new Restaurant(restaurantData));
+                    });
+                    successHandler(restaurants);
+                }, errorHandler, true);
+            }
+        }
+    }]);
 angular.module('air-menu-ui.services.connector.userOrders', [])
 
     .factory('UserOrders', [ 'connector', 'Order', function(connector, Order) {
@@ -258,8 +292,8 @@ angular.module('air-menu-ui.services.connector.userOrders', [])
             get: function(state, successHandler, errorHandler) {
                 connector.get(baseUrl, {state: state}, function(data) {
                     var orders = [ ];
-                    angular.forEach(data['orders'], function(order) {
-                        orders.push(new Order(data['orders']));
+                    angular.forEach(data['orders'], function(orderData) {
+                        orders.push(new Order(orderData));
                     });
                     successHandler(orders);
                 }, errorHandler, true);
@@ -270,7 +304,8 @@ angular.module('air-menu-ui.services.models', [
 	'air-menu-ui.services.models.user',
     'air-menu-ui.services.models.scope',
     'air-menu-ui.services.models.doc',
-    'air-menu-ui.services.models.order'
+    'air-menu-ui.services.models.order',
+    'air-menu-ui.services.models.restaurant'
 ]);
 angular.module('air-menu-ui.services.models.doc', [])
 
@@ -301,6 +336,15 @@ angular.module('air-menu-ui.services.models.order', [])
         };
 
         return Order;
+    }]);
+angular.module('air-menu-ui.services.models.restaurant', [])
+
+    .factory('Restaurant', [ function() {
+        var Restaurant = function(restaurantData) {
+            angular.extend(this, restaurantData);
+        };
+
+        return Restaurant;
     }]);
 angular.module('air-menu-ui.services.models.scope', [])
 
@@ -471,13 +515,15 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "		<div class=\"collapse navbar-collapse\" id=\"menu\">\n" +
     "            <a ng-if=\"!user\" href=\"#/login\" class=\"btn btn-default navbar-right navbar-btn\">Login</a>\n" +
     "			<ul ng-if=\"user\" class=\"nav navbar-nav navbar-right\">\n" +
+    "                <li>\n" +
+    "                    <a href=\"javascript:void(0);\" ng-click=\"go('/')\"><i class=\"fa fa-home\"></i> Home </a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    <a href=\"javascript:void(0);\" ng-click=\"go('/restaurants')\"><i class=\"fa fa-cogs\"></i> Restaurants</a>\n" +
+    "                </li>\n" +
     "				<li class=\"dropdown\">\n" +
     "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{user.name}} <b class=\"caret\"></b></a>\n" +
     "					<ul class=\"dropdown-menu\">\n" +
-    "						<li><a href=\"\" ng-click=\"go('/')\">Profile</a></li>\n" +
-    "						<li ng-if=\"user.isDeveloper()\"><a href=\"\" ng-click=\"go('/developer/documentation')\">API Documentation</a></li>\n" +
-    "                        <li ng-if=\"user.isDeveloper()\"><a href=\"\" ng-click=\"go('/developer/applications')\">Developer Apps</a></li>\n" +
-    "						<li class=\"divider\"></li>\n" +
     "						<li><a href=\"/logout\">Logout</a></li>\n" +
     "					</ul>\n" +
     "				</li>\n" +
