@@ -15,26 +15,26 @@
                     </div>
                     <div class="well">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <strong>Name</strong>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 {{user.name}}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <strong>Username</strong>
                             </div>
-                            <div class="col-lg-6" style="word-break: break-all;">
+                            <div class="col-lg-6 col-md-6" style="word-break: break-all;">
                                 {{user.identity.username}}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <strong>Email</strong>
                             </div>
-                            <div class="col-lg-6" style="word-break: break-all;">
+                            <div class="col-lg-6 col-md-6" style="word-break: break-all;">
                                 {{user.identity.email}}
                             </div>
                         </div>
@@ -46,27 +46,67 @@
                     </div>
                     <div class="well">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <strong>Name</strong>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 {{user.company.name}}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <strong>Username</strong>
                             </div>
-                            <div class="col-lg-6" style="word-break: break-all;">
+                            <div class="col-lg-6 col-md-6" style="word-break: break-all;">
                                 {{user.identity.username}}
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-6">
                                 <strong>Email</strong>
                             </div>
-                            <div class="col-lg-6" style="word-break: break-all;">
+                            <div class="col-lg-6 col-md-6" style="word-break: break-all;">
                                 {{user.identity.email}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <strong>Address 1</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6" style="word-break: break-all;">
+                                {{user.company.address.address_1}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <strong>Address 2</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6" style="word-break: break-all;">
+                                {{user.company.address.address_2}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <strong>City</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6" style="word-break: break-all;">
+                                {{user.company.address.city}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <strong>County</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6" style="word-break: break-all;">
+                                {{user.company.address.county}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <strong>Country</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6" style="word-break: break-all;">
+                                {{user.company.address.country}}
                             </div>
                         </div>
                     </div>

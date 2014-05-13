@@ -1,32 +1,41 @@
 <!doctype html>
 <html lang="en" ng-app="air-menu">
-	<head>
-		<meta charset="utf-8">
-        <%= csrf_meta_tag %>
-		<title>AirMenu</title>
-        <meta name="viewport" content="width=device-width" />
-		<link href='//fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="<%= asset_path('application.css') %>"/>
-        <script src="<%= asset_path('application.js') %>"></script>
-      <script>
-        window.CSRF_TOKEN = '<%= form_authenticity_token %>';
-        window.API_BASE_URL = '<%= AirMenu::Settings.backend_url %>';
-      </script>
-	</head>
-	<body ng-controller="MainCtrl">
-		<navbar user="user"></navbar>
-		<ng-view ng-class="transitionAnimation"></ng-view>
-        <div class="footer" ng-if="user">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6">
-                <p>&copy; AirMenu &nbsp;&nbsp;&nbsp; <i class="fa fa-coffee"></i> Designed with love </p>
-              </div>
-              <div class="col-lg-6">
-                <p class="text-right visible-lg visible-md"></p>
-              </div>
-            </div>
-          </div>
+<head>
+  <meta charset="utf-8">
+  <%= csrf_meta_tag %>
+  <title>AirMenu</title>
+  <meta name="viewport" content="width=device-width" />
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,300italic,300,100italic,100,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="<%= asset_path('application.css') %>"/>
+  <script src="<%= asset_path('application.js') %>"></script>
+  <script>
+      window.CSRF_TOKEN = '<%= form_authenticity_token %>';
+      window.API_BASE_URL = '<%= AirMenu::Settings.backend_url %>';
+  </script>
+</head>
+<body ng-controller="MainCtrl">
+<div style="height:100%;">
+  <navbar ng-if="user" user="user"></navbar>
+  <ng-view ng-class="transitionAnimation"></ng-view>
+  <footer class="footer" ng-if="user">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <p>&copy; AirMenu &nbsp;&nbsp;&nbsp; <i class="fa fa-coffee"></i> Designed with love </p>
         </div>
-	</body>
+        <div class="col-lg-6">
+          <p class="text-right visible-lg visible-md">
+            <ul class="list-unstyled list-inline pull-right" style="margin: 0px;">
+              <li><a href=""><i class="fa fa-truck"></i> About</a></li>
+              <li><a href=""><i class="fa fa-certificate"></i> Career</a></li>
+              <li><a href=""><i class="fa fa-wrench"></i> Developer</a></li>
+              <li><a href=""><i class="fa fa-phone"></i> Contact</a></li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
 </html>
