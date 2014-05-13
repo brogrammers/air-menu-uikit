@@ -77,8 +77,8 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{user.name}} <b class=\"caret\"></b></a>\n" +
     "					<ul class=\"dropdown-menu\">\n" +
     "						<li><a href=\"\" ng-click=\"go('/')\">Profile</a></li>\n" +
-    "						<li ng-if=\"user.isDeveloper()\"><a href=\"\" ng-click=\"go('/documentation')\">API Documentation</a></li>\n" +
-    "                        <li ng-if=\"user.isDeveloper()\"><a href=\"\" ng-click=\"go('/applications')\">Developer Apps</a></li>\n" +
+    "						<li ng-if=\"user.isDeveloper()\"><a href=\"\" ng-click=\"go('/developer/documentation')\">API Documentation</a></li>\n" +
+    "                        <li ng-if=\"user.isDeveloper()\"><a href=\"\" ng-click=\"go('/developer/applications')\">Developer Apps</a></li>\n" +
     "						<li class=\"divider\"></li>\n" +
     "						<li><a href=\"/logout\">Logout</a></li>\n" +
     "					</ul>\n" +

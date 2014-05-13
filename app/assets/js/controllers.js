@@ -38,6 +38,10 @@ angular.module('air-menu.controllers', [])
 		}
 	}])
 
+    .controller('DeveloperCtrl', [ '$scope', function($scope) {
+
+    }])
+
 	.controller('DocumentationCtrl', [ '$scope', 'Docs', '$location', function($scope, Docs, $location) {
 		$scope.fetch = function() {
 			Docs.get(function(data) {
@@ -87,7 +91,7 @@ angular.module('air-menu.controllers', [])
     .controller('NewApplicationCtrl', [ '$scope', 'Applications', '$location', function($scope, Applications, $location) {
         $scope.submit = function() {
             Applications.create($scope.name, $scope.redirect_uri, function(application) {
-                $location.path('/applications');
+                $location.path('/developer/applications');
             });
         };
     }]);

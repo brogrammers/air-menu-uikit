@@ -14,4 +14,3 @@ angular.module('air-menu-ui.services.connector.userOrders', [])
             }
         }
     }]);
-
