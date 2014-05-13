@@ -48,6 +48,12 @@ angular.module('air-menu.controllers', [])
 
     }])
 
+    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', '$routeParams', function($scope, Restaurants, $routeParams) {
+        Restaurants.show($routeParams.id, function(restaurant) {
+            $scope.restaurant = restaurant;
+        })
+    }])
+
 	.controller('HomeCtrl', [ '$scope', 'Me', function($scope, Me) {
 
 	}])

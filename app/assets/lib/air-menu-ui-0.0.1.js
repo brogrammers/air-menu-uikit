@@ -281,6 +281,11 @@ angular.module('air-menu-ui.services.connector.restaurants', [])
                     });
                     successHandler(restaurants);
                 }, errorHandler, true);
+            },
+            show: function(id, successHandler, errorHandler) {
+                connector.get(baseUrl + '/' + id, null, function(data) {
+                    successHandler(new Restaurant(data['restaurant']))
+                }, errorHandler, true);
             }
         }
     }]);
