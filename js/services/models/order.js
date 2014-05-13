@@ -1,6 +1,6 @@
 angular.module('air-menu-ui.services.models.order', [])
 
-    .factory('Order', [ 'Scope', function(Scope) {
+    .factory('Order', [ function() {
         var Order = function(orderData) {
             angular.extend(this, orderData);
         };

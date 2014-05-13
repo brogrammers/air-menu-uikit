@@ -2,9 +2,12 @@ angular.module('air-menu-ui.services.connector', [
         'air-menu-ui.services.connector.me',
         'air-menu-ui.services.connector.docs',
         'air-menu-ui.services.connector.applications',
-        'air-menu-ui.services.connector.userOrders',
-        'air-menu-ui.services.connector.companyRestaurants',
-        'air-menu-ui.services.connector.restaurants'
+        'air-menu-ui.services.connector.user_orders',
+        'air-menu-ui.services.connector.restaurants',
+        'air-menu-ui.services.connector.company_restaurants',
+        'air-menu-ui.services.connector.restaurant_devices',
+        'air-menu-ui.services.connector.restaurant_groups',
+        'air-menu-ui.services.connector.restaurant_reviews'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
@@ -16,7 +19,7 @@ angular.module('air-menu-ui.services.connector', [
                     headers: {
                         'X-CSRF-Token': window.CSRF_TOKEN
                     }
-                }
+                };
                 if (method == 'POST') options.data = params || {};
                 if (method == 'GET') options.params = params || {};
 				$http(options)

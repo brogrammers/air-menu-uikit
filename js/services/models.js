@@ -3,5 +3,20 @@ angular.module('air-menu-ui.services.models', [
     'air-menu-ui.services.models.scope',
     'air-menu-ui.services.models.doc',
     'air-menu-ui.services.models.order',
-    'air-menu-ui.services.models.restaurant'
+    'air-menu-ui.services.models.restaurant',
+    'air-menu-ui.services.models.device',
+    'air-menu-ui.services.models.group',
+    'air-menu-ui.services.models.opening_hour',
+    'air-menu-ui.services.models.review',
+    'air-menu-ui.services.models.staff_kind',
+    'air-menu-ui.services.models.staff_member',
+    'air-menu-ui.services.models.webhook',
+    'air-menu-ui.services.models.credit_card',
+    'air-menu-ui.services.models.notification',
+    'air-menu-ui.services.models.menu',
+    'air-menu-ui.services.models.menu_section',
+    'air-menu-ui.services.models.menu_item',
+    'air-menu-ui.services.models.order',
+    'air-menu-ui.services.models.order_item',
+    'air-menu-ui.services.models.payment'
 ]);

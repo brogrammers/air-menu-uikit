@@ -1,4 +1,4 @@
-angular.module('air-menu-ui.services.connector.companyRestaurants', [])
+angular.module('air-menu-ui.services.connector.company_restaurants', [])
 
     .factory('CompanyRestaurants', [ 'connector', 'Restaurant', function(connector, Restaurant) {
         var baseUrl = '/api/v1/companies/';

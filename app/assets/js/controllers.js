@@ -48,9 +48,15 @@ angular.module('air-menu.controllers', [])
 
     }])
 
-    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', '$routeParams', function($scope, Restaurants, $routeParams) {
-        Restaurants.show($routeParams.id, function(restaurant) {
+    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', 'RestaurantDevices', '$routeParams', function($scope, Restaurants, RestaurantDevices, $routeParams) {
+        $scope.restaurant_id = $routeParams.id;
+
+        Restaurants.show($scope.restaurant_id, function(restaurant) {
             $scope.restaurant = restaurant;
+        });
+
+        RestaurantDevices.get($scope.restaurant_id, function(devices) {
+            console.log(devices);
         })
     }])
 

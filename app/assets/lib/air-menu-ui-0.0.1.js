@@ -158,9 +158,12 @@ angular.module('air-menu-ui.services.connector', [
         'air-menu-ui.services.connector.me',
         'air-menu-ui.services.connector.docs',
         'air-menu-ui.services.connector.applications',
-        'air-menu-ui.services.connector.userOrders',
-        'air-menu-ui.services.connector.companyRestaurants',
-        'air-menu-ui.services.connector.restaurants'
+        'air-menu-ui.services.connector.user_orders',
+        'air-menu-ui.services.connector.restaurants',
+        'air-menu-ui.services.connector.company_restaurants',
+        'air-menu-ui.services.connector.restaurant_devices',
+        'air-menu-ui.services.connector.restaurant_groups',
+        'air-menu-ui.services.connector.restaurant_reviews'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
@@ -172,7 +175,7 @@ angular.module('air-menu-ui.services.connector', [
                     headers: {
                         'X-CSRF-Token': window.CSRF_TOKEN
                     }
-                }
+                };
                 if (method == 'POST') options.data = params || {};
                 if (method == 'GET') options.params = params || {};
 				$http(options)
@@ -212,7 +215,7 @@ angular.module('air-menu-ui.services.connector.applications', [])
             }
         }
     }]);
-angular.module('air-menu-ui.services.connector.companyRestaurants', [])
+angular.module('air-menu-ui.services.connector.company_restaurants', [])
 
     .factory('CompanyRestaurants', [ 'connector', 'Restaurant', function(connector, Restaurant) {
         var baseUrl = '/api/v1/companies/';
@@ -268,6 +271,54 @@ angular.module('air-menu-ui.services.connector.me', [])
 	}]);
 
 
+angular.module('air-menu-ui.services.connector.restaurant_devices', [])
+
+    .factory('RestaurantDevices', [ 'connector', 'Device', function(connector, Device) {
+        var baseUrl = '/api/v1/restaurants/';
+        return {
+            get: function(restaurant_id, successHandler, errorHandler) {
+                connector.get(baseUrl + restaurant_id + '/devices', null, function(data) {
+                    var devices = [ ];
+                    angular.forEach(data['devices'], function(deviceData) {
+                        devices.push(new Device(deviceData));
+                    });
+                    successHandler(devices);
+                }, errorHandler, true);
+            }
+        }
+    }]);
+angular.module('air-menu-ui.services.connector.restaurant_groups', [])
+
+    .factory('RestaurantGroups', [ 'connector', 'Group', function(connector, Group) {
+        var baseUrl = '/api/v1/restaurants/';
+        return {
+            get: function(restaurant_id, successHandler, errorHandler) {
+                connector.get(baseUrl + restaurant_id + '/groups', null, function(data) {
+                    var groups = [ ];
+                    angular.forEach(data['groups'], function(groupData) {
+                        groups.push(new Group(groupData));
+                    });
+                    successHandler(groups);
+                }, errorHandler, true);
+            }
+        }
+    }]);
+angular.module('air-menu-ui.services.connector.restaurant_reviews', [])
+
+    .factory('RestaurantReviews', [ 'connector', 'Review', function(connector, Review) {
+        var baseUrl = '/api/v1/restaurants/';
+        return {
+            get: function(restaurant_id, successHandler, errorHandler) {
+                connector.get(baseUrl + restaurant_id + '/reviews', null, function(data) {
+                    var reviews = [ ];
+                    angular.forEach(data['reviews'], function(reviewData) {
+                        reviews.push(new Review(reviewData));
+                    });
+                    successHandler(reviews);
+                }, errorHandler, true);
+            }
+        }
+    }]);
 angular.module('air-menu-ui.services.connector.restaurants', [])
 
     .factory('Restaurants', [ 'connector', 'Restaurant', function(connector, Restaurant) {
@@ -289,7 +340,7 @@ angular.module('air-menu-ui.services.connector.restaurants', [])
             }
         }
     }]);
-angular.module('air-menu-ui.services.connector.userOrders', [])
+angular.module('air-menu-ui.services.connector.user_orders', [])
 
     .factory('UserOrders', [ 'connector', 'Order', function(connector, Order) {
         var baseUrl = '/api/v1/me/orders';
@@ -310,8 +361,41 @@ angular.module('air-menu-ui.services.models', [
     'air-menu-ui.services.models.scope',
     'air-menu-ui.services.models.doc',
     'air-menu-ui.services.models.order',
-    'air-menu-ui.services.models.restaurant'
+    'air-menu-ui.services.models.restaurant',
+    'air-menu-ui.services.models.device',
+    'air-menu-ui.services.models.group',
+    'air-menu-ui.services.models.opening_hour',
+    'air-menu-ui.services.models.review',
+    'air-menu-ui.services.models.staff_kind',
+    'air-menu-ui.services.models.staff_member',
+    'air-menu-ui.services.models.webhook',
+    'air-menu-ui.services.models.credit_card',
+    'air-menu-ui.services.models.notification',
+    'air-menu-ui.services.models.menu',
+    'air-menu-ui.services.models.menu_section',
+    'air-menu-ui.services.models.menu_item',
+    'air-menu-ui.services.models.order',
+    'air-menu-ui.services.models.order_item',
+    'air-menu-ui.services.models.payment'
 ]);
+angular.module('air-menu-ui.services.models.credit_card', [])
+
+    .factory('CreditCard', [ function() {
+        var CreditCard = function(creditCardData) {
+            angular.extend(this, creditCardData);
+        };
+
+        return CreditCard;
+    }]);
+angular.module('air-menu-ui.services.models.device', [])
+
+    .factory('Device', [ function() {
+        var Device = function(deviceData) {
+            angular.extend(this, deviceData);
+        };
+
+        return Device;
+    }]);
 angular.module('air-menu-ui.services.models.doc', [])
 
     .factory('Doc', [ 'Scope', function(Scope) {
@@ -333,14 +417,86 @@ angular.module('air-menu-ui.services.models.doc', [])
 
         return Doc;
     }]);
+angular.module('air-menu-ui.services.models.group', [])
+
+    .factory('Group', [ function() {
+        var Group = function(groupData) {
+            angular.extend(this, groupData);
+        };
+
+        return Group;
+    }]);
+angular.module('air-menu-ui.services.models.menu', [])
+
+    .factory('Menu', [ function() {
+        var Menu = function(menuData) {
+            angular.extend(this, menuData);
+        };
+
+        return Menu;
+    }]);
+angular.module('air-menu-ui.services.models.menu_item', [])
+
+    .factory('MenuItem', [ function() {
+        var MenuItem = function(menuItemData) {
+            angular.extend(this, menuItemData);
+        };
+
+        return MenuItem;
+    }]);
+angular.module('air-menu-ui.services.models.menu_section', [])
+
+    .factory('MenuSection', [ function() {
+        var MenuSection = function(menuSectionData) {
+            angular.extend(this, menuSectionData);
+        };
+
+        return MenuSection;
+    }]);
+angular.module('air-menu-ui.services.models.notification', [])
+
+    .factory('Notification', [ function() {
+        var Notification = function(notificationData) {
+            angular.extend(this, notificationData);
+        };
+
+        return Notification;
+    }]);
+angular.module('air-menu-ui.services.models.opening_hour', [])
+
+    .factory('OpeningHour', [ function() {
+        var OpeningHour = function(openingHour) {
+            angular.extend(this, openingHour);
+        };
+
+        return OpeningHour;
+    }]);
 angular.module('air-menu-ui.services.models.order', [])
 
-    .factory('Order', [ 'Scope', function(Scope) {
+    .factory('Order', [ function() {
         var Order = function(orderData) {
             angular.extend(this, orderData);
         };
 
         return Order;
+    }]);
+angular.module('air-menu-ui.services.models.order_item', [])
+
+    .factory('OrderItem', [ function() {
+        var OrderItem = function(orderItemData) {
+            angular.extend(this, orderItemData);
+        };
+
+        return OrderItem;
+    }]);
+angular.module('air-menu-ui.services.models.payment', [])
+
+    .factory('Payment', [ function() {
+        var Payment = function(paymentData) {
+            angular.extend(this, paymentData);
+        };
+
+        return Payment;
     }]);
 angular.module('air-menu-ui.services.models.restaurant', [])
 
@@ -350,6 +506,15 @@ angular.module('air-menu-ui.services.models.restaurant', [])
         };
 
         return Restaurant;
+    }]);
+angular.module('air-menu-ui.services.models.review', [])
+
+    .factory('Review', [ function() {
+        var Review = function(reviewData) {
+            angular.extend(this, reviewData);
+        };
+
+        return Review;
     }]);
 angular.module('air-menu-ui.services.models.scope', [])
 
@@ -395,6 +560,24 @@ angular.module('air-menu-ui.services.models.scope', [])
 
         return Scope;
     });
+angular.module('air-menu-ui.services.models.staff_kind', [])
+
+    .factory('StaffKind', [ function() {
+        var StaffKind = function(staffKindData) {
+            angular.extend(this, staffKindData);
+        };
+
+        return StaffKind;
+    }]);
+angular.module('air-menu-ui.services.models.staff_member', [])
+
+    .factory('StaffMember', [ function() {
+        var StaffMember = function(staffMemberData) {
+            angular.extend(this, staffMemberData);
+        };
+
+        return StaffMember;
+    }]);
 angular.module('air-menu-ui.services.models.user', [])
 
     .factory('User', [ 'Scope', function(Scope) {
@@ -415,6 +598,15 @@ angular.module('air-menu-ui.services.models.user', [])
             return this.scope.isOwner();
         };
         return User;
+    }]);
+angular.module('air-menu-ui.services.models.webhook', [])
+
+    .factory('Webhook', [ function() {
+        var Webhook = function(webhookData) {
+            angular.extend(this, webhookData);
+        };
+
+        return Webhook;
     }]);
 angular.module('air-menu-ui.services.store', [])
 
