@@ -1,0 +1,27 @@
+.panel {
+  border: 1px solid @gray-lighter;
+  border-radius: 0;
+  > .panel-heading {
+    border-bottom: 0px solid transparent !important;
+  }
+  > .panel-full {
+    padding: 0;
+    height: 250px !important;
+    overflow: scroll;
+  }
+  > .panel-full {
+    > ul {
+      padding: 0;
+      margin: 0;
+      > li {
+        padding: 15px;
+        border-bottom: 1px solid @gray-lighter;
+
+        .loading {
+          border-bottom: 1px solid transparent;
+        }
+      }
+    }
+  }
+}
+

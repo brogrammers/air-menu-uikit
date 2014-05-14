@@ -9,6 +9,8 @@
   <link rel="stylesheet" type="text/css" href="<%= asset_path('application.css') %>"/>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
   <script src="<%= asset_path('application.js') %>"></script>
+  <script src="http://durated.github.io/angular-scroll/0.2.2/angular-scroll.min.js"></script>
+  <script src="http://durated.github.io/angular-parallax/0.1.3/angular-parallax.min.js"></script>
   <script>
       window.CSRF_TOKEN = '<%= form_authenticity_token %>';
       window.API_BASE_URL = '<%= AirMenu::Settings.backend_url %>';

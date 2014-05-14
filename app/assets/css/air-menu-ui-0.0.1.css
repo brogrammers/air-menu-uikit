@@ -5849,6 +5849,12 @@ a {
 .lead {
   font-weight: 300;
 }
+p.parallax {
+  position: relative;
+  background: #ffffff;
+  z-index: 1;
+  padding: 25px 20px 10px 20px;
+}
 @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
   html,
   body {
@@ -6038,8 +6044,7 @@ fieldset[disabled] .btn-default.active {
 }
 .footer {
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  margin-top: 70px;
   min-height: 20px;
   background-color: #eeeeee;
   color: #999999;
@@ -6048,6 +6053,29 @@ fieldset[disabled] .btn-default.active {
 .footer p {
   padding: 0;
   margin: 0;
+}
+.panel {
+  border: 1px solid #eeeeee;
+  border-radius: 0;
+}
+.panel > .panel-heading {
+  border-bottom: 0px solid transparent !important;
+}
+.panel > .panel-full {
+  padding: 0;
+  height: 250px !important;
+  overflow: scroll;
+}
+.panel > .panel-full > ul {
+  padding: 0;
+  margin: 0;
+}
+.panel > .panel-full > ul > li {
+  padding: 15px;
+  border-bottom: 1px solid #eeeeee;
+}
+.panel > .panel-full > ul > li .loading {
+  border-bottom: 1px solid transparent;
 }
 .slide-down.ng-enter {
   -webkit-animation: slide-down-enter-sequence 400ms linear;
@@ -6213,7 +6241,6 @@ fieldset[disabled] .btn-default.active {
   -ms-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
   -o-transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
   transition: 400ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
-  display: block;
 }
 .fade.ng-enter {
   opacity: 0;

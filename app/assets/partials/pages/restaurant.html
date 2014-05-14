@@ -1,20 +1,106 @@
 <div class="container">
-    <div class="row">
-        <div class="col-lg-6">
-            <h1>{{restaurant.name}} <a href="javascript:void(0);"><i class="fa fa-edit"></i> </a></h1>
-        </div>
-        <div class="col-lg-6 text-right">
-            <h1><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> </h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <p>{{restaurant.description}}</p>
-        </div>
-    </div>
-    <div class="row">
+    <div class="row voffset5">
         <div class="col-lg-4">
             <img src="{{restaurant.avatar}}" class="img-responsive img-thumbnail">
+        </div>
+        <div class="col-lg-4">
+            <h1>{{restaurant.name}} <a href="javascript:void(0);" class="pull-right"><i class="fa fa-edit"></i> </a></h1>
+            <p class="lead">{{shorten(restaurant.description)}}</p>
+        </div>
+        <div class="col-lg-4 text-right">
+            <h1><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> </h1>
+            <hr>
+            <p>
+                {{restaurant.address.address_1}}<br>
+                {{restaurant.address.address_2}}<br>
+                {{restaurant.address.city}}<br>
+                {{restaurant.address.county}}<br>
+            </p>
+        </div>
+    </div>
+    <div class="row voffset3">
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <i class="fa fa-mobile"></i> Devices
+                    <span class="pull-right badge text-muted"><a href="javascript:void(0);" ng-click="deviceEditMode=!deviceEditMode"><i class="fa fa-edit"></i></a></span>
+                    <span class="pull-right badge" style="margin-right: 3px"><a href="javascript:void(0);"><i class="fa fa-plus"></i></a></span>
+                </div>
+                <div class="panel-body panel-full">
+                    <ul class="list-unstyled">
+                        <li ng-if="pending.devices" class="text-center loading">
+                            <i class="fa fa-spinner fa-spin fa-4x"></i><br>
+                            <small>Loading Devices</small>
+                        </li>
+                        <li ng-repeat="device in devices">
+                            <i class="fa fa-minus"></i> <a href="#/restaurants/{{restaurant_id}}/devices/{{device.id}}">{{device.name}}</a>
+                            <button ng-show="deviceEditMode"  class="btn btn-danger btn-xs pull-right">Delete</button>
+                        </li>
+                        <li ng-if="devices.length == 0 && !pending.devices" class="text-muted disabled"><i class="fa fa-exclamation-triangle"></i> No Devices</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-map-marker"></i> Restaurant Location
+                </div>
+                <div class="panel-body panel-full">
+                    <google-map center="map.center" zoom="map.zoom">
+                        <marker coords="restaurant.location">
+
+                        </marker>
+                    </google-map>
+                    <style>
+                        .angular-google-map-container { height: 250px; }
+                    </style>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-group"></i> Groups
+                    <span class="pull-right badge text-muted"><a href="javascript:void(0);" ng-click="groupEditMode=!groupEditMode"><i class="fa fa-edit"></i></a></span>
+                    <span class="pull-right badge" style="margin-right: 3px"><a href="javascript:void(0);"><i class="fa fa-plus"></i></a></span>
+                </div>
+                <div class="panel-body panel-full">
+                    <ul class="list-unstyled">
+                        <li ng-if="pending.groups" class="text-center loading">
+                            <i class="fa fa-spinner fa-spin fa-4x"></i><br>
+                            <small>Loading Groups</small>
+                        </li>
+                        <li ng-repeat="group in groups">
+                            <i class="fa fa-minus"></i> <a href="#/restaurants/{{restaurant_id}}/groups/{{group.id}}">{{group.name}}</a>
+                            <button ng-show="groupEditMode"  class="btn btn-danger btn-xs pull-right">Delete</button>
+                        </li>
+                        <li ng-if="groups.length == 0 && !pending.groups" class="text-muted disabled"><i class="fa fa-exclamation-triangle"></i> No Groups</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-comment"></i> Reviews
+                </div>
+                <div class="panel-body panel-full">
+                    <ul class="list-unstyled">
+                        <li ng-if="pending.reviews" class="text-center loading">
+                            <i class="fa fa-spinner fa-spin fa-4x"></i><br>
+                            <small>Loading Reviews</small>
+                        </li>
+                        <li ng-repeat="review in reviews">
+                            <strong>{{review.subject}}</strong>
+                            <p>{{review.message}}</p>
+                        </li>
+                        <li ng-if="reviews.length == 0 && !pending.reviews" class="text-muted disabled"><i class="fa fa-exclamation-triangle"></i> No Reviews</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

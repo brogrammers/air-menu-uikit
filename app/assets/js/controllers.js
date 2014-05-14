@@ -39,7 +39,7 @@ angular.module('air-menu.controllers', [])
         };
 	}])
 
-    .controller('RestaurantsCtrl', [ '$scope', 'CompanyRestaurants', function($scope, CompanyRestaurants) {
+    .controller('RestaurantsCtrl', [ '$scope', 'CompanyRestaurants', function($scope, CompanyRestaurants, CompanyGroups) {
         $scope.restaurants = [];
 
         CompanyRestaurants.get($scope.user.company.id, function(restaurants) {
@@ -48,16 +48,60 @@ angular.module('air-menu.controllers', [])
 
     }])
 
-    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', 'RestaurantDevices', '$routeParams', function($scope, Restaurants, RestaurantDevices, $routeParams) {
+    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', 'RestaurantDevices', 'RestaurantGroups', 'RestaurantReviews', '$routeParams', 'parallaxHelper', function($scope, Restaurants, RestaurantDevices, RestaurantGroups, RestaurantReviews, $routeParams, parallaxHelper) {
         $scope.restaurant_id = $routeParams.id;
+        $scope.restaurant = { location: { latitude: 53.3478, longitude: -6.2597 } };
+        $scope.pending = { };
+        $scope.pending.devices = true;
+        $scope.pending.groups = true;
+        $scope.pending.reviews = true;
+        $scope.devices = [ ];
+        $scope.groups = [ ];
+        $scope.reviews = [ ];
+        $scope.deviceEditMode = false;
+        $scope.groupEditMode = false;
+        $scope.background = parallaxHelper.createAnimator(-0.3, 150, -150);
 
         Restaurants.show($scope.restaurant_id, function(restaurant) {
             $scope.restaurant = restaurant;
+            $scope.mapLocation(restaurant.location.latitude, restaurant.location.longitude);
+            $scope.refreshMap = true;
         });
 
+        $scope.mapLocation = function(latitude, longitude) {
+            $scope.map = {
+                center: {
+                    latitude: latitude || 53.3478,
+                    longitude: longitude || -6.2597
+                },
+                zoom: 14
+            };
+        };
+
         RestaurantDevices.get($scope.restaurant_id, function(devices) {
-            console.log(devices);
-        })
+            $scope.pending.devices = false;
+            $scope.devices = devices;
+        });
+
+        RestaurantGroups.get($scope.restaurant_id, function(groups) {
+            $scope.pending.groups = false;
+            $scope.groups = groups;
+        });
+
+        RestaurantReviews.get($scope.restaurant_id, function(reviews) {
+            $scope.pending.reviews = false;
+          $scope.reviews = reviews;
+        });
+
+        $scope.shorten = function(string) {
+            if (string.length > 170) {
+                return string.slice(0, 170) + '...';
+            } else {
+                return string;
+            }
+        };
+
+        $scope.mapLocation();
     }])
 
 	.controller('HomeCtrl', [ '$scope', 'Me', function($scope, Me) {

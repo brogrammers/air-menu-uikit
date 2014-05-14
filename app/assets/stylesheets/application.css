@@ -14,3 +14,11 @@
 .voffset9 { margin-top: 150px; }
 
 .angular-google-map-container { height: 600px; }
+
+.zero-padding {
+    padding: 0 !important;
+}
+
+.zero-margin {
+    margin: 0 !important;
+}
