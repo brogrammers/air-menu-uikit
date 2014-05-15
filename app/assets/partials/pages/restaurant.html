@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row voffset5">
         <div class="col-lg-4">
-            <img src="{{restaurant.avatar}}" class="img-responsive img-thumbnail">
+            <img src="{{avatar(restaurant.avatar,'img')}}" class="img-responsive img-thumbnail">
         </div>
         <div class="col-lg-4">
             <h1>{{restaurant.name}} <a href="javascript:void(0);" class="pull-right"><i class="fa fa-edit"></i> </a></h1>
@@ -95,13 +95,17 @@
                         </li>
                         <li ng-repeat="review in reviews">
                             <div class="row">
-                                <div class="col-lg-2">
-                                    <img src="{{review.user.avatar}}" class="img-responsive img-circle">
+                                <div class="col-lg-2 text-center">
+                                    <img src="{{avatar(review.user.avatar)}}" class="img-responsive img-circle"><br>
+                                    <small>{{review.user.name}}</small>
                                 </div>
-                                <div class="col-lg-10" style="padding-top: 10px;">
+                                <div class="col-lg-8">
                                     <strong>{{review.subject}}</strong>
                                     <p style="margin: 0">{{review.message}}</p>
                                     <p><rating stars="review.rating"></rating></p>
+                                </div>
+                                <div class="col-lg-2">
+                                    <strong>{{review.created_at | date :'short'}}</strong>
                                 </div>
                             </div>
                         </li>

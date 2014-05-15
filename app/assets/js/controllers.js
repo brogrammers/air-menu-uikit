@@ -37,6 +37,14 @@ angular.module('air-menu.controllers', [])
             },
             zoom: 14
         };
+
+        $scope.avatar = function(avatar, type) {
+            if (avatar) {
+                return avatar;
+            } else {
+                return '/assets/' + (type||'profile') + '_placeholder.png'
+            }
+        }
 	}])
 
     .controller('RestaurantsCtrl', [ '$scope', 'CompanyRestaurants', function($scope, CompanyRestaurants, CompanyGroups) {
