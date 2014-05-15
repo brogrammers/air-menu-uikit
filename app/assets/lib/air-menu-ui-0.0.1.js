@@ -27,7 +27,8 @@ angular.module('air-menu-ui.directives', [
 	'air-menu-ui.directives.resource',
     'air-menu-ui.directives.application',
     'air-menu-ui.directives.nav',
-    'air-menu-ui.directives.tab'
+    'air-menu-ui.directives.tab',
+    'air-menu-ui.directives.rating'
 ]);
 angular.module('air-menu-ui.directives.application', [])
 
@@ -109,6 +110,32 @@ angular.module('air-menu-ui.directives.navbar', [])
 			}]
 		}
 	});
+angular.module('air-menu-ui.directives.rating', [])
+
+    .directive('rating', function() {
+        return {
+            scope: {
+                stars: '='
+            },
+            restrict: 'E',
+            templateUrl: '/air-menu/rating.html',
+            controller: [ '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
+
+                $scope.init = function() {
+                    $scope.remainingStars = [ ];
+                    $scope.fullStars = [ ];
+                };
+
+                $scope.$watch('stars', function(newStars) {
+                    $scope.init();
+                    for (var i = 0; i < parseInt(newStars); i++) { $scope.fullStars.push(i) }
+                    for (var i = 0; i < 5-parseInt(newStars); i++) { $scope.remainingStars.push(i) }
+                });
+
+                $scope.init();
+            }]
+        }
+    });
 angular.module('air-menu-ui.directives.resource', [])
 
 	.directive('resource', function() {
@@ -637,7 +664,7 @@ angular.module('air-menu-ui.services.store', [])
 		};
 		return Store;
 	});
-angular.module('air-menu-ui.templates', ['/air-menu/application.html', '/air-menu/login-box.html', '/air-menu/nav.html', '/air-menu/navbar.html', '/air-menu/resource.html', '/air-menu/tab.html']);
+angular.module('air-menu-ui.templates', ['/air-menu/application.html', '/air-menu/login-box.html', '/air-menu/nav.html', '/air-menu/navbar.html', '/air-menu/rating.html', '/air-menu/resource.html', '/air-menu/tab.html']);
 
 angular.module("/air-menu/application.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/application.html",
@@ -728,6 +755,13 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "		</div>\n" +
     "	</div>\n" +
     "</nav>");
+}]);
+
+angular.module("/air-menu/rating.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("/air-menu/rating.html",
+    "<div>\n" +
+    "    <i class=\"fa fa-star\" ng-repeat=\"star in fullStars\"></i><i class=\"fa fa-star-o\" ng-repeat=\"star in remainingStars\"></i>\n" +
+    "</div>");
 }]);
 
 angular.module("/air-menu/resource.html", []).run(["$templateCache", function($templateCache) {

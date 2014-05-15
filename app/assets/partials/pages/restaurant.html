@@ -5,10 +5,10 @@
         </div>
         <div class="col-lg-4">
             <h1>{{restaurant.name}} <a href="javascript:void(0);" class="pull-right"><i class="fa fa-edit"></i> </a></h1>
-            <p class="lead">{{shorten(restaurant.description)}}</p>
+            <p class="lead" ng-bind-html="shorten(restaurant.description)"></p>
         </div>
         <div class="col-lg-4 text-right">
-            <h1><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> </h1>
+            <h1><rating stars="restaurant.rating"></rating> </h1>
             <hr>
             <p>
                 {{restaurant.address.address_1}}<br>
@@ -94,8 +94,16 @@
                             <small>Loading Reviews</small>
                         </li>
                         <li ng-repeat="review in reviews">
-                            <strong>{{review.subject}}</strong>
-                            <p>{{review.message}}</p>
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <img src="{{review.user.avatar}}" class="img-responsive img-circle">
+                                </div>
+                                <div class="col-lg-10" style="padding-top: 10px;">
+                                    <strong>{{review.subject}}</strong>
+                                    <p style="margin: 0">{{review.message}}</p>
+                                    <p><rating stars="review.rating"></rating></p>
+                                </div>
+                            </div>
                         </li>
                         <li ng-if="reviews.length == 0 && !pending.reviews" class="text-muted disabled"><i class="fa fa-exclamation-triangle"></i> No Reviews</li>
                     </ul>

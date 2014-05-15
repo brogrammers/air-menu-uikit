@@ -4,5 +4,6 @@ angular.module('air-menu-ui.directives', [
 	'air-menu-ui.directives.resource',
     'air-menu-ui.directives.application',
     'air-menu-ui.directives.nav',
-    'air-menu-ui.directives.tab'
+    'air-menu-ui.directives.tab',
+    'air-menu-ui.directives.rating'
 ]);

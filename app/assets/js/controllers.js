@@ -50,7 +50,7 @@ angular.module('air-menu.controllers', [])
 
     .controller('RestaurantCtrl', [ '$scope', 'Restaurants', 'RestaurantDevices', 'RestaurantGroups', 'RestaurantReviews', '$routeParams', 'parallaxHelper', function($scope, Restaurants, RestaurantDevices, RestaurantGroups, RestaurantReviews, $routeParams, parallaxHelper) {
         $scope.restaurant_id = $routeParams.id;
-        $scope.restaurant = { location: { latitude: 53.3478, longitude: -6.2597 } };
+        $scope.restaurant = { description: '',location: { latitude: 53.3478, longitude: -6.2597 } };
         $scope.pending = { };
         $scope.pending.devices = true;
         $scope.pending.groups = true;
@@ -60,6 +60,7 @@ angular.module('air-menu.controllers', [])
         $scope.reviews = [ ];
         $scope.deviceEditMode = false;
         $scope.groupEditMode = false;
+        $scope.readMore = false;
         $scope.background = parallaxHelper.createAnimator(-0.3, 150, -150);
 
         Restaurants.show($scope.restaurant_id, function(restaurant) {
@@ -94,10 +95,10 @@ angular.module('air-menu.controllers', [])
         });
 
         $scope.shorten = function(string) {
-            if (string.length > 170) {
-                return string.slice(0, 170) + '...';
+            if (string.length > 170 && !$scope.readMore) {
+                return string.slice(0, 170) + '... ' + '<a href="javascript:void(0);" ng-click="readMore=!readMore">Read More</a>';
             } else {
-                return string;
+                return string + ' ' + '<a href="javascript:void(0);" ng-click="readMore=!readMore">Read Less</a>';
             }
         };
 

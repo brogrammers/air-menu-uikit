@@ -1,4 +1,4 @@
-angular.module('air-menu-ui.templates', ['/air-menu/application.html', '/air-menu/login-box.html', '/air-menu/nav.html', '/air-menu/navbar.html', '/air-menu/resource.html', '/air-menu/tab.html']);
+angular.module('air-menu-ui.templates', ['/air-menu/application.html', '/air-menu/login-box.html', '/air-menu/nav.html', '/air-menu/navbar.html', '/air-menu/rating.html', '/air-menu/resource.html', '/air-menu/tab.html']);
 
 angular.module("/air-menu/application.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/application.html",
@@ -89,6 +89,13 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "		</div>\n" +
     "	</div>\n" +
     "</nav>");
+}]);
+
+angular.module("/air-menu/rating.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("/air-menu/rating.html",
+    "<div>\n" +
+    "    <i class=\"fa fa-star\" ng-repeat=\"star in fullStars\"></i><i class=\"fa fa-star-o\" ng-repeat=\"star in remainingStars\"></i>\n" +
+    "</div>");
 }]);
 
 angular.module("/air-menu/resource.html", []).run(["$templateCache", function($templateCache) {

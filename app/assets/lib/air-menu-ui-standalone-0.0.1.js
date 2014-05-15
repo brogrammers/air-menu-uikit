@@ -44327,7 +44327,8 @@ angular.module('air-menu-ui.directives', [
 	'air-menu-ui.directives.resource',
     'air-menu-ui.directives.application',
     'air-menu-ui.directives.nav',
-    'air-menu-ui.directives.tab'
+    'air-menu-ui.directives.tab',
+    'air-menu-ui.directives.rating'
 ]);
 angular.module('air-menu-ui.directives.application', [])
 
@@ -44409,6 +44410,23 @@ angular.module('air-menu-ui.directives.navbar', [])
 			}]
 		}
 	});
+angular.module('air-menu-ui.directives.rating', [])
+
+    .directive('rating', function() {
+        return {
+            scope: {
+                rating: '='
+            },
+            restrict: 'E',
+            templateUrl: '/air-menu/rating.html',
+            controller: [ '$scope', function($scope) {
+                console.log('oisdhf');
+                $scope.rating = Math.floor($scope.rating);
+                $scope.fullStars = new Array($scope.rating)
+
+            }]
+        }
+    });
 angular.module('air-menu-ui.directives.resource', [])
 
 	.directive('resource', function() {
@@ -44462,7 +44480,8 @@ angular.module('air-menu-ui.services.connector', [
         'air-menu-ui.services.connector.restaurants',
         'air-menu-ui.services.connector.company_restaurants',
         'air-menu-ui.services.connector.restaurant_devices',
-        'air-menu-ui.services.connector.restaurant_groups'
+        'air-menu-ui.services.connector.restaurant_groups',
+        'air-menu-ui.services.connector.restaurant_reviews'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
@@ -44598,6 +44617,22 @@ angular.module('air-menu-ui.services.connector.restaurant_groups', [])
                         groups.push(new Group(groupData));
                     });
                     successHandler(groups);
+                }, errorHandler, true);
+            }
+        }
+    }]);
+angular.module('air-menu-ui.services.connector.restaurant_reviews', [])
+
+    .factory('RestaurantReviews', [ 'connector', 'Review', function(connector, Review) {
+        var baseUrl = '/api/v1/restaurants/';
+        return {
+            get: function(restaurant_id, successHandler, errorHandler) {
+                connector.get(baseUrl + restaurant_id + '/reviews', null, function(data) {
+                    var reviews = [ ];
+                    angular.forEach(data['reviews'], function(reviewData) {
+                        reviews.push(new Review(reviewData));
+                    });
+                    successHandler(reviews);
                 }, errorHandler, true);
             }
         }
@@ -44920,7 +44955,7 @@ angular.module('air-menu-ui.services.store', [])
 		};
 		return Store;
 	});
-angular.module('air-menu-ui.templates', ['/air-menu/application.html', '/air-menu/login-box.html', '/air-menu/nav.html', '/air-menu/navbar.html', '/air-menu/resource.html', '/air-menu/tab.html']);
+angular.module('air-menu-ui.templates', ['/air-menu/application.html', '/air-menu/login-box.html', '/air-menu/nav.html', '/air-menu/navbar.html', '/air-menu/rating.html', '/air-menu/resource.html', '/air-menu/tab.html']);
 
 angular.module("/air-menu/application.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/application.html",
@@ -45011,6 +45046,13 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "		</div>\n" +
     "	</div>\n" +
     "</nav>");
+}]);
+
+angular.module("/air-menu/rating.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("/air-menu/rating.html",
+    "<div>\n" +
+    "    <i class=\"fa fa-star\" ng-repeat=\"star in fullStars\"></i>\n" +
+    "</div>");
 }]);
 
 angular.module("/air-menu/resource.html", []).run(["$templateCache", function($templateCache) {
