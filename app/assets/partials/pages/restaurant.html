@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row voffset5">
-        <div class="col-lg-4">
-            <img src="{{avatar(restaurant.avatar,'img')}}" class="img-responsive img-thumbnail">
+        <div class="col-lg-4" ng-bind-html="avatar(restaurant.avatar,'img')">
+
         </div>
         <div class="col-lg-4">
             <h1>{{restaurant.name}} <a href="javascript:void(0);" class="pull-right"><i class="fa fa-edit"></i> </a></h1>
@@ -24,12 +24,12 @@
                 <div class="panel-heading">
                 <i class="fa fa-mobile"></i> Devices
                     <span class="pull-right badge text-muted"><a href="javascript:void(0);" ng-click="deviceEditMode=!deviceEditMode"><i class="fa fa-edit"></i></a></span>
-                    <span class="pull-right badge" style="margin-right: 3px"><a href="javascript:void(0);"><i class="fa fa-plus"></i></a></span>
+                    <span class="pull-right badge" style="margin-right: 3px"><a href="javascript:void(0);" ng-click="modal.activate()"><i class="fa fa-plus"></i></a></span>
                 </div>
                 <div class="panel-body panel-full">
                     <ul class="list-unstyled">
                         <li ng-if="pending.devices" class="text-center loading">
-                            <i class="fa fa-spinner fa-spin fa-4x"></i><br>
+                            <i class="fa fa-refresh fa-spin fa-4x"></i><br>
                             <small>Loading Devices</small>
                         </li>
                         <li ng-repeat="device in devices">
@@ -68,7 +68,7 @@
                 <div class="panel-body panel-full">
                     <ul class="list-unstyled">
                         <li ng-if="pending.groups" class="text-center loading">
-                            <i class="fa fa-spinner fa-spin fa-4x"></i><br>
+                            <i class="fa fa-refresh fa-spin fa-4x"></i><br>
                             <small>Loading Groups</small>
                         </li>
                         <li ng-repeat="group in groups">
@@ -90,13 +90,13 @@
                 <div class="panel-body panel-full">
                     <ul class="list-unstyled">
                         <li ng-if="pending.reviews" class="text-center loading">
-                            <i class="fa fa-spinner fa-spin fa-4x"></i><br>
+                            <i class="fa fa-refresh fa-spin fa-4x"></i><br>
                             <small>Loading Reviews</small>
                         </li>
                         <li ng-repeat="review in reviews">
                             <div class="row">
                                 <div class="col-lg-2 text-center">
-                                    <img src="{{avatar(review.user.avatar)}}" class="img-responsive img-circle"><br>
+                                    <div ng-bind-html="avatar(review.user.avatar)"></div>
                                     <small>{{review.user.name}}</small>
                                 </div>
                                 <div class="col-lg-8">

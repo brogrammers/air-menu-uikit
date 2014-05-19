@@ -66,6 +66,7 @@ module.exports = function(grunt) {
           'app/assets/lib/breakpoint-0.0.1.js',
           'app/assets/lib/underscore-1.6.0.js',
           'app/assets/lib/angular-google-maps-1.0.18.js',
+          'app/assets/lib/angular-modal-v0.3.0.js',
           '<%= concat.air_menu.dest %>'
         ],
         dest: 'app/assets/lib/<%= pkg.name %>-standalone-<%= pkg.version %>.js'

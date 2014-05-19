@@ -44298,6 +44298,95 @@ MarkerWithLabel.prototype.setMap = function (theMap) {
     // ... then deal with the label:
     this.label.setMap(theMap);
 };
+/*
+ * @license
+ * angular-modal v0.3.0
+ * (c) 2013 Brian Ford http://briantford.com
+ * License: MIT
+ */
+
+'use strict';
+
+angular.module('btford.modal', []).
+    factory('btfModal', function ($animate, $compile, $rootScope, $controller, $q, $http, $templateCache) {
+        return function modalFactory (config) {
+            if (!(!config.template ^ !config.templateUrl)) {
+                throw new Error('Expected modal to have exacly one of either `template` or `templateUrl`');
+            }
+
+            var template      = config.template,
+                controller    = config.controller || angular.noop,
+                controllerAs  = config.controllerAs,
+                container     = angular.element(config.container || document.body),
+                element       = null,
+                html,
+                scope;
+
+            if (config.template) {
+                var deferred = $q.defer();
+                deferred.resolve(config.template);
+                html = deferred.promise;
+            } else {
+                html = $http.get(config.templateUrl, {
+                    cache: $templateCache
+                }).
+                    then(function (response) {
+                        return response.data;
+                    });
+            }
+
+            function activate (locals) {
+                return html.then(function (html) {
+                    if (!element) {
+                        attach(html, locals);
+                    }
+                });
+            }
+
+            function attach (html, locals) {
+                element = angular.element(html);
+                if (element.length === 0) {
+                    throw new Error('The template contains no elements; you need to wrap text nodes')
+                }
+                $animate.enter(element, container);
+                scope = $rootScope.$new();
+                if (locals) {
+                    for (var prop in locals) {
+                        scope[prop] = locals[prop];
+                    }
+                }
+                var ctrl = $controller(controller, { $scope: scope });
+                if (controllerAs) {
+                    scope[controllerAs] = ctrl;
+                }
+                $compile(element)(scope);
+            }
+
+            function deactivate () {
+                var deferred = $q.defer();
+                if (element) {
+                    $animate.leave(element, function () {
+                        scope.$destroy();
+                        element = null;
+                        deferred.resolve();
+                    });
+                } else {
+                    deferred.resolve();
+                }
+                return deferred.promise;
+            }
+
+            function active () {
+                return !!element;
+            }
+
+            return {
+                activate: activate,
+                deactivate: deactivate,
+                active: active
+            };
+        };
+    });
 
 /*!
  * air-menu-ui v0.0.1 by tsov
@@ -44415,15 +44504,24 @@ angular.module('air-menu-ui.directives.rating', [])
     .directive('rating', function() {
         return {
             scope: {
-                rating: '='
+                stars: '='
             },
             restrict: 'E',
             templateUrl: '/air-menu/rating.html',
-            controller: [ '$scope', function($scope) {
-                console.log('oisdhf');
-                $scope.rating = Math.floor($scope.rating);
-                $scope.fullStars = new Array($scope.rating)
+            controller: [ '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
 
+                $scope.init = function() {
+                    $scope.remainingStars = [ ];
+                    $scope.fullStars = [ ];
+                };
+
+                $scope.$watch('stars', function(newStars) {
+                    $scope.init();
+                    for (var i = 0; i < parseInt(newStars); i++) { $scope.fullStars.push(i) }
+                    for (var i = 0; i < 5-parseInt(newStars); i++) { $scope.remainingStars.push(i) }
+                });
+
+                $scope.init();
             }]
         }
     });
@@ -45051,7 +45149,7 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
 angular.module("/air-menu/rating.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/rating.html",
     "<div>\n" +
-    "    <i class=\"fa fa-star\" ng-repeat=\"star in fullStars\"></i>\n" +
+    "    <i class=\"fa fa-star\" ng-repeat=\"star in fullStars\"></i><i class=\"fa fa-star-o\" ng-repeat=\"star in remainingStars\"></i>\n" +
     "</div>");
 }]);
 

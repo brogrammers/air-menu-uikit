@@ -4,7 +4,7 @@
             <h1>{{user.name}}</h1>
             <div class="row">
                 <div class="col-lg-3">
-                    <a href="{{user.avatar}}"><img src="{{avatar(user.avatar)}}" class="img-responsive img-thumbnail"></a>
+                    <a href="{{user.avatar}}" ng-bind-html="avatar(user.avatar)"></a>
                     <div class="row" style="margin: 10px 0px;">
                         <div class="col-lg-6">
                             <h3 style="margin: 0;">About</h3>
@@ -127,8 +127,8 @@
                                     <window show="restaurant.open">
                                         <div style="width:290px;">
                                             <div class="row">
-                                                <div class="col-lg-12">
-                                                    <img src="{{restaurant.avatar}}" class="img-responsive img-thumbnail">
+                                                <div class="col-lg-12 text-center" ng-bind-html="avatar(restaurant.avatar, 'img')">
+
                                                 </div>
                                             </div>
                                             <div class="row">

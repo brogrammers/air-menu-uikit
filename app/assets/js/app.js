@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.directives', 'air-menu.controllers', 'air-menu-ui', 'google-maps', 'duParallax'])
+angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.directives', 'air-menu.controllers', 'air-menu-ui', 'google-maps', 'duParallax', 'btford.modal'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {templateUrl: '/assets/pages/home.html', controller: 'HomeCtrl'});
@@ -11,6 +11,7 @@ angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.d
         $routeProvider.when('/developer/applications/new', {templateUrl: '/assets/pages/application_new.html', controller: 'NewApplicationCtrl'});
         $routeProvider.when('/restaurants', {templateUrl: '/assets/pages/restaurants.html', controller: 'RestaurantsCtrl'});
         $routeProvider.when('/restaurants/:id', {templateUrl: '/assets/pages/restaurant.html', controller: 'RestaurantCtrl'});
+        $routeProvider.when('/restaurants/:id/devices/:device_id/edit', {templateUrl: '/assets/pages/restaurant.html', controller: 'RestaurantCtrl'});
         $routeProvider.otherwise({redirectTo: '/'});
     }])
 

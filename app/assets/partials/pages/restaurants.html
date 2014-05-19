@@ -13,8 +13,8 @@
             <ul class="list-unstyled">
                 <li ng-repeat="restaurant in restaurants">
                     <div class="row">
-                        <div class="col-lg-3">
-                            <img src="{{avatar(restaurant.avatar,'img')}}" class="img-responsive img-thumbnail">
+                        <div class="col-lg-3" ng-bind-html="avatar(restaurant.avatar,'img')">
+
                         </div>
                         <div class="col-lg-9">
                             <h2><a href="javascript:void(0);" ng-click="go('/restaurants/' + restaurant.id)">{{restaurant.name||'No Name'}}</a></h2>

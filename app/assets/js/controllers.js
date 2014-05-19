@@ -2,22 +2,14 @@
 
 angular.module('air-menu.controllers', [])
 
-	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', 'transitionMap', 'UserOrders', 'Restaurants', function($scope, $rootScope, $location, Me, transitionMap, UserOrders, Restaurants) {
+	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', 'transitionMap', 'UserOrders', 'Restaurants', 'btfModal', function($scope, $rootScope, $location, Me, transitionMap, UserOrders, Restaurants, btfModal) {
         $scope.transitionAnimation = transitionMap.default;
-        $scope.restaurants = [ ];
-
 
         Me.get(function(user) {
             $rootScope.user = user;
             $rootScope.$broadcast('air-menu-ui.event.navbar.user', $rootScope.user);
         }, function() {
             $location.path('/login');
-        });
-
-        Restaurants.get(53.3478, -6.2397, 5000, function(restaurants) {
-            $scope.restaurants = restaurants;
-        }, function(error) {
-            console.log(error);
         });
 
         $rootScope.go = function(path) {
@@ -30,33 +22,32 @@ angular.module('air-menu.controllers', [])
             $location.path(path);
         };
 
-        $scope.map = {
-            center: {
-                latitude: 53.3478,
-                longitude: -6.2597
-            },
-            zoom: 14
-        };
-
         $scope.avatar = function(avatar, type) {
+            var path = '';
             if (avatar) {
-                return avatar;
+                path = avatar;
             } else {
-                return '/assets/' + (type||'profile') + '_placeholder.png'
+                path = '/assets/' + (type||'profile') + '_placeholder.png';
             }
+            return '<img src="' + path + '" class="img-responsive img-thumbnail" />';
         }
 	}])
 
-    .controller('RestaurantsCtrl', [ '$scope', 'CompanyRestaurants', function($scope, CompanyRestaurants, CompanyGroups) {
-        $scope.restaurants = [];
+    .controller('RestaurantsCtrl', [ '$scope', 'CompanyRestaurants', function($scope, CompanyRestaurants) {
+        $scope.restaurants = [ ];
 
+        console.log('ok');
         CompanyRestaurants.get($scope.user.company.id, function(restaurants) {
             $scope.restaurants = restaurants;
         })
 
     }])
 
-    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', 'RestaurantDevices', 'RestaurantGroups', 'RestaurantReviews', '$routeParams', 'parallaxHelper', function($scope, Restaurants, RestaurantDevices, RestaurantGroups, RestaurantReviews, $routeParams, parallaxHelper) {
+    .controller('ModalCtrl', [ '$scope', function($scope) {
+
+    }])
+
+    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', 'RestaurantDevices', 'RestaurantGroups', 'RestaurantReviews', '$routeParams', 'parallaxHelper', 'btfModal', function($scope, Restaurants, RestaurantDevices, RestaurantGroups, RestaurantReviews, $routeParams, parallaxHelper, btfModal) {
         $scope.restaurant_id = $routeParams.id;
         $scope.restaurant = { description: '',location: { latitude: 53.3478, longitude: -6.2597 } };
         $scope.pending = { };
@@ -70,6 +61,12 @@ angular.module('air-menu.controllers', [])
         $scope.groupEditMode = false;
         $scope.readMore = false;
         $scope.background = parallaxHelper.createAnimator(-0.3, 150, -150);
+
+        $scope.modal = btfModal({
+            controller: 'ModalCtrl',
+            controllerAs: 'modal',
+            templateUrl: '/assets/pages/device.html'
+        });
 
         Restaurants.show($scope.restaurant_id, function(restaurant) {
             $scope.restaurant = restaurant;
@@ -113,7 +110,27 @@ angular.module('air-menu.controllers', [])
         $scope.mapLocation();
     }])
 
-	.controller('HomeCtrl', [ '$scope', 'Me', function($scope, Me) {
+	.controller('HomeCtrl', [ '$scope', 'Me', 'UserOrders', 'Restaurants', function($scope, Me, UserOrders, Restaurants) {
+        $scope.restaurants = [ ];
+        $scope.previousOrders = [ ];
+
+        Restaurants.get(53.3478, -6.2397, 5000, function(restaurants) {
+            $scope.restaurants = restaurants;
+        }, function(error) {
+            console.log(error);
+        });
+
+        $scope.map = {
+            center: {
+                latitude: 53.3478,
+                longitude: -6.2597
+            },
+            zoom: 14
+        };
+
+        UserOrders.get('paid', function(orders) {
+            $scope.previousOrders = orders;
+        })
 
 	}])
 
