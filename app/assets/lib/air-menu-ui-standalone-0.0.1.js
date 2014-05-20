@@ -45132,7 +45132,7 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "                    <a href=\"javascript:void(0);\" ng-click=\"go('/')\"><i class=\"fa fa-home\"></i> Home </a>\n" +
     "                </li>\n" +
     "                <li>\n" +
-    "                    <a href=\"javascript:void(0);\" ng-click=\"go('/restaurants')\"><i class=\"fa fa-cogs\"></i> Restaurants</a>\n" +
+    "                    <a href=\"javascript:void(0);\" ng-if=\"user.company\" ng-click=\"go('/restaurants')\"><i class=\"fa fa-cogs\"></i> Restaurants</a>\n" +
     "                </li>\n" +
     "				<li class=\"dropdown\">\n" +
     "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{user.name}} <b class=\"caret\"></b></a>\n" +
