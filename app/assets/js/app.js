@@ -11,12 +11,14 @@ angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.d
         $routeProvider.when('/developer/applications/new', {templateUrl: '/assets/pages/application_new.html', controller: 'NewApplicationCtrl'});
         $routeProvider.when('/restaurants', {templateUrl: '/assets/pages/restaurants.html', controller: 'RestaurantsCtrl'});
         $routeProvider.when('/restaurants/:id', {templateUrl: '/assets/pages/restaurant.html', controller: 'RestaurantCtrl'});
-        $routeProvider.when('/restaurants/:id/devices/:device_id/edit', {templateUrl: '/assets/pages/restaurant.html', controller: 'RestaurantCtrl'});
+
+        $routeProvider.when('/m/restaurants/:id/devices', {templateUrl: '/assets/pages/devices.html', controller: 'DevicesCtrl'});
+        $routeProvider.when('/m/devices/:id', {templateUrl: '/assets/pages/device.html', controller: 'DeviceCtrl'});
         $routeProvider.otherwise({redirectTo: '/'});
     }])
 
     .value('transitionMap', {
-        "/developer/documentation": {
+        "/developer": {
             "/developer/applications": 'flip'
         },
         "/developer/applications": {

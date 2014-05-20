@@ -5,6 +5,8 @@ angular.module('air-menu.controllers', [])
 	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', 'transitionMap', function($scope, $rootScope, $location, Me, transitionMap) {
         $scope.transitionAnimation = transitionMap.default;
 
+        $scope.isMobile = /iPhone/.test(navigator.userAgent);
+
         Me.get(function(user) {
             $rootScope.user = user;
             $rootScope.$broadcast('air-menu-ui.event.navbar.user', $rootScope.user);
@@ -161,7 +163,6 @@ angular.module('air-menu.controllers', [])
         };
 
         $scope.resourceClick = function(resource) {
-            console.log(resource);
             $location.path('/documentation/' + resource.version + '/' + resource.name);
         };
 
@@ -194,4 +195,40 @@ angular.module('air-menu.controllers', [])
                 $location.path('/developer/applications');
             });
         };
+    }])
+
+
+    .controller('DevicesCtrl', [ '$scope', '$routeParams', 'RestaurantDevices', '$location', function($scope, $routeParams, RestaurantDevices, $location) {
+        $scope.restaurant_id = $routeParams.id;
+        $scope.devices = [ ];
+
+        $scope.editDevice = function(device) {
+            $scope.go('/m/devices/' + device.id);
+        };
+
+        RestaurantDevices.get($scope.restaurant_id, function(devices) {
+            $scope.devices = devices;
+        });
+
+    }])
+
+    .controller('DeviceCtrl', [ '$scope', '$routeParams', 'Devices', function($scope, $routeParams, Devices) {
+        $scope.device_id = $routeParams.id;
+        $scope.device = { };
+        $scope.pending = true;
+
+        Devices.show($scope.device_id, function(device) {
+            $scope.device = device;
+            $scope.pending = false;
+        });
+
+        $scope.update = function() {
+            $scope.pending = true;
+            Devices.update($scope.device_id, $scope.device, function(device) {
+                $scope.pending = false;
+                $scope.device = device;
+                history.back();
+            });
+        };
+
     }]);

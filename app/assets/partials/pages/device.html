@@ -1,17 +1,16 @@
-<div class="modal" style="display: block;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close">&times;</button>
-                <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                <p>One fine body&hellip;</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" ng-click="close()">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
+<div>
+    <div class="text-center"><h1>Edit Device</h1></div>
     </div>
+    <h3 class="header">Device <i class="fa fa-spinner fa-spin pull-right"></i></h3>
+    <form ng-submit="update()">
+        <input type="text" placeholder="name*" ng-model="device.name">
+        <input type="text" placeholder="uuid*" ng-model="device.uuid">
+        <input type="text" placeholder="token" ng-model="device.token">
+        <input type="text" placeholder="platform*" ng-model="device.platform" disabled>
+        <div class="clearfix"></div>
+        <div class="voffset3"></div>
+        <div class="text-center">
+            <button type="submit" class="btn-mobile">update</button>
+        </div>
+    </form>
 </div>

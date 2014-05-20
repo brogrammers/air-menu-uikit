@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>Devices <button class="btn-mobile">add</button></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="list-unstyled mobile-list">
+                <li>
+                    <hr>
+                </li>
+                <li ng-repeat="device in devices">
+                    <a href="javascript:void(0);" ng-click="editDevice(device)">
+                        <h4>{{device.name}} <i class="fa fa-chevron-right pull-right"></i></h4>
+                        <hr>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

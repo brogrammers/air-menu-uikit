@@ -7,7 +7,8 @@ angular.module('air-menu-ui.services.connector', [
         'air-menu-ui.services.connector.company_restaurants',
         'air-menu-ui.services.connector.restaurant_devices',
         'air-menu-ui.services.connector.restaurant_groups',
-        'air-menu-ui.services.connector.restaurant_reviews'
+        'air-menu-ui.services.connector.restaurant_reviews',
+        'air-menu-ui.services.connector.devices'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
@@ -21,6 +22,7 @@ angular.module('air-menu-ui.services.connector', [
                     }
                 };
                 if (method == 'POST') options.data = params || {};
+                if (method == 'PUT') options.data = params || {};
                 if (method == 'GET') options.params = params || {};
 				$http(options)
 				.success(function(data, status, headers, config) {
@@ -36,7 +38,10 @@ angular.module('air-menu-ui.services.connector', [
 			},
 			post: function(path, params, successHandler, errorHandler) {
 				this.fetch('POST', path, params, successHandler, errorHandler);
-			}
+			},
+            put: function(path, params, successHandler, errorHandler) {
+                this.fetch('PUT', path, params, successHandler, errorHandler);
+            }
 		};
 		return Connector;
 	}]);

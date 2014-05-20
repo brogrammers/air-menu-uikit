@@ -6077,6 +6077,72 @@ fieldset[disabled] .btn-default.active {
 .panel > .panel-full > ul > li .loading {
   border-bottom: 1px solid transparent;
 }
+body.mobile-view {
+  background-color: transparent !important;
+  color: white;
+  overflow: hidden;
+}
+body.mobile-view h1,
+body.mobile-view h2,
+body.mobile-view h3,
+body.mobile-view h4,
+body.mobile-view h5 {
+  text-shadow: 0px 0px 10px #373737;
+}
+body.mobile-view h1 .btn-mobile,
+body.mobile-view h2 .btn-mobile,
+body.mobile-view h3 .btn-mobile,
+body.mobile-view h4 .btn-mobile,
+body.mobile-view h5 .btn-mobile {
+  font-size: 45%;
+}
+body.mobile-view .btn-mobile {
+  left: 10px;
+  position: relative;
+  background: transparent;
+  bottom: 3px;
+  border-radius: 17px;
+  border: 1.5px solid white;
+  padding: 1px 15px;
+  box-shadow: 0px 0px 10px #555555;
+  font-size: 1.3em;
+}
+body.mobile-view .header {
+  border-bottom: 1px solid white;
+  padding: 17px 0;
+  width: 94%;
+  float: right;
+  margin-bottom: 25px;
+}
+body.mobile-view form > input[type=text] {
+  margin-bottom: 20px;
+  border: 0px solid transparent;
+  background-color: transparent;
+  border-radius: 0px;
+  width: 89%;
+  float: right;
+  padding-left: 0px;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 1.4em;
+}
+body.mobile-view form > input[type=text]::-webkit-input-placeholder {
+  color: white;
+}
+body.mobile-view ul.mobile-list > li {
+  margin-bottom: 10px;
+}
+body.mobile-view ul.mobile-list > li > a {
+  color: white;
+}
+body.mobile-view ul.mobile-list > li > a:hover {
+  text-decoration: none;
+}
+body.mobile-view ul.mobile-list > li > a > h4 {
+  margin: 20px 0;
+}
+body.mobile-view ul.mobile-list > li > a > hr {
+  margin: 10px 0;
+}
 .slide-down.ng-enter {
   -webkit-animation: slide-down-enter-sequence 400ms linear;
   animation: enter_sequence 400ms linear;

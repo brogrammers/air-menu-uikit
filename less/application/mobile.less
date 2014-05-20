@@ -1,0 +1,78 @@
+body {
+  &.mobile-view {
+    background-color: transparent !important;
+    color: white;
+    overflow: hidden;
+
+    h1, h2, h3, h4, h5 {
+      text-shadow: 0px 0px 10px #373737;
+
+      .btn-mobile {
+        font-size: 45%;
+      }
+    }
+
+    .btn-mobile {
+      left: 10px;
+      position:relative;
+      background: transparent;
+      bottom: 3px;
+      border-radius: 17px;
+      border: 1.5px solid white;
+      padding: 1px 15px;
+      box-shadow: 0px 0px 10px #555555;
+      font-size: 1.3em;
+    }
+
+    .header {
+      border-bottom: 1px solid white;
+      padding: 17px 0;
+      width: 94%;
+      float: right;
+      margin-bottom: 25px;
+    }
+
+    form {
+
+      > input[type=text] {
+        margin-bottom: 20px;
+        border: 0px solid transparent;
+        background-color: transparent;
+        border-radius: 0px;
+        width: 89%;
+        float: right;
+        padding-left: 0px;
+        border-bottom: 1px solid @gray-lighter;
+        font-size: 1.4em;
+
+        &::-webkit-input-placeholder {
+          color: white;
+        }
+      }
+    }
+
+    ul.mobile-list {
+
+      > li {
+        margin-bottom: 10px;
+
+        > a {
+          color: white;
+
+          &:hover {
+            text-decoration: none;
+          }
+
+          > h4 {
+            margin: 20px 0;
+          }
+
+          > hr {
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+  }
+}
+

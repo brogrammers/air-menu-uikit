@@ -14,11 +14,11 @@
       window.API_BASE_URL = '<%= AirMenu::Settings.backend_url %>';
   </script>
 </head>
-<body ng-controller="MainCtrl">
+<body ng-controller="MainCtrl" ng-class="{true:'mobile-view'}[isMobile]">
 <div style="">
-  <navbar ng-if="user" user="user"></navbar>
+  <navbar ng-if="user && !isMobile" user="user"></navbar>
   <ng-view ng-class="transitionAnimation"></ng-view>
-  <footer class="footer" ng-if="user">
+  <footer class="footer" ng-if="user && !isMobile">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
