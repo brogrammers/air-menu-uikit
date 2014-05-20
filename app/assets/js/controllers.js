@@ -2,7 +2,7 @@
 
 angular.module('air-menu.controllers', [])
 
-	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', 'transitionMap', 'UserOrders', 'Restaurants', 'btfModal', function($scope, $rootScope, $location, Me, transitionMap, UserOrders, Restaurants, btfModal) {
+	.controller('MainCtrl', [ '$scope', '$rootScope', '$location', 'Me', 'transitionMap', function($scope, $rootScope, $location, Me, transitionMap) {
         $scope.transitionAnimation = transitionMap.default;
 
         Me.get(function(user) {
@@ -36,7 +36,6 @@ angular.module('air-menu.controllers', [])
     .controller('RestaurantsCtrl', [ '$scope', 'CompanyRestaurants', function($scope, CompanyRestaurants) {
         $scope.restaurants = [ ];
 
-        console.log('ok');
         CompanyRestaurants.get($scope.user.company.id, function(restaurants) {
             $scope.restaurants = restaurants;
         })
@@ -47,7 +46,7 @@ angular.module('air-menu.controllers', [])
 
     }])
 
-    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', 'RestaurantDevices', 'RestaurantGroups', 'RestaurantReviews', '$routeParams', 'parallaxHelper', 'btfModal', function($scope, Restaurants, RestaurantDevices, RestaurantGroups, RestaurantReviews, $routeParams, parallaxHelper, btfModal) {
+    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', 'RestaurantDevices', 'RestaurantGroups', 'RestaurantReviews', '$routeParams', function($scope, Restaurants, RestaurantDevices, RestaurantGroups, RestaurantReviews, $routeParams) {
         $scope.restaurant_id = $routeParams.id;
         $scope.restaurant = { description: '',location: { latitude: 53.3478, longitude: -6.2597 } };
         $scope.pending = { };
@@ -60,13 +59,6 @@ angular.module('air-menu.controllers', [])
         $scope.deviceEditMode = false;
         $scope.groupEditMode = false;
         $scope.readMore = false;
-        $scope.background = parallaxHelper.createAnimator(-0.3, 150, -150);
-
-        $scope.modal = btfModal({
-            controller: 'ModalCtrl',
-            controllerAs: 'modal',
-            templateUrl: '/assets/pages/device.html'
-        });
 
         Restaurants.show($scope.restaurant_id, function(restaurant) {
             $scope.restaurant = restaurant;
