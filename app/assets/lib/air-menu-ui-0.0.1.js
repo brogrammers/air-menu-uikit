@@ -182,16 +182,19 @@ angular.module('air-menu-ui.services', [
 ]);
 
 angular.module('air-menu-ui.services.connector', [
-        'air-menu-ui.services.connector.me',
-        'air-menu-ui.services.connector.docs',
-        'air-menu-ui.services.connector.applications',
-        'air-menu-ui.services.connector.user_orders',
-        'air-menu-ui.services.connector.restaurants',
-        'air-menu-ui.services.connector.company_restaurants',
-        'air-menu-ui.services.connector.restaurant_devices',
-        'air-menu-ui.services.connector.restaurant_groups',
-        'air-menu-ui.services.connector.restaurant_reviews',
-        'air-menu-ui.services.connector.devices'
+    'air-menu-ui.services.connector.me',
+    'air-menu-ui.services.connector.docs',
+    'air-menu-ui.services.connector.applications',
+    'air-menu-ui.services.connector.user_orders',
+    'air-menu-ui.services.connector.restaurants',
+    'air-menu-ui.services.connector.company_restaurants',
+    'air-menu-ui.services.connector.restaurant_devices',
+    'air-menu-ui.services.connector.restaurant_groups',
+    'air-menu-ui.services.connector.restaurant_reviews',
+    'air-menu-ui.services.connector.restaurant_staff_members',
+    'air-menu-ui.services.connector.group_staff_members',
+    'air-menu-ui.services.connector.devices',
+    'air-menu-ui.services.connector.groups'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
@@ -314,6 +317,49 @@ angular.module('air-menu-ui.services.connector.docs', [])
             }
 		}
 	}]);
+angular.module('air-menu-ui.services.connector.group_staff_members', [])
+
+    .factory('GroupStaffMembers', [ 'connector', 'StaffMember', function(connector, StaffMember) {
+        var baseUrl = '/api/v1/groups/';
+        return {
+            get: function(id, successHandler, errorHandler) {
+                connector.get(baseUrl + id + '/staff_members', null, function(data) {
+                    var staff_members = [ ];
+                    angular.forEach(data['staff_members'], function(staffMemberData) {
+                        staff_members.push(new StaffMember(staffMemberData));
+                    });
+                    successHandler(staff_members);
+                }, errorHandler, true);
+            },
+            create: function(id, params, successHandler, errorHandler) {
+                connector.post(baseUrl + id + '/staff_members', params, function(data) {
+                    successHandler(new StaffMember(data['staff_member']));
+                }, errorHandler, true);
+            }
+        }
+    }]);
+angular.module('air-menu-ui.services.connector.groups', [])
+
+    .factory('Groups', [ 'connector', 'Group', function(connector, Group) {
+        var baseUrl = '/api/v1/groups';
+        return {
+            show: function(id, successHandler, errorHandler) {
+                connector.get(baseUrl + '/' + id, null, function(data) {
+                    successHandler(new Group(data['group']));
+                }, errorHandler, true);
+            },
+            update: function(id, params, successHandler, errorHandler) {
+                connector.put(baseUrl + '/' + id, params, function(data) {
+                    successHandler(new Group(data['group']));
+                }, errorHandler, true);
+            },
+            delete: function(id, successHandler, errorHandler) {
+                connector.delete(baseUrl + '/' + id, function(data) {
+                    successHandler(new Group(data['group']));
+                }, errorHandler, true);
+            }
+        }
+    }]);
 angular.module('air-menu-ui.services.connector.me', [])
 
 	.factory('Me', [ 'connector', 'User', function(connector, User) {
@@ -363,6 +409,11 @@ angular.module('air-menu-ui.services.connector.restaurant_groups', [])
                     });
                     successHandler(groups);
                 }, errorHandler, true);
+            },
+            create: function(restaurant_id, params, successHandler, errorHandler) {
+                connector.post(baseUrl + restaurant_id + '/groups', params, function(data) {
+                    successHandler(new Group(data['group']));
+                }, errorHandler, true);
             }
         }
     }]);
@@ -378,6 +429,27 @@ angular.module('air-menu-ui.services.connector.restaurant_reviews', [])
                         reviews.push(new Review(reviewData));
                     });
                     successHandler(reviews);
+                }, errorHandler, true);
+            }
+        }
+    }]);
+angular.module('air-menu-ui.services.connector.restaurant_staff_members', [])
+
+    .factory('RestaurantStaffMembers', [ 'connector', 'StaffMember', function(connector, StaffMember) {
+        var baseUrl = '/api/v1/restaurants/';
+        return {
+            get: function(restaurant_id, successHandler, errorHandler) {
+                connector.get(baseUrl + restaurant_id + '/staff_members', null, function(data) {
+                    var staff_members = [ ];
+                    angular.forEach(data['staff_members'], function(staffMemberData) {
+                        staff_members.push(new StaffMember(staffMemberData));
+                    });
+                    successHandler(staff_members);
+                }, errorHandler, true);
+            },
+            create: function(restaurant_id, params, successHandler, errorHandler) {
+                connector.post(baseUrl + restaurant_id + '/staff_members', params, function(data) {
+                    successHandler(new StaffMember(data['staff_member']));
                 }, errorHandler, true);
             }
         }

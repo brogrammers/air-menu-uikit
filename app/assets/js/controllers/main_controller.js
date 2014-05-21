@@ -22,13 +22,10 @@ angular.module('air-menu.controllers.main', [])
             $location.path(path);
         };
 
-        $scope.avatar = function(avatar, type) {
+        $scope.avatar = function(avatar, type, klass) {
             var path = '';
-            if (avatar) {
-                path = avatar;
-            } else {
-                path = '/assets/' + (type||'profile') + '_placeholder.png';
-            }
-            return '<img src="' + path + '" class="img-responsive img-thumbnail" />';
+            if (avatar) path = avatar;
+            else path = '/assets/' + (type||'profile') + '_placeholder.png';
+            return '<img src="' + path + '" class="' + (klass||'img-responsive img-thumbnail') + '" />';
         }
     }]);

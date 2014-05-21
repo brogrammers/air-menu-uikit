@@ -1,0 +1,29 @@
+<div style="height: 100%;">
+    <div class="text-center" ng-if="editMode"><h1>Edit Group</h1></div>
+    <div class="text-center" ng-if="!editMode"><h1>Add Group</h1></div>
+    <h3 class="header">Group <i class="fa fa-spinner fa-spin pull-right" ng-if="pending" style="margin-right: 5px;"></i></h3>
+    <form ng-submit="submit()">
+        <input type="text" placeholder="name*" ng-model="group.name">
+        <div class="clearfix"></div>
+        <div class="voffset4"></div>
+        <div class="container" ng-repeat="staff_member in staff_members">
+            <div class="row" style="margin-bottom: 5px;">
+                <div class="col-xs-3 col-xs-offset-1" ng-bind-html="avatar(staff_member.avatar, 'profile', 'img-responsive img-rounded')">
+
+                </div>
+                <div class="col-xs-8">
+                    <a href="javascript:void(0);" ng-click="enable(staff_member)">{{staff_member.name}}</a>
+                    <span class="pull-right"><input ng-model="staff_member.enabled" type="checkbox"></span>
+                    <hr style="margin: 3px 0;">
+                    <p>{{staff_member.staff_kind.name}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="voffset3"></div>
+        <div class="text-center">
+            <button ng-if="editMode" type="submit" class="btn-mobile">update</button>
+            <button ng-if="!editMode" type="submit" class="btn-mobile">create</button>
+        </div>
+        <div class="voffset2"></div>
+    </form>
+</div>

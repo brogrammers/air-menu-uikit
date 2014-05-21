@@ -15,6 +15,10 @@ angular.module('air-menu', ['air-menu.animations', 'air-menu.filters', 'air-menu
         $routeProvider.when('/m/restaurants/:id/devices', {templateUrl: '/assets/pages/devices.html', controller: 'DevicesCtrl'});
         $routeProvider.when('/m/restaurants/:id/devices/new', {templateUrl: '/assets/pages/device.html', controller: 'DeviceCtrl'});
         $routeProvider.when('/m/restaurants/:id/devices/:device_id', {templateUrl: '/assets/pages/device.html', controller: 'DeviceCtrl'});
+
+        $routeProvider.when('/m/restaurants/:id/groups', {templateUrl: '/assets/pages/groups.html', controller: 'GroupsCtrl'});
+        $routeProvider.when('/m/restaurants/:id/groups/new', {templateUrl: '/assets/pages/group.html', controller: 'GroupCtrl'});
+        $routeProvider.when('/m/restaurants/:id/groups/:group_id', {templateUrl: '/assets/pages/group.html', controller: 'GroupCtrl'});
         $routeProvider.otherwise({redirectTo: '/'});
     }])
 

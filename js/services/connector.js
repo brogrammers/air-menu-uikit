@@ -1,14 +1,17 @@
 angular.module('air-menu-ui.services.connector', [
-        'air-menu-ui.services.connector.me',
-        'air-menu-ui.services.connector.docs',
-        'air-menu-ui.services.connector.applications',
-        'air-menu-ui.services.connector.user_orders',
-        'air-menu-ui.services.connector.restaurants',
-        'air-menu-ui.services.connector.company_restaurants',
-        'air-menu-ui.services.connector.restaurant_devices',
-        'air-menu-ui.services.connector.restaurant_groups',
-        'air-menu-ui.services.connector.restaurant_reviews',
-        'air-menu-ui.services.connector.devices'
+    'air-menu-ui.services.connector.me',
+    'air-menu-ui.services.connector.docs',
+    'air-menu-ui.services.connector.applications',
+    'air-menu-ui.services.connector.user_orders',
+    'air-menu-ui.services.connector.restaurants',
+    'air-menu-ui.services.connector.company_restaurants',
+    'air-menu-ui.services.connector.restaurant_devices',
+    'air-menu-ui.services.connector.restaurant_groups',
+    'air-menu-ui.services.connector.restaurant_reviews',
+    'air-menu-ui.services.connector.restaurant_staff_members',
+    'air-menu-ui.services.connector.group_staff_members',
+    'air-menu-ui.services.connector.devices',
+    'air-menu-ui.services.connector.groups'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {

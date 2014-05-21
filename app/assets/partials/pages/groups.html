@@ -1,0 +1,22 @@
+<div class="container" style="height: 100%;">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>Groups <button class="btn-mobile" ng-click="addGroup()">add</button></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="list-unstyled mobile-list">
+                <li>
+                    <hr>
+                </li>
+                <li ng-repeat="group in groups">
+                    <a href="javascript:void(0);" ng-click="editGroup(group)" ng-swipe-left="deleteGroup(group)">
+                        <h4>{{group.name}} <i class="fa fa-chevron-right pull-right"></i></h4>
+                        <hr>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,11 @@ angular.module('air-menu-ui.services.connector.restaurant_groups', [])
                     });
                     successHandler(groups);
                 }, errorHandler, true);
+            },
+            create: function(restaurant_id, params, successHandler, errorHandler) {
+                connector.post(baseUrl + restaurant_id + '/groups', params, function(data) {
+                    successHandler(new Group(data['group']));
+                }, errorHandler, true);
             }
         }
     }]);

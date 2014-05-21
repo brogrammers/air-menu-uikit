@@ -11,5 +11,7 @@ angular.module('air-menu.controllers', [
     'air-menu.controllers.applications',
     'air-menu.controllers.application',
     'air-menu.controllers.devices',
-    'air-menu.controllers.device'
+    'air-menu.controllers.device',
+    'air-menu.controllers.groups',
+    'air-menu.controllers.group'
 ]);
