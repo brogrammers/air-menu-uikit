@@ -8,7 +8,7 @@ angular.module('air-menu', ['air-menu.animations', 'air-menu.filters', 'air-menu
         $routeProvider.when('/developer', {templateUrl: '/assets/pages/developer.html', controller: 'DeveloperCtrl'});
         $routeProvider.when('/developer/documentation', {templateUrl: '/assets/pages/documentation.html', controller: 'DocumentationCtrl'});
         $routeProvider.when('/developer/applications', {templateUrl: '/assets/pages/applications.html', controller: 'ApplicationsCtrl'});
-        $routeProvider.when('/developer/applications/new', {templateUrl: '/assets/pages/application_new.html', controller: 'NewApplicationCtrl'});
+        $routeProvider.when('/developer/applications/new', {templateUrl: '/assets/pages/application.html', controller: 'ApplicationCtrl'});
         $routeProvider.when('/restaurants', {templateUrl: '/assets/pages/restaurants.html', controller: 'RestaurantsCtrl'});
         $routeProvider.when('/restaurants/:id', {templateUrl: '/assets/pages/restaurant.html', controller: 'RestaurantCtrl'});
 

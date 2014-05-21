@@ -15,6 +15,7 @@
 //= require ../js/app.js
 //= require ../js/animations.js
 //= require ../js/controllers.js
+//= require_directory ../js/controllers
 //= require ../js/directives.js
 //= require ../js/filters.js
 //= require ../js/services.js
