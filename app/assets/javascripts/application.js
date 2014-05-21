@@ -13,6 +13,7 @@
 //= require ../lib/angular-google-maps-1.0.18.js
 //= require ../lib/air-menu-ui-0.0.1.js
 //= require ../js/app.js
+//= require ../js/animations.js
 //= require ../js/controllers.js
 //= require ../js/directives.js
 //= require ../js/filters.js

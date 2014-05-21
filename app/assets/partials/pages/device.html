@@ -1,16 +1,17 @@
-<div>
-    <div class="text-center"><h1>Edit Device</h1></div>
-    </div>
-    <h3 class="header">Device <i class="fa fa-spinner fa-spin pull-right"></i></h3>
-    <form ng-submit="update()">
+<div style="height: 100%;">
+    <div class="text-center" ng-if="editMode"><h1>Edit Device</h1></div>
+    <div class="text-center" ng-if="!editMode"><h1>Add Device</h1></div>
+    <h3 class="header">Device <i class="fa fa-spinner fa-spin pull-right" ng-if="pending" style="margin-right: 5px;"></i></h3>
+    <form ng-submit="submit()">
         <input type="text" placeholder="name*" ng-model="device.name">
         <input type="text" placeholder="uuid*" ng-model="device.uuid">
         <input type="text" placeholder="token" ng-model="device.token">
         <input type="text" placeholder="platform*" ng-model="device.platform" disabled>
         <div class="clearfix"></div>
-        <div class="voffset3"></div>
+        <div class="voffset4"></div>
         <div class="text-center">
-            <button type="submit" class="btn-mobile">update</button>
+            <button ng-if="editMode" type="submit" class="btn-mobile">update</button>
+            <button ng-if="!editMode" type="submit" class="btn-mobile">create</button>
         </div>
     </form>
 </div>

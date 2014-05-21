@@ -23,6 +23,7 @@ angular.module('air-menu-ui.services.connector', [
                 };
                 if (method == 'POST') options.data = params || {};
                 if (method == 'PUT') options.data = params || {};
+                if (method == 'DELETE') options.data = params;
                 if (method == 'GET') options.params = params || {};
 				$http(options)
 				.success(function(data, status, headers, config) {
@@ -41,6 +42,9 @@ angular.module('air-menu-ui.services.connector', [
 			},
             put: function(path, params, successHandler, errorHandler) {
                 this.fetch('PUT', path, params, successHandler, errorHandler);
+            },
+            delete: function(path, successHandler, errorHandler) {
+                this.fetch('DELETE', path, null, successHandler, errorHandler);
             }
 		};
 		return Connector;

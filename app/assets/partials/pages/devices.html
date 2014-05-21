@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" style="height: 100%;">
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h1>Devices <button class="btn-mobile">add</button></h1>
+            <h1>Devices <button class="btn-mobile" ng-click="addDevice()">add</button></h1>
         </div>
     </div>
     <div class="row">
@@ -11,7 +11,7 @@
                     <hr>
                 </li>
                 <li ng-repeat="device in devices">
-                    <a href="javascript:void(0);" ng-click="editDevice(device)">
+                    <a href="javascript:void(0);" ng-click="editDevice(device)" ng-swipe-left="deleteDevice(device)">
                         <h4>{{device.name}} <i class="fa fa-chevron-right pull-right"></i></h4>
                         <hr>
                     </a>

@@ -206,6 +206,7 @@ angular.module('air-menu-ui.services.connector', [
                 };
                 if (method == 'POST') options.data = params || {};
                 if (method == 'PUT') options.data = params || {};
+                if (method == 'DELETE') options.data = params;
                 if (method == 'GET') options.params = params || {};
 				$http(options)
 				.success(function(data, status, headers, config) {
@@ -224,6 +225,9 @@ angular.module('air-menu-ui.services.connector', [
 			},
             put: function(path, params, successHandler, errorHandler) {
                 this.fetch('PUT', path, params, successHandler, errorHandler);
+            },
+            delete: function(path, successHandler, errorHandler) {
+                this.fetch('DELETE', path, null, successHandler, errorHandler);
             }
 		};
 		return Connector;
@@ -266,15 +270,20 @@ angular.module('air-menu-ui.services.connector.company_restaurants', [])
 angular.module('air-menu-ui.services.connector.devices', [])
 
     .factory('Devices', [ 'connector', 'Device', function(connector, Device) {
-        var baseUrl = '/api/v1/devices/';
+        var baseUrl = '/api/v1/devices';
         return {
             show: function(device_id, successHandler, errorHandler) {
-                connector.get(baseUrl + device_id, null, function(data) {
+                connector.get(baseUrl + '/' + device_id, null, function(data) {
                     successHandler(new Device(data['device']));
                 }, errorHandler, true);
             },
             update: function(id, params, successHandler, errorHandler) {
-                connector.put(baseUrl + id, params, function(data) {
+                connector.put(baseUrl + '/' + id, params, function(data) {
+                    successHandler(new Device(data['device']));
+                }, errorHandler, true);
+            },
+            delete: function(id, successHandler, errorHandler) {
+                connector.delete(baseUrl + '/' + id, function(data) {
                     successHandler(new Device(data['device']));
                 }, errorHandler, true);
             }
@@ -332,6 +341,11 @@ angular.module('air-menu-ui.services.connector.restaurant_devices', [])
                         devices.push(new Device(deviceData));
                     });
                     successHandler(devices);
+                }, errorHandler, true);
+            },
+            create: function(restaurant_id, params, successHandler, errorHandler) {
+                connector.post(baseUrl + restaurant_id + '/devices', params, function(data) {
+                    successHandler(new Device(data['device']));
                 }, errorHandler, true);
             }
         }

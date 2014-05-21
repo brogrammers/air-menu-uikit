@@ -11,6 +11,11 @@ angular.module('air-menu-ui.services.connector.restaurant_devices', [])
                     });
                     successHandler(devices);
                 }, errorHandler, true);
+            },
+            create: function(restaurant_id, params, successHandler, errorHandler) {
+                connector.post(baseUrl + restaurant_id + '/devices', params, function(data) {
+                    successHandler(new Device(data['device']));
+                }, errorHandler, true);
             }
         }
     }]);

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.directives', 'air-menu.controllers', 'air-menu-ui', 'google-maps'])
+angular.module('air-menu', ['air-menu.animations', 'air-menu.filters', 'air-menu.services', 'air-menu.directives', 'air-menu.controllers', 'air-menu-ui', 'google-maps'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {templateUrl: '/assets/pages/home.html', controller: 'HomeCtrl'});
@@ -13,7 +13,8 @@ angular.module('air-menu', ['air-menu.filters', 'air-menu.services', 'air-menu.d
         $routeProvider.when('/restaurants/:id', {templateUrl: '/assets/pages/restaurant.html', controller: 'RestaurantCtrl'});
 
         $routeProvider.when('/m/restaurants/:id/devices', {templateUrl: '/assets/pages/devices.html', controller: 'DevicesCtrl'});
-        $routeProvider.when('/m/devices/:id', {templateUrl: '/assets/pages/device.html', controller: 'DeviceCtrl'});
+        $routeProvider.when('/m/restaurants/:id/devices/new', {templateUrl: '/assets/pages/device.html', controller: 'DeviceCtrl'});
+        $routeProvider.when('/m/restaurants/:id/devices/:device_id', {templateUrl: '/assets/pages/device.html', controller: 'DeviceCtrl'});
         $routeProvider.otherwise({redirectTo: '/'});
     }])
 
