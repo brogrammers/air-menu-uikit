@@ -6133,6 +6133,16 @@ body.mobile-view form > input[type=text] {
 body.mobile-view form > input[type=text]::-webkit-input-placeholder {
   color: white;
 }
+body.mobile-view form select {
+  width: 89%;
+  float: right;
+  margin-bottom: 20px;
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 3px 0 5px 0;
+  border-bottom: 1px solid #ffffff;
+  font-size: 1.4em;
+}
 body.mobile-view ul.mobile-list > li {
   margin-bottom: 10px;
 }

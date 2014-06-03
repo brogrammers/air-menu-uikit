@@ -44448,9 +44448,9 @@ angular.module('air-menu-ui.directives.resource', [])
 			templateUrl: '/air-menu/resource.html',
 			controller: [ '$scope', function($scope) {
                 $scope.select = function(selectedMethod) {
-                    angular.forEach($scope.resource.methods, function(method) {
-                        if (selectedMethod != method) method.selected = false;
-                    });
+//                    angular.forEach($scope.resource.methods, function(method) {
+//                        if (selectedMethod != method) method.selected = false;
+//                    });
                     selectedMethod.selected = !selectedMethod.selected;
                 }
 			}]

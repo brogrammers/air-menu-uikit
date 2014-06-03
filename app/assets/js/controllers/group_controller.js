@@ -1,12 +1,14 @@
 angular.module('air-menu.controllers.group', [])
 
-    .controller('GroupCtrl', [ '$scope', '$routeParams', 'RestaurantGroups', 'RestaurantStaffMembers', 'GroupStaffMembers', 'Groups', function($scope, $routeParams, RestaurantGroups, RestaurantStaffMembers, GroupStaffMembers, Groups) {
+    .controller('GroupCtrl', [ '$scope', '$routeParams', 'RestaurantGroups', 'RestaurantStaffMembers', 'RestaurantDevices', 'GroupStaffMembers', 'Groups', function($scope, $routeParams, RestaurantGroups, RestaurantStaffMembers, RestaurantDevices, GroupStaffMembers, Groups) {
         $scope.restaurant_id = $routeParams.id;
         $scope.group_id = $routeParams.group_id;
         $scope.staff_members = [ ];
+        $scope.devices = [ ];
         $scope.groups = { };
 
         $scope.submit = function() {
+            console.log('sdh');
             if ($scope.editMode) {
                 $scope.updateGroup();
             } else {
@@ -33,6 +35,15 @@ angular.module('air-menu.controllers.group', [])
             RestaurantStaffMembers.get($scope.restaurant_id, function (staff_members) {
                 $scope.staff_members = staff_members;
                 $scope.getGroupStaffMembers();
+            }, function(data) {
+                $scope.pending = false;
+            });
+        };
+
+        $scope.getRestaurantDevices = function() {
+            $scope.pending = true;
+            RestaurantDevices.get($scope.restaurant_id, function (devices) {
+                $scope.devices = devices;
             }, function(data) {
                 $scope.pending = false;
             });
@@ -67,7 +78,11 @@ angular.module('air-menu.controllers.group', [])
 
         $scope.updateGroup = function() {
             $scope.pending = true;
-            Groups.update($scope.group_id, $scope.group, function(group) {
+            $scope.groupModel = { };
+            angular.extend($scope.groupModel, $scope.group);
+            $scope.groupModel.device_id = $scope.group.device.id;
+            $scope.groupModel.staff_members = $scope.collectSelectedStaffMember();
+            Groups.update($scope.group_id, $scope.groupModel, function(group) {
                 $scope.pending = false;
                 $scope.group = group;
                 history.back();
@@ -76,8 +91,12 @@ angular.module('air-menu.controllers.group', [])
             });
         };
 
-        $scope.updateGroupStaffMembers = function() {
-            // DAMN !
+        $scope.collectSelectedStaffMember = function() {
+            var result = '';
+            angular.forEach($scope.staff_members, function(staff_member) {
+                if (staff_member.enabled) result += staff_member.id + ' '
+            });
+            return result.substring(0, result.length - 1);
         };
 
         if ($scope.group_id) {
@@ -88,5 +107,6 @@ angular.module('air-menu.controllers.group', [])
             $scope.editMode = false;
         }
         $scope.getRestaurantStaffMembers();
+        $scope.getRestaurantDevices();
 
     }]);

@@ -4,6 +4,10 @@
     <h3 class="header">Group <i class="fa fa-spinner fa-spin pull-right" ng-if="pending" style="margin-right: 5px;"></i></h3>
     <form ng-submit="submit()">
         <input type="text" placeholder="name*" ng-model="group.name">
+        <select ng-model="group.device">
+            <option value="">device*</option>
+            <option ng-repeat="device in devices" value="{{device.id}}" ng-selected="{{group.device.id == device.id}}">{{device.name}}</option>
+        </select>
         <div class="clearfix"></div>
         <div class="voffset4"></div>
         <div class="container" ng-repeat="staff_member in staff_members">
