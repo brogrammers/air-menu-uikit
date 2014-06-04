@@ -15,7 +15,7 @@
   </script>
 </head>
 <body ng-controller="MainCtrl" ng-class="{true:'mobile-view'}[isMobile]">
-<div style="">
+<div style="height: 100%;">
   <navbar ng-if="user && !isMobile" user="user"></navbar>
   <ng-view ng-class="transitionAnimation"></ng-view>
   <footer class="footer" ng-if="user && !isMobile">
