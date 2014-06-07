@@ -17,26 +17,27 @@
 <body ng-controller="MainCtrl" ng-class="{true:'mobile-view'}[isMobile]">
 <div style="height: 100%;">
   <navbar ng-if="user && !isMobile" user="user"></navbar>
-  <ng-view ng-class="transitionAnimation"></ng-view>
-  <footer class="footer" ng-if="user && !isMobile">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <p>&copy; AirMenu &nbsp;&nbsp;&nbsp; <i class="fa fa-coffee"></i> Designed with love </p>
-        </div>
-        <div class="col-lg-6">
-          <p class="text-right visible-lg visible-md">
-            <ul class="list-unstyled list-inline pull-right" style="margin: 0px;">
-              <li><a href=""><i class="fa fa-truck"></i> About</a></li>
-              <li><a href=""><i class="fa fa-certificate"></i> Career</a></li>
-              <li><a href="javascript:void(0)" ng-click="go('/developer')"><i class="fa fa-wrench"></i> Developer</a></li>
-              <li><a href=""><i class="fa fa-phone"></i> Contact</a></li>
-            </ul>
-          </p>
-        </div>
+  <ng-view></ng-view>
+
+</div>
+<footer class="footer" ng-if="user && !isMobile">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <p>&copy; AirMenu &nbsp;&nbsp;&nbsp; <i class="fa fa-coffee"></i> Designed with love </p>
+      </div>
+      <div class="col-lg-6">
+        <p class="text-right visible-lg visible-md">
+        <ul class="list-unstyled list-inline pull-right" style="margin: 0px;">
+          <li><a href=""><i class="fa fa-truck"></i> About</a></li>
+          <li><a href=""><i class="fa fa-certificate"></i> Career</a></li>
+          <li><a href="javascript:void(0)" ng-click="go('/developer')"><i class="fa fa-wrench"></i> Developer</a></li>
+          <li><a href=""><i class="fa fa-phone"></i> Contact</a></li>
+        </ul>
+        </p>
       </div>
     </div>
-  </footer>
-</div>
+  </div>
+</footer>
 </body>
 </html>
