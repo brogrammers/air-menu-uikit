@@ -3,11 +3,21 @@
   border-radius: 0;
   > .panel-heading {
     border-bottom: 0px solid transparent !important;
+
+    > i {margin-right: 3px;}
   }
   > .panel-full {
     padding: 0;
-    height: 250px !important;
+    height: 250px;
     overflow: scroll;
+
+    &.panel-padded {
+      padding: 10px 15px;
+    }
+
+    &.panel-flexible-height {
+      height: auto;
+    }
   }
   > .panel-full {
     > ul {

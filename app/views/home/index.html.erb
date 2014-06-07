@@ -17,7 +17,7 @@
 <body ng-controller="MainCtrl" ng-class="{true:'mobile-view'}[isMobile]">
 <div style="height: 100%;">
   <navbar ng-if="user && !isMobile" user="user"></navbar>
-  <ng-view></ng-view>
+  <ng-view class="am-ng-view"></ng-view>
 
 </div>
 <footer class="footer" ng-if="user && !isMobile">

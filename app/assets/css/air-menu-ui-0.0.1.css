@@ -5837,7 +5837,7 @@ body {
   height: 100%;
 }
 .am-ng-view > div {
-  padding-bottom: 50px;
+  padding-bottom: 80px;
 }
 p {
   font-weight: 300;
@@ -6059,10 +6059,19 @@ fieldset[disabled] .btn-default.active {
 .panel > .panel-heading {
   border-bottom: 0px solid transparent !important;
 }
+.panel > .panel-heading > i {
+  margin-right: 3px;
+}
 .panel > .panel-full {
   padding: 0;
-  height: 250px !important;
+  height: 250px;
   overflow: scroll;
+}
+.panel > .panel-full.panel-padded {
+  padding: 10px 15px;
+}
+.panel > .panel-full.panel-flexible-height {
+  height: auto;
 }
 .panel > .panel-full > ul {
   padding: 0;
