@@ -6,8 +6,11 @@ require 'pp'
 
 class ApiProxyController < ApplicationController
 
+  before_filter :check_session
+
   def proxy
     create_user and return if path == '/api/v1/users'
+    get_docs and return if path =~ /docs/
     response = access_token.send request_method.downcase.to_sym, path, :params => params
     self.response.headers = response.headers
     render :json => response.body, :status => response.status
@@ -26,9 +29,16 @@ class ApiProxyController < ApplicationController
     render :json => response.body, :status => response.code
   end
 
+  def get_docs
+    uri = URI(AirMenu::Settings.backend_url + path)
+    response = Net::HTTP.get(uri)
+    render :json => response, :status => 200
+  end
+
   protected
 
   def check_session
+    return if path == '/api/v1/users' || path =~ /docs/
     handle_missing_session unless access_token
   end
 

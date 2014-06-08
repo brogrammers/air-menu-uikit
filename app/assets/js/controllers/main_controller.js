@@ -9,7 +9,9 @@ angular.module('air-menu.controllers.main', [])
             $rootScope.user = user;
             $rootScope.$broadcast('air-menu-ui.event.navbar.user', $rootScope.user);
         }, function() {
-            $location.path('/login');
+            if ($location.$$path != '/developer/documentation') {
+                $location.path('/login');
+            }
         });
 
         $rootScope.go = function(path) {
