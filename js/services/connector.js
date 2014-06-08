@@ -11,7 +11,8 @@ angular.module('air-menu-ui.services.connector', [
     'air-menu-ui.services.connector.restaurant_staff_members',
     'air-menu-ui.services.connector.group_staff_members',
     'air-menu-ui.services.connector.devices',
-    'air-menu-ui.services.connector.groups'
+    'air-menu-ui.services.connector.groups',
+    'air-menu-ui.services.connector.users'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {

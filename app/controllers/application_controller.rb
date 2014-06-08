@@ -46,4 +46,10 @@ class ApplicationController < ActionController::Base
   def client
     @client ||= OAuth2::Client.new((params[:client_id] || AirMenu::Settings.client_id), (params[:client_secret] || AirMenu::Settings.client_secret), :site => AirMenu::Settings.backend_url, :token_url => '/api/oauth2/access_tokens')
   end
+
+  def create_session
+    scope_parameter = AirMenu::Settings.scopes.join ' '
+    access_token = client.password.get_token(params[:username], params[:password], :scope => scope_parameter)
+    session[:access_token] = access_token.to_hash[:access_token]
+  end
 end

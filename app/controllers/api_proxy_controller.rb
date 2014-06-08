@@ -1,13 +1,13 @@
 require Rails.root + 'lib/air_menu'
+require 'net/http'
 require 'oauth2'
 require 'json'
 require 'pp'
 
 class ApiProxyController < ApplicationController
 
-  before_filter :check_session
-
   def proxy
+    create_user and return if path == '/api/v1/users'
     response = access_token.send request_method.downcase.to_sym, path, :params => params
     self.response.headers = response.headers
     render :json => response.body, :status => response.status
@@ -17,6 +17,13 @@ class ApiProxyController < ApplicationController
     render :json => response.body, :status => response.status
   rescue Faraday::ConnectionFailed
     render :json => {:error => 'service_unavailable'}, :status => 502
+  end
+
+  def create_user
+    uri = URI(AirMenu::Settings.backend_url + path)
+    response = Net::HTTP.post_form(uri, params)
+    create_session
+    render :json => response.body, :status => response.code
   end
 
   protected

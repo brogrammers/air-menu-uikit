@@ -29,18 +29,45 @@ angular.module("/air-menu/login-box.html", []).run(["$templateCache", function($
     "			<input type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"Username\" ng-model=\"username\">\n" +
     "		</div>\n" +
     "	</div>\n" +
+    "    <div class=\"form-group\" ng-show=\"registerMode\">\n" +
+    "        <div class=\"input-group\">\n" +
+    "            <span class=\"input-group-addon\"><i class=\"fa fa-coffee\"></i></span>\n" +
+    "            <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"Full Name\" ng-model=\"name\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"form-group\" ng-show=\"registerMode\">\n" +
+    "        <div class=\"input-group\">\n" +
+    "            <span class=\"input-group-addon\"><i class=\"fa fa-mobile-phone\"></i></span>\n" +
+    "            <input type=\"text\" class=\"form-control\" id=\"phone\" placeholder=\"Phone Number\" ng-model=\"phone\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"form-group\" ng-show=\"registerMode\">\n" +
+    "        <div class=\"input-group\">\n" +
+    "            <span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span>\n" +
+    "            <input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"Email\" ng-model=\"email\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
     "	<div class=\"form-group\">\n" +
     "		<div class=\"input-group\">\n" +
     "			<span class=\"input-group-addon\"><i class=\"fa fa-lock\"></i></span>\n" +
     "			<input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Password\" ng-model=\"password\">\n" +
     "		</div>\n" +
     "	</div>\n" +
-    "	<div class=\"checkbox\">\n" +
+    "    <div class=\"form-group\" ng-show=\"registerMode\">\n" +
+    "        <div class=\"input-group\">\n" +
+    "            <span class=\"input-group-addon\"><i class=\"fa fa-lock\"></i></span>\n" +
+    "            <input type=\"password\" class=\"form-control\" id=\"confirmPassword\" placeholder=\"Confirm Password\" ng-model=\"confirmPassword\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "	<div class=\"checkbox\" ng-show=\"!registerMode\">\n" +
     "		<label>\n" +
     "			<input type=\"checkbox\" /> Remember Me\n" +
     "		</label>\n" +
     "	</div>\n" +
-    "	<button type=\"submit\" class=\"btn btn-success btn-block {{pending || !username || !password ? 'disabled' : ''}}\" {{pending ? 'disabled' : ''}}>SIGN IN</button>\n" +
+    "	<button type=\"submit\" ng-show=\"!registerMode\" class=\"btn btn-success btn-block {{pending || !username || !password ? 'disabled' : ''}}\" {{pending ? 'disabled' : ''}}>SIGN IN</button>\n" +
+    "    <button type=\"button\" ng-show=\"!registerMode\" class=\"btn btn-info btn-block\" ng-click=\"registerMode=!registerMode\">SIGN UP</button>\n" +
+    "    <button type=\"button\" ng-show=\"registerMode\" class=\"btn btn-success btn-block\" ng-click=\"register()\">REGISTER</button>\n" +
+    "    <button type=\"button\" ng-show=\"registerMode\" class=\"btn btn-info btn-block\" ng-click=\"registerMode=!registerMode\">BACK TO SIGN IN</button>\n" +
     "</form>");
 }]);
 

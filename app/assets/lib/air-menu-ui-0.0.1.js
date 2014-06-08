@@ -49,17 +49,27 @@ angular.module('air-menu-ui.directives.login-box', [])
 	.directive('loginBox', function() {
 		return {
 			scope: {
-				handler: '='
+				handler: '=',
+                registerFn: '='
 			},
 			restrict: 'E',
 			templateUrl: '/air-menu/login-box.html',
 			controller: [ '$scope', '$element', '$attrs', function($scope, $element, $attrs) {
+                $scope.registerMode = false;
+
 				$scope.onSubmit = function() {
 					$scope.pending = true;
 					if ($scope.handler) {
 						$scope.handler($scope.username, $scope.password, $scope.done);
 					}
 				};
+
+                $scope.register = function() {
+                    $scope.pending = true;
+                    if ($scope.registerFn) {
+                        $scope.registerFn($scope.username, $scope.name, $scope.phone, $scope.email, $scope.password, $scope.done);
+                    }
+                };
 
 				$scope.done = function(successful) {
 					$scope.pending = false;
@@ -194,7 +204,8 @@ angular.module('air-menu-ui.services.connector', [
     'air-menu-ui.services.connector.restaurant_staff_members',
     'air-menu-ui.services.connector.group_staff_members',
     'air-menu-ui.services.connector.devices',
-    'air-menu-ui.services.connector.groups'
+    'air-menu-ui.services.connector.groups',
+    'air-menu-ui.services.connector.users'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
@@ -491,6 +502,21 @@ angular.module('air-menu-ui.services.connector.user_orders', [])
             }
         }
     }]);
+angular.module('air-menu-ui.services.connector.users', [])
+
+    .factory('Users', [ 'connector', 'User', function(connector, User) {
+        var baseUrl = '/api/v1/users';
+        return {
+            create: function(params, successHandler, errorHandler) {
+                connector.post(baseUrl, params, function(data) {
+                    var user = new User(data['user']);
+                    successHandler(user);
+                }, errorHandler, true);
+            }
+        }
+    }]);
+
+
 angular.module('air-menu-ui.services.models', [
 	'air-menu-ui.services.models.user',
     'air-menu-ui.services.models.scope',
@@ -803,18 +829,45 @@ angular.module("/air-menu/login-box.html", []).run(["$templateCache", function($
     "			<input type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"Username\" ng-model=\"username\">\n" +
     "		</div>\n" +
     "	</div>\n" +
+    "    <div class=\"form-group\" ng-show=\"registerMode\">\n" +
+    "        <div class=\"input-group\">\n" +
+    "            <span class=\"input-group-addon\"><i class=\"fa fa-coffee\"></i></span>\n" +
+    "            <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"Full Name\" ng-model=\"name\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"form-group\" ng-show=\"registerMode\">\n" +
+    "        <div class=\"input-group\">\n" +
+    "            <span class=\"input-group-addon\"><i class=\"fa fa-mobile-phone\"></i></span>\n" +
+    "            <input type=\"text\" class=\"form-control\" id=\"phone\" placeholder=\"Phone Number\" ng-model=\"phone\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"form-group\" ng-show=\"registerMode\">\n" +
+    "        <div class=\"input-group\">\n" +
+    "            <span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span>\n" +
+    "            <input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"Email\" ng-model=\"email\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
     "	<div class=\"form-group\">\n" +
     "		<div class=\"input-group\">\n" +
     "			<span class=\"input-group-addon\"><i class=\"fa fa-lock\"></i></span>\n" +
     "			<input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Password\" ng-model=\"password\">\n" +
     "		</div>\n" +
     "	</div>\n" +
-    "	<div class=\"checkbox\">\n" +
+    "    <div class=\"form-group\" ng-show=\"registerMode\">\n" +
+    "        <div class=\"input-group\">\n" +
+    "            <span class=\"input-group-addon\"><i class=\"fa fa-lock\"></i></span>\n" +
+    "            <input type=\"password\" class=\"form-control\" id=\"confirmPassword\" placeholder=\"Confirm Password\" ng-model=\"confirmPassword\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "	<div class=\"checkbox\" ng-show=\"!registerMode\">\n" +
     "		<label>\n" +
     "			<input type=\"checkbox\" /> Remember Me\n" +
     "		</label>\n" +
     "	</div>\n" +
-    "	<button type=\"submit\" class=\"btn btn-success btn-block {{pending || !username || !password ? 'disabled' : ''}}\" {{pending ? 'disabled' : ''}}>SIGN IN</button>\n" +
+    "	<button type=\"submit\" ng-show=\"!registerMode\" class=\"btn btn-success btn-block {{pending || !username || !password ? 'disabled' : ''}}\" {{pending ? 'disabled' : ''}}>SIGN IN</button>\n" +
+    "    <button type=\"button\" ng-show=\"!registerMode\" class=\"btn btn-info btn-block\" ng-click=\"registerMode=!registerMode\">SIGN UP</button>\n" +
+    "    <button type=\"button\" ng-show=\"registerMode\" class=\"btn btn-success btn-block\" ng-click=\"register()\">REGISTER</button>\n" +
+    "    <button type=\"button\" ng-show=\"registerMode\" class=\"btn btn-info btn-block\" ng-click=\"registerMode=!registerMode\">BACK TO SIGN IN</button>\n" +
     "</form>");
 }]);
 
