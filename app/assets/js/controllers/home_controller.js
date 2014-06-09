@@ -1,9 +1,9 @@
 angular.module('air-menu.controllers.home', [])
 
-    .controller('HomeCtrl', [ '$scope', 'Me', 'UserOrders', 'Restaurants', function($scope, Me, UserOrders, Restaurants) {
+    .controller('HomeCtrl', [ '$scope', 'Me', 'UserOrders', 'UserCreditCards', 'Restaurants', function($scope, Me, UserOrders, UserCreditCards, Restaurants) {
         $scope.restaurants = [ ];
         $scope.previousOrders = [ ];
-        $scope.pending = {previousOrders: true};
+        $scope.pending = {previousOrders: true, credit_cards: true};
 
         Restaurants.get(53.3478, -6.2397, 5000, function(restaurants) {
             $scope.restaurants = restaurants;
@@ -22,6 +22,11 @@ angular.module('air-menu.controllers.home', [])
         UserOrders.get('paid', function(orders) {
             $scope.pending.previousOrders = false;
             $scope.previousOrders = orders;
+        });
+
+        UserCreditCards.get(function(credit_cards) {
+            $scope.pending.credit_cards = false;
+            $scope.credit_cards = credit_cards;
         })
 
     }]);

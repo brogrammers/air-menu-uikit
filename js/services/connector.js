@@ -3,6 +3,7 @@ angular.module('air-menu-ui.services.connector', [
     'air-menu-ui.services.connector.docs',
     'air-menu-ui.services.connector.applications',
     'air-menu-ui.services.connector.user_orders',
+    'air-menu-ui.services.connector.user_credit_cards',
     'air-menu-ui.services.connector.restaurants',
     'air-menu-ui.services.connector.company_restaurants',
     'air-menu-ui.services.connector.restaurant_devices',

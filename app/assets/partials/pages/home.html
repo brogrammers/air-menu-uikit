@@ -115,6 +115,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="panel panel-default voffset3">
+                        <div class="panel-heading">
+                            <i class="fa fa-credit-card"></i> Credit Cards
+                        </div>
+                        <div class="panel-body panel-full">
+                            <ul class="list-unstyled">
+                                <li ng-if="pending.credit_cards" class="text-center loading">
+                                    <i class="fa fa-refresh fa-spin fa-4x"></i><br>
+                                    <small>Loading Credit Cards</small>
+                                </li>
+                                <li ng-repeat="credit_card in credit_cards">
+                                    <strong><a href="#/me/credit_cards/{{credit_card.id}}">{{credit_card.number}}</a></strong><br>
+                                    <p style="padding: 0;margin: 0;">{{credit_card.month}}/{{credit_card.year}} &nbsp;&nbsp; {{credit_card.card_type}}</p>
+                                </li>
+                                <li ng-if="credit_card.length == 0 && !pending.credit_cards" class="text-muted disabled"><i class="fa fa-exclamation-triangle"></i> No Credit Cards</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
