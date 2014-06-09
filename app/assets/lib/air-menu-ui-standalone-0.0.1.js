@@ -45189,7 +45189,7 @@ angular.module("/air-menu/nav.html", []).run(["$templateCache", function($templa
 angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/navbar.html",
     "<nav class=\"navbar navbar-default\" role=\"navigation\">\n" +
-    "	<div class=\"container-fluid\">\n" +
+    "	<div class=\"container\">\n" +
     "		<div class=\"navbar-header\">\n" +
     "			<button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#menu\">\n" +
     "				<span class=\"sr-only\">Toggle navigation</span>\n" +
@@ -45197,7 +45197,9 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "				<span class=\"icon-bar\"></span>\n" +
     "				<span class=\"icon-bar\"></span>\n" +
     "			</button>\n" +
-    "			<a href=\"#\" class=\"navbar-brand\">AirMenu</a>\n" +
+    "			<a href=\"#\" class=\"navbar-brand\" style=\"padding: 0; margin-top: 3px\">\n" +
+    "                <img src=\"assets/air_menu_logo_white-500x500.png\" class=\"img-responsive\" height=\"64px\" width=\"64px\">\n" +
+    "			</a>\n" +
     "		</div>\n" +
     "\n" +
     "		<div class=\"collapse navbar-collapse\" id=\"menu\">\n" +
