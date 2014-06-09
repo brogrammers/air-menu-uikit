@@ -1,6 +1,6 @@
 angular.module('air-menu-ui.directives.tab', [])
 
-    .directive('tab', function() {
+    .directive('tabb', function() {
         return {
             scope: {
                 otitle: '@'

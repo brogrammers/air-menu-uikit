@@ -122,7 +122,7 @@ angular.module('air-menu-ui.directives.navbar', [])
 	});
 angular.module('air-menu-ui.directives.rating', [])
 
-    .directive('rating', function() {
+    .directive('ratingg', function() {
         return {
             scope: {
                 stars: '='
@@ -168,7 +168,7 @@ angular.module('air-menu-ui.directives.resource', [])
 	});
 angular.module('air-menu-ui.directives.tab', [])
 
-    .directive('tab', function() {
+    .directive('tabb', function() {
         return {
             scope: {
                 otitle: '@'
@@ -197,6 +197,7 @@ angular.module('air-menu-ui.services.connector', [
     'air-menu-ui.services.connector.applications',
     'air-menu-ui.services.connector.user_orders',
     'air-menu-ui.services.connector.user_credit_cards',
+    'air-menu-ui.services.connector.user_notifications',
     'air-menu-ui.services.connector.restaurants',
     'air-menu-ui.services.connector.company_restaurants',
     'air-menu-ui.services.connector.restaurant_devices',
@@ -516,6 +517,22 @@ angular.module('air-menu-ui.services.connector.user_credit_cards', [])
                         credit_cards.push(new CreditCard(orderData));
                     });
                     successHandler(credit_cards);
+                }, errorHandler, true);
+            }
+        }
+    }]);
+angular.module('air-menu-ui.services.connector.user_notifications', [])
+
+    .factory('UserNotifications', [ 'connector', 'Notification', function(connector, Notification) {
+        var baseUrl = '/api/v1/me/notifications';
+        return {
+            get: function(successHandler, errorHandler) {
+                connector.get(baseUrl, null, function(data) {
+                    var notifications = [ ];
+                    angular.forEach(data['notifications'], function(notificationData) {
+                         notifications.push(new Notification(notificationData));
+                    });
+                    successHandler(notifications);
                 }, errorHandler, true);
             }
         }
@@ -947,6 +964,9 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "		<div class=\"collapse navbar-collapse\" id=\"menu\">\n" +
     "            <a ng-if=\"!user\" href=\"#/login\" class=\"btn btn-default navbar-right navbar-btn\">Login</a>\n" +
     "			<ul ng-if=\"user\" class=\"nav navbar-nav navbar-right\">\n" +
+    "                <li>\n" +
+    "                    <a href=\"javascript:void(0);\" ng-click=\"go('/notifications')\" tooltip-placement=\"bottom\" tooltip=\"Notifications\" ><i class=\"fa fa-bell-o\"></i> </a>\n" +
+    "                </li>\n" +
     "                <li>\n" +
     "                    <a href=\"javascript:void(0);\" ng-click=\"go('/')\"><i class=\"fa fa-home\"></i> Home </a>\n" +
     "                </li>\n" +

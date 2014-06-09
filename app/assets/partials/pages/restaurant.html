@@ -8,7 +8,7 @@
             <p class="lead" ng-bind-html="shorten(restaurant.description)"></p>
         </div>
         <div class="col-lg-4 text-right">
-            <h1><rating stars="restaurant.rating"></rating> </h1>
+            <h1><ratingg stars="restaurant.rating"></ratingg> </h1>
             <hr>
             <p>
                 {{restaurant.address.address_1}}<br>
@@ -102,7 +102,7 @@
                                 <div class="col-lg-8">
                                     <strong>{{review.subject}}</strong>
                                     <p style="margin: 0">{{review.message}}</p>
-                                    <p><rating stars="review.rating"></rating></p>
+                                    <p><ratingg stars="review.rating"></ratingg></p>
                                 </div>
                                 <div class="col-lg-2">
                                     <strong>{{review.created_at | date :'short'}}</strong>

@@ -16,6 +16,9 @@
             <a ng-if="!user" href="#/login" class="btn btn-default navbar-right navbar-btn">Login</a>
 			<ul ng-if="user" class="nav navbar-nav navbar-right">
                 <li>
+                    <a href="javascript:void(0);" ng-click="go('/notifications')" tooltip-placement="bottom" tooltip="Notifications" ><i class="fa fa-bell-o"></i> </a>
+                </li>
+                <li>
                     <a href="javascript:void(0);" ng-click="go('/')"><i class="fa fa-home"></i> Home </a>
                 </li>
                 <li>

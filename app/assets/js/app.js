@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('air-menu', ['air-menu.animations', 'air-menu.filters', 'air-menu.services', 'air-menu.directives', 'air-menu.controllers', 'air-menu-ui', 'google-maps'])
+angular.module('air-menu', ['air-menu.animations', 'air-menu.filters', 'air-menu.services', 'air-menu.directives', 'air-menu.controllers', 'air-menu-ui', 'google-maps', 'ui.bootstrap'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {templateUrl: '/assets/pages/home.html', controller: 'HomeCtrl'});
@@ -11,6 +11,7 @@ angular.module('air-menu', ['air-menu.animations', 'air-menu.filters', 'air-menu
         $routeProvider.when('/developer/applications/new', {templateUrl: '/assets/pages/application.html', controller: 'ApplicationCtrl'});
         $routeProvider.when('/restaurants', {templateUrl: '/assets/pages/restaurants.html', controller: 'RestaurantsCtrl'});
         $routeProvider.when('/restaurants/:id', {templateUrl: '/assets/pages/restaurant.html', controller: 'RestaurantCtrl'});
+        $routeProvider.when('/notifications', {templateUrl: '/assets/pages/notifications.html', controller: 'NotificationsCtrl'});
 
         $routeProvider.when('/m/restaurants/:id/devices', {templateUrl: '/assets/pages/devices.html', controller: 'DevicesCtrl'});
         $routeProvider.when('/m/restaurants/:id/devices/new', {templateUrl: '/assets/pages/device.html', controller: 'DeviceCtrl'});

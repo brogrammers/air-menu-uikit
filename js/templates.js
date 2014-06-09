@@ -106,6 +106,9 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "            <a ng-if=\"!user\" href=\"#/login\" class=\"btn btn-default navbar-right navbar-btn\">Login</a>\n" +
     "			<ul ng-if=\"user\" class=\"nav navbar-nav navbar-right\">\n" +
     "                <li>\n" +
+    "                    <a href=\"javascript:void(0);\" ng-click=\"go('/notifications')\" tooltip-placement=\"bottom\" tooltip=\"Notifications\" ><i class=\"fa fa-bell-o\"></i> </a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
     "                    <a href=\"javascript:void(0);\" ng-click=\"go('/')\"><i class=\"fa fa-home\"></i> Home </a>\n" +
     "                </li>\n" +
     "                <li>\n" +

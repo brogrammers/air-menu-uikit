@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1><i class="fa fa-bell-o"></i> Notifications</h1>
+            <ul class="list-unstyled">
+                <li ng-repeat="notification in notifications">
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4 style="margin: 0;padding: 0;">{{notification.content}}</h4>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            {{notification.created_at | date:'short'}}
+                        </div>
+                    </div>
+                </li>
+                <hr>
+            </ul>
+        </div>
+    </div>
+</div>

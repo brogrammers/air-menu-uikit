@@ -11,6 +11,7 @@
 //= require ../lib/breakpoint-0.0.1.js
 //= require ../lib/underscore-1.6.0.js
 //= require ../lib/angular-google-maps-1.0.18.js
+//= require ../lib/angular-ui.js
 //= require ../lib/air-menu-ui-0.0.1.js
 //= require ../js/app.js
 //= require ../js/animations.js

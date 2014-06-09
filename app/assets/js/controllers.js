@@ -13,5 +13,6 @@ angular.module('air-menu.controllers', [
     'air-menu.controllers.devices',
     'air-menu.controllers.device',
     'air-menu.controllers.groups',
-    'air-menu.controllers.group'
+    'air-menu.controllers.group',
+    'air-menu.controllers.notifications'
 ]);

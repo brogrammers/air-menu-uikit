@@ -1,6 +1,6 @@
 angular.module('air-menu-ui.directives.rating', [])
 
-    .directive('rating', function() {
+    .directive('ratingg', function() {
         return {
             scope: {
                 stars: '='
