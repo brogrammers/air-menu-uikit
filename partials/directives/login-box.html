@@ -1,7 +1,10 @@
 <form role="form" class="login-box" ng-submit="onSubmit()">
-	<div ng-if="failure" class="alert alert-danger">
+	<div ng-if="failure && !registerMode" class="alert alert-danger">
 		Oh no! Your username / password combination seems to fail!
 	</div>
+    <div ng-if="failure && registerMode" class="alert alert-danger">
+        Username / Email is already taken! Try another combination
+    </div>
 	<div class="form-group">
 		<div class="input-group">
 			<span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -44,7 +47,7 @@
 		</label>
 	</div>
 	<button type="submit" ng-show="!registerMode" class="btn btn-success btn-block {{pending || !username || !password ? 'disabled' : ''}}" {{pending ? 'disabled' : ''}}>SIGN IN</button>
-    <button type="button" ng-show="!registerMode" class="btn btn-info btn-block" ng-click="registerMode=!registerMode">SIGN UP</button>
+    <button type="button" ng-show="!registerMode" class="btn btn-info btn-block" ng-click="registerMode=!registerMode;failure=false;">SIGN UP</button>
     <button type="button" ng-show="registerMode" class="btn btn-success btn-block" ng-click="register()">REGISTER</button>
-    <button type="button" ng-show="registerMode" class="btn btn-info btn-block" ng-click="registerMode=!registerMode">BACK TO SIGN IN</button>
+    <button type="button" ng-show="registerMode" class="btn btn-info btn-block" ng-click="registerMode=!registerMode;failure=false;">BACK TO SIGN IN</button>
 </form>

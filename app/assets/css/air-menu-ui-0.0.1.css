@@ -5852,6 +5852,11 @@ a {
 .lead {
   font-weight: 300;
 }
+.img-fixed {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+}
 @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
   html,
   body {
@@ -5933,7 +5938,6 @@ th small {
 .login-box {
   width: 100%;
   margin: 0 auto;
-  margin-top: 130px;
   margin-bottom: 10px;
   padding: 40px 20px;
   border-radius: 3px;

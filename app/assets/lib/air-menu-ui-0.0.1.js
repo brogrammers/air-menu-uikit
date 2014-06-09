@@ -820,9 +820,12 @@ angular.module("/air-menu/application.html", []).run(["$templateCache", function
 angular.module("/air-menu/login-box.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("/air-menu/login-box.html",
     "<form role=\"form\" class=\"login-box\" ng-submit=\"onSubmit()\">\n" +
-    "	<div ng-if=\"failure\" class=\"alert alert-danger\">\n" +
+    "	<div ng-if=\"failure && !registerMode\" class=\"alert alert-danger\">\n" +
     "		Oh no! Your username / password combination seems to fail!\n" +
     "	</div>\n" +
+    "    <div ng-if=\"failure && registerMode\" class=\"alert alert-danger\">\n" +
+    "        Username / Email is already taken! Try another combination\n" +
+    "    </div>\n" +
     "	<div class=\"form-group\">\n" +
     "		<div class=\"input-group\">\n" +
     "			<span class=\"input-group-addon\"><i class=\"fa fa-user\"></i></span>\n" +
@@ -865,9 +868,9 @@ angular.module("/air-menu/login-box.html", []).run(["$templateCache", function($
     "		</label>\n" +
     "	</div>\n" +
     "	<button type=\"submit\" ng-show=\"!registerMode\" class=\"btn btn-success btn-block {{pending || !username || !password ? 'disabled' : ''}}\" {{pending ? 'disabled' : ''}}>SIGN IN</button>\n" +
-    "    <button type=\"button\" ng-show=\"!registerMode\" class=\"btn btn-info btn-block\" ng-click=\"registerMode=!registerMode\">SIGN UP</button>\n" +
+    "    <button type=\"button\" ng-show=\"!registerMode\" class=\"btn btn-info btn-block\" ng-click=\"registerMode=!registerMode;failure=false;\">SIGN UP</button>\n" +
     "    <button type=\"button\" ng-show=\"registerMode\" class=\"btn btn-success btn-block\" ng-click=\"register()\">REGISTER</button>\n" +
-    "    <button type=\"button\" ng-show=\"registerMode\" class=\"btn btn-info btn-block\" ng-click=\"registerMode=!registerMode\">BACK TO SIGN IN</button>\n" +
+    "    <button type=\"button\" ng-show=\"registerMode\" class=\"btn btn-info btn-block\" ng-click=\"registerMode=!registerMode;failure=false;\">BACK TO SIGN IN</button>\n" +
     "</form>");
 }]);
 
