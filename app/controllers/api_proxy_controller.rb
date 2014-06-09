@@ -30,9 +30,12 @@ class ApiProxyController < ApplicationController
   end
 
   def get_docs
-    uri = URI(AirMenu::Settings.backend_url + path)
-    response = Net::HTTP.get(uri)
-    render :json => response, :status => 200
+    uri = URI.parse(AirMenu::Settings.backend_url + path)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = Rails.env == 'production'
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request request
+    render :json => response.body, :status => response.code
   end
 
   protected
