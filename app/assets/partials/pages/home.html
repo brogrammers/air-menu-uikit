@@ -171,15 +171,37 @@
                                         </li>
                                         <li ng-repeat="order in previousOrders">
                                             <div class="row">
-                                                <div class="col-lg-2" ng-bind-html="avatar(order.restaurant.avatar,'img')"></div>
+                                                <div class="col-lg-2 text-center">
+                                                    <div ng-bind-html="avatar(order.restaurant.avatar,'img')"></div>
+                                                    <small>@{{order.restaurant.name}}</small>
+                                                </div>
                                                 <div class="col-lg-5">
-                                                    <h2 style="margin: 0;">@{{order.restaurant.name}}</h2>
                                                     <p ng-if="order.table_number">At table number {{order.table_number}}</p>
-
+                                                    <h3>Order Items</h3>
+                                                    <hr>
+                                                    <div ng-repeat="order_item in order.order_items">
+                                                        <div class="row">
+                                                            <div class="col-lg-8">
+                                                                <h4 style="margin: 0;padding: 0;">{{order_item.menu_item.name}}</h4>
+                                                            </div>
+                                                            <div class="col-lg-4 text-right">
+                                                                {{order_item.menu_item.price}} {{order_item.menu_item.currency}}
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <strong>Total</strong>
+                                                        </div>
+                                                        <div class="col-lg-4 text-right">
+                                                            {{order.totalCost()}} EUR
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="col-lg-5 text-right">
                                                     <strong>{{order.served_time | date:'short'}}</strong>
-                                                    <hr>
                                                     <div class="row voffset4">
                                                         <div class="col-lg-8">
                                                             <p style="margin: 0;">Served by {{order.staff_member.name}}</p>

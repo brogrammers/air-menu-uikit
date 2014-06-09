@@ -44502,6 +44502,7 @@ angular.module('air-menu-ui.services.connector', [
     'air-menu-ui.services.connector.restaurant_groups',
     'air-menu-ui.services.connector.restaurant_reviews',
     'air-menu-ui.services.connector.restaurant_staff_members',
+    'air-menu-ui.services.connector.restaurant_orders',
     'air-menu-ui.services.connector.group_staff_members',
     'air-menu-ui.services.connector.devices',
     'air-menu-ui.services.connector.groups',
@@ -44728,6 +44729,22 @@ angular.module('air-menu-ui.services.connector.restaurant_groups', [])
             }
         }
     }]);
+angular.module('air-menu-ui.services.connector.restaurant_orders', [])
+
+    .factory('RestaurantOrders', [ 'connector', 'Order', function(connector, Order) {
+        var baseUrl = '/api/v1/restaurants/';
+        return {
+            get: function(restaurant_id, successHandler, errorHandler) {
+                connector.get(baseUrl + restaurant_id + '/orders', null, function(data) {
+                    var orders = [ ];
+                    angular.forEach(data['orders'], function(reviewData) {
+                        orders.push(new Order(reviewData));
+                    });
+                    successHandler(orders);
+                }, errorHandler, true);
+            }
+        }
+    }]);
 angular.module('air-menu-ui.services.connector.restaurant_reviews', [])
 
     .factory('RestaurantReviews', [ 'connector', 'Review', function(connector, Review) {
@@ -44937,6 +44954,14 @@ angular.module('air-menu-ui.services.models.order', [])
     .factory('Order', [ function() {
         var Order = function(orderData) {
             angular.extend(this, orderData);
+        };
+
+        Order.prototype.totalCost = function() {
+            var total = 0.0;
+            angular.forEach(this.order_items, function(order_item) {
+                total += order_item.menu_item.price;
+            });
+            return total;
         };
 
         return Order;
