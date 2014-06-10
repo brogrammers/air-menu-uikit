@@ -106,6 +106,11 @@ angular.module('air-menu.controllers.group', [])
         } else {
             $scope.editMode = false;
         }
+
+        $scope.getBack = function() {
+            console.log('udgsf');
+            history.back();
+        }
         $scope.getRestaurantStaffMembers();
         $scope.getRestaurantDevices();
 

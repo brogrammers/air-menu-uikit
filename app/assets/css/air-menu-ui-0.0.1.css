@@ -6122,6 +6122,12 @@ body.mobile-view .btn-mobile {
   box-shadow: 0px 0px 10px #555555;
   font-size: 1.3em;
 }
+body.mobile-view a.btn-mobile {
+  color: white;
+}
+body.mobile-view a.btn-mobile:hover {
+  text-decoration: none;
+}
 body.mobile-view .header {
   border-bottom: 1px solid white;
   padding: 17px 0;
