@@ -5,6 +5,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <a href="{{user.avatar}}" ng-bind-html="avatar(user.avatar)"></a>
+                    <button type="button" ng-if="!user.company" class="btn btn-info btn-block voffset3" tooltip="Create a Company to register your restaurants through AirMenu" ng-click="openCompany()">Create Company</button>
                     <div class="panel panel-default voffset3">
                         <div class="panel-heading">
                             <i class="fa fa-user"></i> About

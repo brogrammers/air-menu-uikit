@@ -208,7 +208,8 @@ angular.module('air-menu-ui.services.connector', [
     'air-menu-ui.services.connector.group_staff_members',
     'air-menu-ui.services.connector.devices',
     'air-menu-ui.services.connector.groups',
-    'air-menu-ui.services.connector.users'
+    'air-menu-ui.services.connector.users',
+    'air-menu-ui.services.connector.companies'
     ])
 
 	.factory('connector', [ '$rootScope', '$http', function($rootScope, $http) {
@@ -264,6 +265,19 @@ angular.module('air-menu-ui.services.connector.applications', [])
                 connector.post(baseUrl, {'name': name, 'redirect_uri': redirect_uri}, function(data) {
                     var application = data['oauth_application'];
                     successHandler(application)
+                }, errorHandler);
+            }
+        }
+    }]);
+angular.module('air-menu-ui.services.connector.companies', [])
+
+    .factory('Companies', [ 'connector', function(connector) {
+        var baseUrl = '/api/v1/companies';
+        return {
+            create: function(params, successHandler, errorHandler) {
+                connector.post(baseUrl, params, function(data) {
+                    var company = data['company'];
+                    successHandler(company)
                 }, errorHandler);
             }
         }

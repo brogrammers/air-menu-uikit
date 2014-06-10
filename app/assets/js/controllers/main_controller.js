@@ -5,14 +5,16 @@ angular.module('air-menu.controllers.main', [])
 
         $scope.isMobile = /iPhone/.test(navigator.userAgent);
 
-        Me.get(function(user) {
-            $rootScope.user = user;
-            $rootScope.$broadcast('air-menu-ui.event.navbar.user', $rootScope.user);
-        }, function() {
-            if ($location.$$path != '/developer/documentation') {
-                $location.path('/login');
-            }
-        });
+        $scope.getCurrentUser = function() {
+            Me.get(function(user) {
+                $rootScope.user = user;
+                $rootScope.$broadcast('air-menu-ui.event.navbar.user', $rootScope.user);
+            }, function() {
+                if ($location.$$path != '/developer/documentation') {
+                    $location.path('/login');
+                }
+            });
+        };
 
         $rootScope.go = function(path) {
             var currentPath = $location.path();
@@ -29,5 +31,7 @@ angular.module('air-menu.controllers.main', [])
             if (avatar) path = avatar;
             else path = '/assets/' + (type||'profile') + '_placeholder.png';
             return '<img src="' + path + '" class="' + (klass||'img-responsive img-thumbnail') + '" />';
-        }
+        };
+
+        $scope.getCurrentUser();
     }]);

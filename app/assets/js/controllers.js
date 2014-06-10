@@ -14,5 +14,6 @@ angular.module('air-menu.controllers', [
     'air-menu.controllers.device',
     'air-menu.controllers.groups',
     'air-menu.controllers.group',
-    'air-menu.controllers.notifications'
+    'air-menu.controllers.notifications',
+    'air-menu.controllers.create_company'
 ]);

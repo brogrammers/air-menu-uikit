@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title"><i class="fa fa-building-o"></i> Create Company</h4>
+</div>
+<div class="modal-body">
+    <p class="lead">Create your own Company in AirMenu to promote your own restaurants. Note that this is a beta version and free for now</p>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" placeholder="Company Name" ng-model="company.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="website" class="col-sm-2 control-label">Website</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="website" placeholder="Company Website" ng-model="company.website">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address_1" class="col-sm-2 control-label">Address 1</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="address_1" placeholder="Address 1" ng-model="company.address_1">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address_2" class="col-sm-2 control-label">Address 2</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="address_2" placeholder="Address 2" ng-model="company.address_2">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="city" class="col-sm-2 control-label">City</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="city" placeholder="City" ng-model="company.city">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="county" class="col-sm-2 control-label">County</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="county" placeholder="County" ng-model="company.county">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="country" class="col-sm-2 control-label">Country</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="country" placeholder="Country" ng-model="company.country">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()">Create Company</button>
+</div>

@@ -1,6 +1,6 @@
 angular.module('air-menu.controllers.home', [])
 
-    .controller('HomeCtrl', [ '$scope', 'Me', 'UserOrders', 'UserCreditCards', 'Restaurants', function($scope, Me, UserOrders, UserCreditCards, Restaurants) {
+    .controller('HomeCtrl', [ '$scope', 'Me', 'UserOrders', 'UserCreditCards', 'Restaurants', '$modal', function($scope, Me, UserOrders, UserCreditCards, Restaurants, $modal) {
         $scope.restaurants = [ ];
         $scope.previousOrders = [ ];
         $scope.pending = {previousOrders: true, credit_cards: true};
@@ -28,5 +28,18 @@ angular.module('air-menu.controllers.home', [])
             $scope.pending.credit_cards = false;
             $scope.credit_cards = credit_cards;
         })
+
+        $scope.openCompany = function() {
+            var modalInstance = $modal.open({
+                templateUrl: '/assets/pages/create_company.html',
+                controller: 'CreateCompanyCtrl'
+            });
+
+            modalInstance.result.then(function () {
+                $scope.getCurrentUser();
+            }, function () {
+
+            });
+        };
 
     }]);
