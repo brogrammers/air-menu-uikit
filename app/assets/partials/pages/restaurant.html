@@ -61,21 +61,27 @@
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-group"></i> Groups
-                    <span class="pull-right badge text-muted"><a href="javascript:void(0);" ng-click="groupEditMode=!groupEditMode"><i class="fa fa-edit"></i></a></span>
+                    <i class="fa fa-group"></i> People
+                    <span class="pull-right badge text-muted"><a href="javascript:void(0);" ng-click="staffMemberEditMode=!staffMemberEditMode"><i class="fa fa-edit"></i></a></span>
                     <span class="pull-right badge" style="margin-right: 3px"><a href="javascript:void(0);"><i class="fa fa-plus"></i></a></span>
                 </div>
                 <div class="panel-body panel-full">
                     <ul class="list-unstyled">
                         <li ng-if="pending.groups" class="text-center loading">
                             <i class="fa fa-refresh fa-spin fa-4x"></i><br>
-                            <small>Loading Groups</small>
+                            <small>Loading People</small>
                         </li>
-                        <li ng-repeat="group in groups">
-                            <i class="fa fa-minus"></i> <a href="#/restaurants/{{restaurant_id}}/groups/{{group.id}}">{{group.name}}</a>
-                            <button ng-show="groupEditMode"  class="btn btn-danger btn-xs pull-right">Delete</button>
+                        <li ng-repeat="staff_member in staff_members">
+                            <div class="row">
+                                <div class="col-lg-3" ng-bind-html="avatar(staff_member.avatar)"></div>
+                                <div class="col-lg-9">
+                                    <h4 style="margin: 0;padding: 0;"><a href="#/restaurants/{{restaurant_id}}/staff_member/{{group.id}}">{{staff_member.name}}</a></h4>
+                                    <p>{{staff_member.staff_kind.name}}</p>
+                                    <button ng-show="staffMemberEditMode"  class="btn btn-danger btn-block">Delete</button>
+                                </div>
+                            </div>
                         </li>
-                        <li ng-if="groups.length == 0 && !pending.groups" class="text-muted disabled"><i class="fa fa-exclamation-triangle"></i> No Groups</li>
+                        <li ng-if="groups.length == 0 && !pending.groups" class="text-muted disabled"><i class="fa fa-exclamation-triangle"></i> No People</li>
                     </ul>
                 </div>
             </div>
@@ -110,6 +116,92 @@
                             </div>
                         </li>
                         <li ng-if="reviews.length == 0 && !pending.reviews" class="text-muted disabled"><i class="fa fa-exclamation-triangle"></i> No Reviews</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-group"></i> Groups
+                    <span class="pull-right badge text-muted"><a href="javascript:void(0);" ng-click="groupEditMode=!groupEditMode"><i class="fa fa-edit"></i></a></span>
+                    <span class="pull-right badge" style="margin-right: 3px"><a href="javascript:void(0);"><i class="fa fa-plus"></i></a></span>
+                </div>
+                <div class="panel-body panel-full">
+                    <ul class="list-unstyled">
+                        <li ng-if="pending.groups" class="text-center loading">
+                            <i class="fa fa-refresh fa-spin fa-4x"></i><br>
+                            <small>Loading Groups</small>
+                        </li>
+                        <li ng-repeat="group in groups">
+                            <i class="fa fa-minus"></i> <a href="#/restaurants/{{restaurant_id}}/groups/{{group.id}}">{{group.name}}</a>
+                            <button ng-show="groupEditMode"  class="btn btn-danger btn-xs pull-right">Delete</button>
+                        </li>
+                        <li ng-if="groups.length == 0 && !pending.groups" class="text-muted disabled"><i class="fa fa-exclamation-triangle"></i> No Groups</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-cutlery"></i> Current Orders
+                </div>
+                <div class="panel-body panel-full" style="height:500px;">
+                    <ul class="list-unstyled">
+                        <li ng-if="pending.orders" class="text-center loading">
+                            <i class="fa fa-refresh fa-spin fa-4x"></i><br>
+                            <small>Loading Orders</small>
+                        </li>
+                        <li ng-repeat="order in orders">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">
+                                    <h3><span class="label label-info">{{order.state}}</span></h3>
+                                </div>
+                            </div>
+                            <div class="row voffset3">
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-xs-4 col-xs-offset-1 text-center">
+                                            <strong>Customer</strong>
+                                            <div ng-bind-html="avatar(order.user.avatar)"></div>
+                                            <p style="margin: 0;">{{order.user.name}}</p>
+                                            <em>at table number {{order.table_number}}</em>
+                                        </div>
+                                        <div class="col-xs-4 col-xs-offset-1 text-center">
+                                            <strong>Staff</strong>
+                                            <div ng-bind-html="avatar(order.staff_member.avatar)"></div>
+                                            <p style="margin: 0;">{{order.staff_member.name}}</p>
+                                            <p style="margin: 0;">{{order.staff_member.staff_kind.name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <ul class="list-group">
+                                        <li ng-repeat="order_item in order.order_items" class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-xs-3" ng-bind-html="avatar(order_item.staff_member.avatar)"></div>
+                                                <div class="col-xs-9">
+                                                    <span class="badge pull-right">{{order_item.menu_item.price}} {{order_item.menu_item.currency}}</span>
+                                                    <strong>{{order_item.menu_item.name}}</strong> <span class="label label-info">{{order_item.count}}</span><br>
+                                                    <em>{{order_item.staff_member.staff_kind.name}}</em><br>
+                                                    {{order_item.menu_item.description}}<br>
+                                                    <hr>
+                                                    <span class="label label-info">{{order_item.state}}</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge">{{order.totalCost()}} {{order.order_items[0].menu_item.currency}}</span>
+                                            Total
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li ng-if="orders.length == 0 && !pending.orders" class="text-muted disabled"><i class="fa fa-exclamation-triangle"></i> No Orders</li>
                     </ul>
                 </div>
             </div>

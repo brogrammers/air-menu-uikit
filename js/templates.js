@@ -115,7 +115,7 @@ angular.module("/air-menu/navbar.html", []).run(["$templateCache", function($tem
     "                    <a href=\"javascript:void(0);\" ng-if=\"user.company\" ng-click=\"go('/restaurants')\"><i class=\"fa fa-cogs\"></i> Restaurants</a>\n" +
     "                </li>\n" +
     "				<li class=\"dropdown\">\n" +
-    "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-user\"></i> {{user.name}} <b class=\"caret\"></b></a>\n" +
+    "					<a href=\"javascript:void(0);\" class=\"dropdown-toggle\" ng-disabled=\"disabled\"><i class=\"fa fa-user\"></i> {{user.name}} <b class=\"caret\"></b></a>\n" +
     "					<ul class=\"dropdown-menu\">\n" +
     "						<li><a href=\"/logout\">Logout</a></li>\n" +
     "					</ul>\n" +

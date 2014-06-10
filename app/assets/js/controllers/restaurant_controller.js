@@ -1,17 +1,22 @@
 angular.module('air-menu.controllers.restaurant', [])
 
-    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', 'RestaurantDevices', 'RestaurantGroups', 'RestaurantReviews', '$routeParams', function($scope, Restaurants, RestaurantDevices, RestaurantGroups, RestaurantReviews, $routeParams) {
+    .controller('RestaurantCtrl', [ '$scope', 'Restaurants', 'RestaurantDevices', 'RestaurantGroups', 'RestaurantReviews', 'RestaurantStaffMembers', 'RestaurantOrders', '$routeParams', function($scope, Restaurants, RestaurantDevices, RestaurantGroups, RestaurantReviews, RestaurantStaffMembers, RestaurantOrders, $routeParams) {
         $scope.restaurant_id = $routeParams.id;
         $scope.restaurant = { description: '',location: { latitude: 53.3478, longitude: -6.2597 } };
         $scope.pending = { };
         $scope.pending.devices = true;
         $scope.pending.groups = true;
         $scope.pending.reviews = true;
+        $scope.pending.staff_members = true;
+        $scope.pending.orders = true;
         $scope.devices = [ ];
         $scope.groups = [ ];
         $scope.reviews = [ ];
+        $scope.orders = [ ];
+        $scope.staff_members = [ ];
         $scope.deviceEditMode = false;
         $scope.groupEditMode = false;
+        $scope.staffMemberEditMode = false;
         $scope.readMore = false;
 
         Restaurants.show($scope.restaurant_id, function(restaurant) {
@@ -43,6 +48,16 @@ angular.module('air-menu.controllers.restaurant', [])
         RestaurantReviews.get($scope.restaurant_id, function(reviews) {
             $scope.pending.reviews = false;
             $scope.reviews = reviews;
+        });
+
+        RestaurantStaffMembers.get($scope.restaurant_id, function(staff_members) {
+            $scope.pending.staff_members = false;
+            $scope.staff_members = staff_members;
+        });
+
+        RestaurantOrders.get($scope.restaurant_id, function(orders) {
+            $scope.pending.orders = false;
+            $scope.orders = orders;
         });
 
         $scope.shorten = function(string) {
