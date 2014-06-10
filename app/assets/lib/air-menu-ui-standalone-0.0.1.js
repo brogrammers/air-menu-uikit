@@ -44595,6 +44595,11 @@ angular.module('air-menu-ui.services.connector.company_restaurants', [])
                     });
                     successHandler(restaurants);
                 }, errorHandler, true);
+            },
+            create: function(company_id, params, successHandler, errorHandler) {
+                connector.post(baseUrl + company_id + '/restaurants', params, function(restaurantData) {
+                    successHandler(new Restaurant(restaurantData));
+                }, errorHandler, true);
             }
         }
     }]);

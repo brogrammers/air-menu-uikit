@@ -1,0 +1,66 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title"><i class="fa fa-cutlery"></i> Create Restaurant</h4>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" placeholder="Restaurant Name" ng-model="restaurant.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="description" placeholder="Restaurant Description" ng-model="restaurant.description">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="category" class="col-sm-2 control-label">Category</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="category" placeholder="Category" ng-model="restaurant.category">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address_1" class="col-sm-2 control-label">Address 1</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="address_1" placeholder="Address 1" ng-model="restaurant.address_1">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address_2" class="col-sm-2 control-label">Address 2</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="address_2" placeholder="Address 2" ng-model="restaurant.address_2">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="city" class="col-sm-2 control-label">City</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="city" placeholder="City" ng-model="restaurant.city">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="county" class="col-sm-2 control-label">County</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="county" placeholder="County" ng-model="restaurant.county">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="country" class="col-sm-2 control-label">Country</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="country" placeholder="Country" ng-model="restaurant.country">
+            </div>
+        </div>
+    </form>
+    <google-map center="map.center" zoom="map.zoom" draggable="true">
+        <marker coords="restaurant" options="markerOptions" events="events"></marker>
+    </google-map>
+    <style>
+        .angular-google-map-container { height: 200px; }
+    </style>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" ng-click="ok()">Create Restaurant</button>
+</div>
